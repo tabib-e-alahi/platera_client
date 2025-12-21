@@ -3,8 +3,8 @@
 A production-minded Next.js frontend for Platera, a Bangladesh-focused multi-vendor food delivery platform connecting customers with restaurants, home kitchens, street food vendors, and shops.
 
 > **Connected Repository:** This frontend consumes the Platera backend API.  
-> **Backend Repository:** `[Add backend repo link here]`  
-> **Frontend Live Demo:** `[Add frontend live URL here]`
+> **Backend Repository:** [**Click here**](https://github.com/tabib-e-alahi/platera_server)  
+> **Frontend Live Demo:** [**Click Here**](https://platera-client-side.vercel.app)
 
 ---
 
@@ -113,24 +113,7 @@ The application supports:
 
 ---
 
-## Screenshots / GIFs
-
-Add screenshots after deployment or local testing.
-
-Suggested assets:
-
-```txt
-/screenshots/homepage.png
-/screenshots/restaurants.png
-/screenshots/restaurant-details.png
-/screenshots/customer-dashboard.png
-/screenshots/provider-dashboard.png
-/screenshots/admin-dashboard.png
-/screenshots/checkout-flow.gif
-/screenshots/order-tracking.gif
-```
-
-Recommended README preview format:
+<!-- ## Screenshots / GIFs
 
 ```md
 ![Platera Homepage](./screenshots/homepage.png)
@@ -138,7 +121,7 @@ Recommended README preview format:
 ![Admin Dashboard](./screenshots/admin-dashboard.png)
 ```
 
----
+--- -->
 
 ## Project Structure
 
@@ -353,13 +336,3 @@ Backend API Base:   http://localhost:5000/api/v1
 
 ---
 
-## Recruiter Notes
-
-This frontend demonstrates practical full-stack product thinking, including:
-
-- Role-based UX for customers, providers, admins, and super-admins.
-- Protected routing with session validation.
-- Real marketplace flows: discovery, cart, checkout, payment, order tracking, reviews, and settlements.
-- Clean service-layer architecture instead of API calls scattered across components.
-- Security awareness around cookies, environment variables, auth routing, and secret handling.
-- Scalable dashboard structure suitable for a real operational product.
