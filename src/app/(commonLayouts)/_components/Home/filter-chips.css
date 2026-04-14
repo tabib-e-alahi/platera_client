@@ -1,0 +1,53 @@
+/* src/components/home/filter-chips.css */
+
+.filter-chips {
+  padding: 24px 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-chips__scroll {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.filter-chips__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chips__item {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border-radius: 40px;
+  border: 1.5px solid var(--border);
+  background: var(--background);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.filter-chips__item:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.filter-chips__item--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.filter-chips__item--active:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: white;
+}

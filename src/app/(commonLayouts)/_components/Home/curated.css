@@ -1,0 +1,83 @@
+/* src/components/home/curated.css */
+
+.curated {
+  padding: 0 0 80px;
+}
+
+.curated__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.curated__card {
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 180px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.curated__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.curated__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+
+.curated__card:hover::before {
+  opacity: 1;
+}
+
+.curated__emoji {
+  font-size: 36px;
+  position: relative;
+  z-index: 1;
+}
+
+.curated__text {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.curated__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.curated__subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+}
+
+.curated__arrow {
+  font-size: 20px;
+  color: rgba(255,255,255,0.7);
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  transition: transform 0.2s;
+}
+
+.curated__card:hover .curated__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .curated__grid { grid-template-columns: 1fr; }
+}

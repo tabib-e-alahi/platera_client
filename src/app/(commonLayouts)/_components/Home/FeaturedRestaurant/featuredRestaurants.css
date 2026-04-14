@@ -1,0 +1,426 @@
+.restaurants {
+  position: relative;
+  padding: 8rem 2rem;
+  background: hsl(var(--cream));
+  overflow: hidden;
+}
+
+.restaurants::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, hsl(20 15% 8%), hsl(var(--cream)));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.restaurants__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.restaurants__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.restaurants__subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(var(--gold));
+  margin-bottom: 1.25rem;
+}
+
+.restaurants__subtitle-line {
+  width: 2.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent);
+}
+
+.restaurants__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  color: hsl(var(--wine-deep));
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.restaurants__title em {
+  color: hsl(var(--gold));
+  font-style: italic;
+}
+
+.restaurants__description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: hsl(var(--wine) / 0.55);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Category tabs */
+.restaurants__tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+  background: hsl(var(--wine-deep) / 0.04);
+  padding: 0.35rem;
+  border-radius: 9999px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.restaurants__tab {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.55rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: hsl(var(--wine) / 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.restaurants__tab:hover {
+  color: hsl(var(--wine));
+}
+
+.restaurants__tab--active {
+  background: hsl(var(--wine-deep));
+  color: hsl(var(--cream));
+  box-shadow: 0 4px 16px hsl(var(--wine) / 0.2);
+}
+
+.restaurants__tab--active:hover {
+  color: hsl(var(--cream));
+}
+
+/* Grid */
+.restaurants__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ---- Restaurant Card ---- */
+.rest-card {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: hsl(0 0% 100%);
+  box-shadow: 0 2px 20px hsl(var(--wine) / 0.05);
+  border: 1px solid hsl(var(--wine) / 0.04);
+  transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.rest-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 64px hsl(var(--wine) / 0.12), 0 0 0 1px hsl(var(--gold) / 0.08);
+}
+
+/* Image */
+.rest-card__image-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.rest-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.rest-card:hover .rest-card__image {
+  transform: scale(1.08);
+}
+
+.rest-card__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, hsl(0 0% 0% / 0.55) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Badges on image */
+.rest-card__badges {
+  position: absolute;
+  top: 0.875rem;
+  left: 0.875rem;
+  display: flex;
+  gap: 0.375rem;
+  z-index: 3;
+}
+
+.rest-card__badge {
+  padding: 0.25rem 0.7rem;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rest-card__badge--featured {
+  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+  color: hsl(20 15% 8%);
+}
+
+.rest-card__badge--new {
+  background: hsl(var(--wine));
+  color: hsl(var(--cream));
+}
+
+.rest-card__badge--open {
+  background: hsl(142 60% 40%);
+  color: hsl(0 0% 100%);
+}
+
+/* Rating on image */
+.rest-card__rating {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: hsl(0 0% 0% / 0.55);
+  backdrop-filter: blur(12px);
+  padding: 0.3rem 0.6rem;
+  border-radius: 9999px;
+  z-index: 3;
+}
+
+.rest-card__rating-star {
+  color: hsl(var(--gold));
+}
+
+.rest-card__rating-value {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: hsl(var(--cream));
+}
+
+.rest-card__rating-count {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 400;
+  color: hsl(var(--cream) / 0.5);
+  margin-left: 1px;
+}
+
+/* Cuisine tags on image bottom */
+.rest-card__cuisine-row {
+  position: absolute;
+  bottom: 0.875rem;
+  left: 0.875rem;
+  display: flex;
+  gap: 0.375rem;
+  z-index: 3;
+}
+
+.rest-card__cuisine-tag {
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background: hsl(0 0% 100% / 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid hsl(0 0% 100% / 0.15);
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: hsl(var(--cream));
+  letter-spacing: 0.02em;
+}
+
+/* Body */
+.rest-card__body {
+  padding: 1.25rem 1.375rem 1.375rem;
+}
+
+.rest-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.rest-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: hsl(var(--wine-deep));
+  line-height: 1.25;
+}
+
+.rest-card__price-level {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: hsl(var(--gold));
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rest-card__price-level-dim {
+  color: hsl(var(--gold) / 0.25);
+}
+
+.rest-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.rest-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: hsl(var(--wine) / 0.45);
+  font-weight: 400;
+}
+
+.rest-card__meta-icon {
+  color: hsl(var(--wine) / 0.3);
+  flex-shrink: 0;
+}
+
+.rest-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: hsl(var(--wine) / 0.45);
+  line-height: 1.55;
+  font-weight: 300;
+  margin-bottom: 1.125rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rest-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid hsl(var(--wine) / 0.06);
+}
+
+.rest-card__delivery {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: hsl(142 60% 35%);
+  font-weight: 500;
+}
+
+.rest-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  border: none;
+  background: hsl(var(--wine-deep));
+  color: hsl(var(--cream));
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.rest-card__btn:hover {
+  background: hsl(var(--gold));
+  color: hsl(20 15% 8%);
+}
+
+/* CTA */
+.restaurants__cta {
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+.restaurants__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+  color: hsl(20 15% 8%);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px hsl(var(--gold) / 0.25);
+}
+
+.restaurants__cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px hsl(var(--gold) / 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .restaurants__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .restaurants {
+    padding: 5rem 1.25rem;
+  }
+
+  .restaurants__grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .restaurants__tabs {
+    border-radius: 1rem;
+    padding: 0.25rem;
+  }
+
+  .restaurants__tab {
+    padding: 0.4rem 1rem;
+    font-size: 0.78rem;
+  }
+}

@@ -1,0 +1,231 @@
+.verify-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+  background:
+    radial-gradient(circle at top right, rgba(232, 160, 48, 0.12), transparent 22%),
+    linear-gradient(180deg, #fffdf8 0%, #f8f9fb 100%);
+}
+
+.verify-card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  border-radius: 28px;
+  box-shadow: 0 18px 50px rgba(17, 24, 39, 0.08);
+  padding: 28px;
+}
+
+.verify-badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff7ea;
+  color: #d99017;
+  border: 1px solid rgba(232, 160, 48, 0.18);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.verify-title {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #111827;
+  font-weight: 800;
+}
+
+.verify-subtitle {
+  margin: 14px 0 0;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.verify-form {
+  margin-top: 24px;
+}
+
+.verify-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.verify-email-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.verify-email-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.verify-email-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px 0 44px;
+  border-radius: 16px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  outline: none;
+  font-size: 15px;
+  color: #111827;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.verify-email-input:focus {
+  border-color: #e8a030;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(232, 160, 48, 0.12);
+}
+
+.verify-otp {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.verify-otp-input {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  outline: none;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s, background 0.2s;
+}
+
+.verify-otp-input:focus {
+  border-color: #e8a030;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(232, 160, 48, 0.12);
+  transform: translateY(-1px);
+}
+
+.verify-message {
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.verify-message--error {
+  color: #dc2626;
+}
+
+.verify-message--success {
+  color: #15803d;
+}
+
+.verify-submit {
+  margin-top: 18px;
+  width: 100%;
+  height: 54px;
+  border: none;
+  border-radius: 999px;
+  background: #e8a030;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(232, 160, 48, 0.24);
+  transition: background 0.2s, transform 0.16s, opacity 0.2s;
+}
+
+.verify-submit:hover:not(:disabled) {
+  background: #d68f20;
+  transform: translateY(-1px);
+}
+
+.verify-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.verify-footer {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.verify-resend {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  color: #e8a030;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.verify-resend:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.verify-link {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.verify-link:hover {
+  color: #e8a030;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .verify-card {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .verify-otp {
+    gap: 8px;
+  }
+
+  .verify-otp-input {
+    border-radius: 14px;
+    font-size: 24px;
+  }
+
+  .verify-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
