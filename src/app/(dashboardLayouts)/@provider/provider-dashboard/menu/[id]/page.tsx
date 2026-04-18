@@ -5,10 +5,11 @@ import EditMealPage from "../../../_components/EditMealPage"
 
 export const metadata: Metadata = { title: "Edit Meal" }
 
-export default function Page({
+export default async function SingleproviderMealPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
-  return <EditMealPage mealId={params.id} />
+  const { id } = await params
+  return <EditMealPage mealId={id} />
 }

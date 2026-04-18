@@ -51,6 +51,7 @@ export const getMyMeals = async (params?: {
 
 export const getMyMealById = async (id: string) => {
   const res = await api.get(`/provider/meals/${id}`)
+  // console.log("From provider service: =====> ", res);
   return res.data
 }
 
