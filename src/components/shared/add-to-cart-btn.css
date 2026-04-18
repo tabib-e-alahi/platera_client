@@ -1,0 +1,63 @@
+/* add-to-cart-btn.css */
+
+.atc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    size: 40px;
+    padding: 8px;
+    border-radius: 99px;
+    background: linear-gradient(135deg, #e8a030, #f0b84a);
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    color: #451a03;
+    cursor: pointer;
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s,
+        opacity 0.15s;
+    box-shadow: 0 2px 10px rgba(232, 160, 48, 0.3);
+    white-space: nowrap;
+}
+
+.atc-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(232, 160, 48, 0.4);
+}
+
+.atc-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.atc-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.atc-btn--loading {
+    opacity: 0.8;
+}
+
+/* spinner dot animation shown while adding */
+.atc-btn__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: atc-pulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes atc-pulse {
+    from {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}

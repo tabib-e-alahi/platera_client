@@ -1,0 +1,67 @@
+/* src/app/(provider)/provider-dashboard/menu/[id]/edit-meal.css */
+
+/* reuses am- and menu- styles */
+/* add only page-specific overrides */
+
+.em-page { max-width: 860px; }
+
+.em-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.em-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: hsl(20 10% 45%);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.em-back:hover { color: hsl(350 40% 30%); }
+
+.em-header-text {
+  flex: 1;
+}
+
+.em-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: hsl(20 20% 12%);
+  letter-spacing: -0.4px;
+  margin: 0 0 4px;
+}
+
+.em-subtitle {
+  font-size: 14px;
+  color: hsl(20 10% 45%);
+  margin: 0;
+}
+
+.em-delete-btn {
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: 1.5px solid hsl(0 60% 55% / 0.3);
+  background: hsl(0 60% 55% / 0.05);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: hsl(0 60% 45%);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.em-delete-btn:hover {
+  background: hsl(0 60% 55% / 0.1);
+  border-color: hsl(0 60% 55% / 0.5);
+}

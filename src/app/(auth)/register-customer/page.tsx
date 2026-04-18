@@ -64,11 +64,7 @@ export default function RegisterPage() {
               </li>
             </ul>
           </div>
-
-
           <WantToProvider></WantToProvider>
-
-
         </div>
       </aside>
 

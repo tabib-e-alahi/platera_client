@@ -4,6 +4,7 @@ import QueryProvider from "@/providers/QueryProvider";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css"
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 
 export const metadata: Metadata = {
@@ -34,11 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className="">
         <QueryProvider>
           <AuthProvider>
-            {children}
+            <TooltipProvider>{children}</TooltipProvider>
             <Toaster position="top-right" richColors />
           </AuthProvider>
         </QueryProvider>

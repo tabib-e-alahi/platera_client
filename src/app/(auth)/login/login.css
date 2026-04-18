@@ -12,9 +12,9 @@
 .login-left {
     background: var(--hero-gradient);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding: 60px 56px;
+    padding: 80px 56px 60px 56px;
     position: relative;
     overflow: hidden;
 }
@@ -422,6 +422,7 @@
     }
 
     .login-left {
+        align-items: center;
         padding: 48px 32px 40px;
         min-height: auto;
     }
@@ -447,6 +448,7 @@
 
 @media (max-width: 480px) {
     .login-left {
+        align-items: center;
         padding: 36px 20px;
     }
 

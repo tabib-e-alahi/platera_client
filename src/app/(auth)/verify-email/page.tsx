@@ -15,7 +15,9 @@ export default function VerifyEmailPage() {
   const searchParams = useSearchParams();
 
   const initialEmail = searchParams.get("email") || "";
+  const role = searchParams.get("role") || "CUSTOMER";
   const [email, setEmail] = useState(initialEmail);
+  const [userRole, setUserRole] = useState(role);
   const [otp, setOtp] = useState<string[]>(Array(OTP_LENGTH).fill(""));
   const [timeLeft, setTimeLeft] = useState(RESEND_SECONDS);
   const [isVerifying, setIsVerifying] = useState(false);
@@ -130,21 +132,26 @@ export default function VerifyEmailPage() {
     try {
       setIsVerifying(true);
 
-      const {data, error} = await authClient.emailOtp.verifyEmail({
+      const { data, error } = await authClient.emailOtp.verifyEmail({
         email: email.trim(),
         otp: otpValue,
       });
 
       if (error) {
-    setError(error.message || "Invalid verification code.");
-    return;
-  }
+        setError(error.message || "Invalid verification code.");
+        return;
+      }
 
-      setSuccess("Email verified successfully. Redirecting to login...");
+      setSuccess("Email verified successfully. Redirecting...");
       clearOtp();
 
       setTimeout(() => {
-        router.push(`/`);
+        if(userRole === "CUSTOMER"){
+          router.push(`/`);
+        }
+        if(userRole === "PROVIDER"){
+          router.push(`/create-provider-profile`);
+        }
         router.refresh();
       }, 1200);
     } catch (err: unknown) {
@@ -262,8 +269,8 @@ export default function VerifyEmailPage() {
             {isResending
               ? "Sending..."
               : timeLeft > 0
-              ? `Resend code in ${formatTime(timeLeft)}`
-              : "Resend code"}
+                ? `Resend code in ${formatTime(timeLeft)}`
+                : "Resend code"}
           </button>
 
           <Link href="/login" className="verify-link">

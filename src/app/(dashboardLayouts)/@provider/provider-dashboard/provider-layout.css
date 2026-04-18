@@ -1,0 +1,39 @@
+/* src/app/(provider)/provider-layout.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+
+.pd-layout {
+  /* display: grid; */
+  /* grid-template-columns: 240px 1fr; */
+  /* min-height: 100vh; */
+  background: hsl(30 33% 97%);
+  font-family: 'Inter', sans-serif;
+   display: flex;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+
+.pd-main {
+  padding: 36px 40px;
+  overflow-y: auto;
+  /* min-height: 100vh; */
+  /* prevent content from sliding under sticky sidebar */
+  min-width: 0;
+  flex: 1;
+  height: 100dvh;
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  /* collapse sidebar column — content takes full width */
+  .pd-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .pd-main {
+    /* account for the sticky 60px mobile topbar */
+    padding: 24px 16px;
+  }
+}

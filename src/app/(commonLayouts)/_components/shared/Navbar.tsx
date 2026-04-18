@@ -1,61 +1,134 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react";
-import { UtensilsCrossed } from "lucide-react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  LogIn,
+  LogOut,
+  ShoppingCart,
+  User,
+  UtensilsCrossed,
+} from "lucide-react";
 import "./navbar.css";
+import { useAuth } from "@/providers/AuthProvider";
+import { toast } from "sonner";
+import { logoutUser } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "Restaurants", href: "#restaurants" },
-  { label: "How It Works", href: "#about" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Restaurants", href: "/restaurants" },
+  { label: "Meals", href: "/meals" },
+  { label: "How It Works", href: "/#about" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Contact", href: "/#contact" },
 ];
+
+// Pages that have a dark hero behind the navbar — start transparent
+const HERO_ROUTES = ["/","/cart"];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const { user, isLoading } = useAuth();
+
+  // Transparent start only on hero pages; all others start solid
+  const isHeroPage = HERO_ROUTES.includes(pathname);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onResize = () => {
+      if (window.innerWidth > 768) setMobileOpen(false);
+    };
+    // Re-evaluate on mount (matters when navigating back to hero page)
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const closeMobileMenu = () => setMobileOpen(false);
+
+  // Determine class: solid when not a hero page, or when scrolled on any page
+  const solidClass = !isHeroPage || scrolled ? "navbar--solid" : "";
+  // On hero pages that are scrolled we rely on --scrolled; on non-hero pages we use --solid
+  const scrolledClass = isHeroPage && scrolled ? "navbar--scrolled" : "";
+
+  const dashboardHref =
+    user?.role === "PROVIDER"
+      ? "/provider-dashboard"
+      : user?.role === "ADMIN" || user?.role === "SUPER_ADMIN"
+        ? "/admin-dashboard"
+        : "/customer-dashboard";
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      router.push("/login");
+      router.refresh();
+    } catch {
+      toast.error("Logout failed.");
+    }
+  };
+
   return (
     <>
-      <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
+      <nav className={`navbar ${solidClass} ${scrolledClass}`}>
         <div className="navbar__inner">
-          <a href="#" className="navbar__logo">
+          <Link href="/" className="navbar__logo" onClick={closeMobileMenu}>
             <span className="navbar__logo-icon">
               <UtensilsCrossed size={20} />
             </span>
             <span className="navbar__logo-text">Platera</span>
-          </a>
+          </Link>
 
           <ul className="navbar__links">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="navbar__link">
+                <Link href={link.href} className="navbar__link">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
           <div className="navbar__right">
-            <a href="#reserve" className="navbar__cta">
-              Reserve a Table
-            </a>
+            {!isLoading &&
+              (user ? (
+                <div className="navbar__auth navbar__auth--logged">
+                  <Link href="/cart" className="navbar__icon-btn" aria-label="Cart">
+                    <ShoppingCart size={20} />
+                  </Link>
+                  <Link href={dashboardHref} className="navbar__icon-btn" aria-label="Dashboard">
+                    <User size={20} />
+                  </Link>
+                </div>
+              ) : (
+                <div className="navbar__auth">
+                  <Link href="/login" className="navbar__cta_login desktop-only">Login</Link>
+                  <Link href="/login" className="navbar__icon-btn mobile-only" aria-label="Login">
+                    <LogIn size={20} />
+                  </Link>
+                </div>
+              ))}
+
             <button
+              type="button"
               className={`navbar__toggle ${mobileOpen ? "navbar__toggle--open" : ""}`}
-              onClick={() => setMobileOpen(!mobileOpen)}
+              onClick={() => setMobileOpen((prev) => !prev)}
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
             >
               <span className="navbar__toggle-bar" />
               <span className="navbar__toggle-bar" />
@@ -65,20 +138,40 @@ const Navbar = () => {
         </div>
       </nav>
 
+      <div
+        className={`navbar__overlay ${mobileOpen ? "navbar__overlay--open" : ""}`}
+        onClick={closeMobileMenu}
+      />
+
       <div className={`navbar__mobile ${mobileOpen ? "navbar__mobile--open" : ""}`}>
-        {navLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="navbar__mobile-link"
-            onClick={() => setMobileOpen(false)}
-          >
-            {link.label}
-          </a>
-        ))}
-        <a href="#reserve" className="navbar__mobile-cta" onClick={() => setMobileOpen(false)}>
-          Reserve a Table
-        </a>
+        <div className="navbar__mobile-inner">
+          <div className="navbar__mobile-links">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="navbar__mobile-link"
+                onClick={closeMobileMenu}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="navbar__mobile-actions">
+            {!isLoading &&
+              (user ? (
+                <>
+                  <Link href={dashboardHref} className="navbar__mobile-cta">Dashboard</Link>
+                  <Link href="/cart" className="navbar__mobile-cta-secondary">Cart</Link>
+                  <Link href="/logout" className="navbar__mobile-cta-logout" onClick={handleLogout}>Logout</Link>
+                </>
+              ) : (
+                <Link href="/login" className="navbar__mobile-cta">
+                  <LogIn size={18} /><span>Login</span>
+                </Link>
+              ))}
+          </div>
+        </div>
       </div>
     </>
   );

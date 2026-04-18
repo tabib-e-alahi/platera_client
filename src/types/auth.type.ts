@@ -7,6 +7,11 @@ export type UserRole =
   | "SUPER_ADMIN";
 
 export type UserStatus = "ACTIVE" | "SUSPENDED";
+export type TProviderApprovalStatus =
+  | "DRAFT"
+  | "PENDING"
+  | "APPROVED"
+  | "REJECTED";
 
 export interface IUser {
   id: string;
@@ -31,3 +36,15 @@ export interface ISession {
     expiresAt: string;
   };
 }
+
+export type TSessionCheckResponse = {
+  isAuthenticated: boolean;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    role: UserRole;
+  } | null;
+  hasProviderProfile?: boolean;
+  providerProfileStatus?: TProviderApprovalStatus | null;
+};

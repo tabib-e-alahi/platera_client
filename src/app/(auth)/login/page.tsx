@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import "./login.css"
 import { LoginForm } from "../_components/Auth/LoginForm"
+import WantToProvider from "../_components/WantToProviderButton/WantToProvider"
 
 export const metadata: Metadata = {
   title: "Sign In — Platera",
@@ -55,10 +56,7 @@ export default function LoginPage() {
             </ul>
           </div>
 
-          <p className="login-left__footer">
-            Fresh ingredients · Local providers · Fast delivery
-          </p>
-
+        <WantToProvider></WantToProvider>
         </div>
       </aside>
 

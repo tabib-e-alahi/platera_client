@@ -20,8 +20,6 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-
-import "@/app/(auth)/register/register.css"
 import { registerCustomer } from "@/services/auth.service"
 import SocialLogin from "./SocialLogin"
 
@@ -108,7 +106,7 @@ export function RegisterForm() {
           "Account created! Please check your email to verify your account."
         )
         form.reset()
-        router.push(`/verify-email?email=${encodeURIComponent(data.email)}`);
+        router.push(`/verify-email?email=${encodeURIComponent(data.email)}&role=${res.data.role}`);
       } else {
         toast.error(res?.message ?? "Registration failed.")
       }

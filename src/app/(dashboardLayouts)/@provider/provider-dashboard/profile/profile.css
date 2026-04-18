@@ -1,0 +1,416 @@
+/* src/app/(provider)/provider-dashboard/profile/profile.css */
+
+.pp-page {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.pp-header {
+    margin-bottom: 32px;
+}
+
+.pp-title {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: hsl(20 20% 12%);
+    letter-spacing: -0.4px;
+    margin: 0 0 6px;
+}
+
+.pp-subtitle {
+    font-size: 14px;
+    color: hsl(20 10% 45%);
+    margin: 0;
+}
+
+/* approval status banner */
+
+.pp-status-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.pp-status-banner--draft {
+    background: hsl(30 25% 95%);
+    border: 1px solid hsl(30 20% 85%);
+}
+
+.pp-status-banner--pending {
+    background: hsl(38 70% 55% / 0.08);
+    border: 1px solid hsl(38 70% 55% / 0.2);
+}
+
+.pp-status-banner--approved {
+    background: hsl(142 71% 45% / 0.07);
+    border: 1px solid hsl(142 71% 45% / 0.2);
+}
+
+.pp-status-banner--rejected {
+    background: hsl(0 72% 51% / 0.07);
+    border: 1px solid hsl(0 72% 51% / 0.2);
+}
+
+.pp-status-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pp-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.pp-status-dot--draft {
+    background: hsl(20 10% 55%);
+}
+.pp-status-dot--pending {
+    background: hsl(38 70% 55%);
+}
+.pp-status-dot--approved {
+    background: hsl(142 71% 45%);
+}
+.pp-status-dot--rejected {
+    background: hsl(0 72% 51%);
+}
+
+.pp-status-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: hsl(20 20% 12%);
+}
+
+.pp-status-text span {
+    font-size: 12px;
+    color: hsl(20 10% 45%);
+}
+
+.pp-request-btn {
+    height: 38px;
+    padding: 0 20px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, hsl(38 70% 55%), hsl(38 60% 68%));
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    color: hsl(350 45% 18%);
+    cursor: pointer;
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+    box-shadow: 0 2px 8px hsl(38 70% 55% / 0.3);
+    white-space: nowrap;
+}
+
+.pp-request-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px hsl(38 70% 55% / 0.4);
+}
+
+.pp-request-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* rejection reason */
+
+.pp-rejection-note {
+    padding: 12px 16px;
+    background: hsl(0 72% 51% / 0.06);
+    border: 1px solid hsl(0 72% 51% / 0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    color: hsl(0 60% 35%);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.pp-rejection-note strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* form card (reuse am- styles) */
+
+.pp-card {
+    background: #ffffff;
+    border: 1px solid hsl(38 70% 55% / 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px hsl(350 40% 30% / 0.05);
+}
+
+.pp-section {
+    padding: 28px 32px;
+    border-bottom: 1px solid hsl(30 20% 94%);
+}
+
+.pp-section:last-child {
+    border-bottom: none;
+}
+
+.pp-section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: hsl(38 70% 45%);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 20px;
+}
+
+.pp-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.pp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.pp-field--full {
+    grid-column: 1 / -1;
+}
+
+.pp-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: hsl(20 20% 12%);
+}
+
+.pp-input,
+.pp-textarea,
+.pp-select {
+    height: 44px;
+    border-radius: 10px;
+    border: 1.5px solid hsl(30 20% 88%);
+    background: hsl(30 25% 98%);
+    padding: 0 14px;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    color: hsl(20 20% 12%);
+    outline: none;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    width: 100%;
+}
+
+.pp-textarea {
+    height: auto;
+    min-height: 90px;
+    padding: 12px 14px;
+    resize: vertical;
+}
+
+.pp-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+.pp-input:focus,
+.pp-textarea:focus,
+.pp-select:focus {
+    border-color: hsl(38 70% 55%);
+    box-shadow: 0 0 0 3px hsl(38 70% 55% / 0.12);
+    background: #ffffff;
+}
+
+.pp-input::placeholder,
+.pp-textarea::placeholder {
+    color: hsl(20 10% 70%);
+}
+
+/* image upload */
+
+.pp-upload {
+    width: fit-content;
+    margin: 0 auto;
+    border: 2px dashed hsl(38 70% 55% / 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    background: hsl(38 70% 55% / 0.02);
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.pp-upload:hover {
+    border-color: hsl(38 70% 55% / 0.6);
+    background: hsl(38 70% 55% / 0.04);
+}
+
+.pp-upload input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.pp-upload-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: hsl(20 20% 35%);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.pp-upload-hint {
+    font-size: 12px;
+    color: hsl(20 10% 55%);
+}
+
+.pp-current-image {
+    width: 600px;
+    height: 370.83px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+/* NID images */
+
+.pp-nid-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.pp-nid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pp-nid-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: hsl(20 10% 45%);
+}
+
+/* footer */
+
+.pp-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 24px 32px;
+    background: hsl(30 25% 97%);
+    border-top: 1px solid hsl(30 20% 94%);
+}
+
+.pp-btn-cancel {
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 10px;
+    border: 1.5px solid hsl(30 20% 86%);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    color: hsl(20 10% 45%);
+    cursor: pointer;
+    transition:
+        border-color 0.15s,
+        color 0.15s;
+}
+
+.pp-btn-cancel:hover {
+    border-color: hsl(30 20% 76%);
+    color: hsl(20 20% 12%);
+}
+
+.pp-btn-submit {
+    height: 44px;
+    padding: 0 32px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, hsl(38 70% 55%), hsl(38 60% 68%));
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    color: hsl(350 45% 18%);
+    cursor: pointer;
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+    box-shadow: 0 2px 10px hsl(38 70% 55% / 0.3);
+}
+
+.pp-btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px hsl(38 70% 55% / 0.4);
+}
+
+.pp-btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* .pp-input[type="text"],
+select.pp-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+} */
+
+@media (max-width: 900px) {
+  /* collapse sidebar column — content takes full width */
+  .pp-current-image {
+        width: 600px;
+        height: 370.83px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 8px;
+    }
+    .pp-section {
+        padding: 20px;
+    }
+    .pp-grid-2 {
+        grid-template-columns: 1fr;
+    }
+    .pp-nid-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .pp-current-image {
+        width: 400px;
+        height: 270.83px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 8px;
+    }
+    .pp-section {
+        padding: 20px;
+    }
+    .pp-grid-2 {
+        grid-template-columns: 1fr;
+    }
+    .pp-nid-grid {
+        grid-template-columns: 1fr;
+    }
+}

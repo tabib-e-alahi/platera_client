@@ -21,37 +21,59 @@ import { toast } from "sonner"
 import SocialLogin from "./SocialLogin"
 
 const formSchema = z.object({
-  email: z.email(),
-  password: z.string(),
+  email: z.email("Please enter a valid email address."),
+  password: z.string().min(1, "Password is required."),
 })
+
+type FormValues = z.infer<typeof formSchema>
 
 export function LoginForm() {
   const router = useRouter()
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: { email: "", password: "" },
   })
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: FormValues) {
     try {
-      const payload = { email: data.email, password: data.password }
-      const res = await loginUser(payload)
-      console.log(res);
+      const res = await loginUser({ email: data.email, password: data.password })
 
-      if (res?.success) {
-        toast.success("Login successful!")
-        form.reset()
-
-        const role = res?.data?.user?.role
-        if (role === "CUSTOMER") router.push("/")
-        else if (role === "PROVIDER") router.push("/provider-dashboard/profile")
-        else if (role === "ADMIN") router.push("/admin-dashboard")
-      } else {
-        toast.error(res?.error || res?.message)
+      if (!res?.success) {
+        // Server returned a structured error response (non-2xx caught by axios
+        // interceptor won't reach here, but handle gracefully just in case)
+        toast.error(res?.message || "Login failed. Please try again.")
+        return
       }
-    } catch {
-      toast.error("Login failed. Please check your credentials and try again.")
+
+      toast.success("Login successful!")
+      form.reset()
+      // console.log(res.data);
+      const user = res.data.data.user
+      const role = user?.role as string | undefined
+      const hasProviderProfile = res?.data.hasProviderProfile
+      // console.log(role, hasProviderProfile);
+      if (role === "CUSTOMER") {
+        router.push("/")
+      } else if (role === "PROVIDER") {
+        router.push(hasProviderProfile ? "/provider-dashboard" : "/create-provider-profile")
+      } else if (role === "ADMIN" || role === "SUPER_ADMIN") {
+        router.push("/admin-dashboard")
+      } else {
+        router.push("/")
+      }
+    } catch (err: any) {
+      // Axios puts the server response under err.response.data
+      const serverData = err?.response?.data
+
+      // Try to surface the most specific message from the server
+      const message =
+        serverData?.message ||
+        serverData?.error ||
+        err?.message ||
+        "Login failed. Please check your credentials and try again."
+
+      toast.error(message)
     }
   }
 
@@ -70,24 +92,23 @@ export function LoginForm() {
 
         <p className="login-desc">
           New here?{" "}
-          <Link href="/register">Create a free account</Link>
+          <Link href="/register-customer">Create a free account</Link>
           {" "}and start ordering.
         </p>
       </CardHeader>
 
-
       {/* ── FORM ── */}
       <CardContent className="login-card-content">
-        
-        <SocialLogin></SocialLogin>
+
+        <SocialLogin />
 
         <div className="login-form__separator">
           <span className="login-form__separator-line" />
           <span className="login-form__separator-text">or continue with email</span>
           <span className="login-form__separator-line" />
         </div>
-        <form id="login-form"
-          onSubmit={form.handleSubmit(onSubmit)}>
+
+        <form id="login-form" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup className="login-field-group">
 
             {/* EMAIL */}
@@ -108,7 +129,7 @@ export function LoginForm() {
                     autoComplete="email"
                     className="login-input"
                   />
-                  {fieldState.invalid && (
+                  {fieldState.error && (
                     <FieldError
                       errors={[fieldState.error]}
                       className="login-field-error"
@@ -138,7 +159,7 @@ export function LoginForm() {
                       className="login-input"
                     />
                   </InputGroup>
-                  {fieldState.invalid && (
+                  {fieldState.error && (
                     <FieldError
                       errors={[fieldState.error]}
                       className="login-field-error"
@@ -176,10 +197,9 @@ export function LoginForm() {
 
         <p className="login-footer-link">
           Don't have an account?{" "}
-          <Link href="/register">Register</Link>
+          <Link href="/register-customer">Register</Link>
         </p>
       </CardFooter>
     </Card>
-
   )
 }

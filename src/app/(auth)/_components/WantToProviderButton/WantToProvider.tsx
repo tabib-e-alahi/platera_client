@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import "./wantToprovider.css"
 
 export default function WantToProvider() {
@@ -7,9 +8,9 @@ export default function WantToProvider() {
       <p className="register-left__footer">
         Fresh ingredients · Local providers · Fast delivery
       </p>
-      <a href="/become-provider" className="register-left__provider-btn">
+      <Link href="/register-provider" className="register-left__provider-btn">
         🍳 Want to be a provider?
-      </a>
+      </Link>
     </div>
 
   );

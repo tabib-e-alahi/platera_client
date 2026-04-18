@@ -1,0 +1,483 @@
+/* ============================================================
+   RESTAURANTS PAGE
+   ============================================================ */
+.rp {
+  min-height: 100vh;
+  background: hsl(var(--cream));
+}
+
+/* ── Hero banner ── */
+.rp__hero {
+  background: var(--hero-gradient);
+  padding: 7rem 2rem 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+}
+.rp__hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, hsl(var(--gold) / 0.06), transparent);
+  pointer-events: none;
+}
+.rp__hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: hsl(var(--gold));
+  margin-bottom: 1.1rem;
+}
+.rp__hero-label-line {
+  width: 2rem;
+  height: 1px;
+  background: hsl(var(--gold) / 0.45);
+}
+.rp__hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: hsl(var(--cream));
+  line-height: 1.1;
+  margin-bottom: 0.9rem;
+}
+.rp__hero-title em {
+  color: hsl(var(--gold));
+  font-style: italic;
+}
+.rp__hero-desc {
+  font-size: 1.05rem;
+  color: hsl(var(--cream) / 0.55);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── Layout ── */
+.rp__body {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .rp__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Sidebar ── */
+.rp__sidebar {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  position: sticky;
+  top: 5.5rem;
+}
+.rp__sidebar-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: hsl(var(--wine-deep));
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.rp__filter-group {
+  margin-bottom: 1.6rem;
+}
+.rp__filter-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.65rem;
+  display: block;
+}
+.rp__filter-input,
+.rp__filter-select {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+.rp__filter-input:focus,
+.rp__filter-select:focus {
+  border-color: hsl(var(--gold) / 0.6);
+  box-shadow: 0 0 0 3px hsl(var(--gold) / 0.1);
+}
+.rp__filter-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  padding-right: 2.2rem;
+  cursor: pointer;
+}
+
+.rp__type-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.rp__type-chip {
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--border));
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.rp__type-chip--active {
+  background: hsl(var(--wine));
+  border-color: hsl(var(--wine));
+  color: hsl(var(--cream));
+}
+.rp__type-chip:hover:not(.rp__type-chip--active) {
+  border-color: hsl(var(--gold) / 0.5);
+  color: hsl(var(--wine));
+}
+
+.rp__clear-btn {
+  width: 100%;
+  padding: 0.65rem;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+  margin-top: 0.5rem;
+}
+.rp__clear-btn:hover {
+  border-color: hsl(var(--wine) / 0.4);
+  color: hsl(var(--wine));
+}
+
+/* ── Main content ── */
+.rp__main {}
+.rp__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.rp__count {
+  font-size: 0.9rem;
+  color: hsl(var(--muted-foreground));
+}
+.rp__count strong {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+/* Mobile search bar */
+.rp__mobile-search {
+  display: none;
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 1024px) {
+  .rp__mobile-search { display: block; }
+  .rp__sidebar { position: static; }
+  .rp__filter-group:first-child { display: none; } /* hide search in sidebar on mobile */
+}
+
+/* ── Grid ── */
+.rp__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+@media (max-width: 640px) {
+  .rp__grid { grid-template-columns: 1fr; }
+}
+
+/* ── Restaurant Card ── */
+.rc {
+  background: hsl(var(--card));
+  border-radius: 1.25rem;
+  border: 1px solid hsl(var(--border));
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.rc:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px hsl(var(--wine-deep) / 0.1);
+  border-color: hsl(var(--gold) / 0.25);
+}
+
+.rc__img-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: hsl(var(--muted));
+}
+.rc__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.rc:hover .rc__img {
+  transform: scale(1.05);
+}
+.rc__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, hsl(20 15% 6% / 0.55) 0%, transparent 50%);
+}
+.rc__img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, hsl(var(--wine-deep) / 0.08), hsl(var(--gold) / 0.06));
+  color: hsl(var(--gold) / 0.45);
+}
+
+.rc__badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.rc__badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.rc__badge--restaurant { background: hsl(var(--wine)); color: hsl(var(--cream)); }
+.rc__badge--home_kitchen { background: hsl(38 70% 45%); color: hsl(20 15% 8%); }
+.rc__badge--shop { background: hsl(210 60% 45%); color: white; }
+.rc__badge--street_food { background: hsl(25 80% 50%); color: white; }
+
+.rc__rating {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: hsl(20 15% 8% / 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 0.28rem 0.65rem;
+  color: hsl(var(--gold));
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.rc__rating-count { color: hsl(var(--cream) / 0.65); font-weight: 400; font-size: 0.72rem; }
+
+.rc__body {
+  padding: 1.2rem 1.25rem 1.35rem;
+}
+.rc__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.rc__name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: hsl(var(--wine-deep));
+  line-height: 1.25;
+}
+.rc__city {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: hsl(var(--muted-foreground));
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.rc__desc {
+  font-size: 0.83rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.55;
+  margin-bottom: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.rc__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+.rc__tag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: hsl(var(--gold) / 0.08);
+  color: hsl(var(--wine));
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+.rc__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.9rem;
+  border-top: 1px solid hsl(var(--border));
+}
+.rc__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.rc__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  color: hsl(var(--muted-foreground));
+}
+.rc__view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+  color: hsl(20 15% 8%);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  pointer-events: none;
+}
+.rc:hover .rc__view-btn {
+  transform: translateX(2px);
+  box-shadow: 0 4px 16px hsl(var(--gold) / 0.3);
+}
+
+/* ── Empty / Loading ── */
+.rp__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 5rem 2rem;
+  color: hsl(var(--muted-foreground));
+}
+.rp__empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+.rp__empty h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: hsl(var(--wine-deep));
+  margin-bottom: 0.5rem;
+}
+
+.rp__skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.rp__skeleton-card {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid hsl(var(--border));
+}
+.rp__skeleton-img {
+  height: 180px;
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--border)) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.rp__skeleton-body { padding: 1.2rem; }
+.rp__skeleton-line {
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--border)) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 0.75rem;
+}
+.rp__skeleton-line--short { width: 55%; }
+.rp__skeleton-line--xs { width: 35%; height: 10px; }
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Pagination ── */
+.rp__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.rp__page-btn {
+  padding: 0.55rem 1rem;
+  border-radius: 0.65rem;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.rp__page-btn--active {
+  background: hsl(var(--wine));
+  border-color: hsl(var(--wine));
+  color: hsl(var(--cream));
+}
+.rp__page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.rp__page-btn:hover:not(.rp__page-btn--active):not(:disabled) {
+  border-color: hsl(var(--gold) / 0.4);
+  color: hsl(var(--wine));
+}
