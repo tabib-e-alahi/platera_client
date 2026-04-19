@@ -120,7 +120,7 @@ export default function AdminProviderDetailPage() {
             <div className="apd__row"><span>Business name</span><span>{provider.businessName}</span></div>
             <div className="apd__row"><span>Type</span><span>{provider.businessCategory}</span></div>
             <div className="apd__row"><span>BIN</span><span>{provider.binNumber ?? "N/A"}</span></div>
-            <div className="apd__row"><span>Bio</span><span>{provider.bio ?? "N/A"}</span></div>
+            <div className="apd__row"><span>Bio</span><span className="">{provider.bio ?? "N/A"}</span></div>
           </div>
         </div>
 
