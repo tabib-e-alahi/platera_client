@@ -33,7 +33,7 @@ export default function AdminProviderRequestPage() {
   const fetchProviders = async () => {
     try {
       const res = await getPendingProviders();
-      console.log("Admin: ", res);
+
       setProviders(res?.data?.providers ?? []);
     } catch (error: any) {
       toast.error(error?.response?.data?.message ?? "Failed to load provider requests.");
