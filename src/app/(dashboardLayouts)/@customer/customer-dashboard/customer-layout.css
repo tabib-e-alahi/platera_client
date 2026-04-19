@@ -3,7 +3,7 @@
 .cd-layout {
   display: grid;
   grid-template-columns: 230px 1fr;
-  min-height: 100vh;
+  height: 100vh;
   background: hsl(30 33% 97%);
   font-family: 'Inter', sans-serif;
 }
