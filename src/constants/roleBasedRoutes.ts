@@ -51,7 +51,7 @@ export const Customer_NAV_ITEMS = [
 export type Route = {
   label: string
   href: string
-  icon: LucideIcon
+  icon: string | LucideIcon
   exact?: boolean
 }
 

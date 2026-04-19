@@ -1,4 +1,4 @@
-import CustomerSidebar from "../_components/Sidebar/CustomerSidebar";
+import Sidebar from "@/components/shared/DashboardSidebar/Sidebar";
 import "./customer-layout.css";
 
 export default function CustomerDashboardLayout({
@@ -8,7 +8,7 @@ export default function CustomerDashboardLayout({
 }) {
   return (
     <div className="cd-layout">
-      <CustomerSidebar />
+      <Sidebar role="CUSTOMER"></Sidebar>
       <main className="cd-main">{children}</main>
     </div>
   );

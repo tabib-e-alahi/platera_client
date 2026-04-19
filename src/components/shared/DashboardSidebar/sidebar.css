@@ -1,6 +1,3 @@
-/* src/app/(provider)/provider-sidebar.css */
-
-/* ── shared sidebar shell ─────────────────────────────────────────────── */
 .ps-sidebar {
   background: linear-gradient(180deg, hsl(20 15% 8%), hsl(350 30% 12%));
   display: flex;
@@ -8,6 +5,7 @@
   padding: 28px 0 24px;
   border-right: 1px solid hsl(38 70% 55% / 0.08);
   width: 240px;
+  height: 100dvh;
 }
 
 .ps-top {
