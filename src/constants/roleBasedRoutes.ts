@@ -34,7 +34,7 @@ export const Admin_NAV_ITEMS = [
     exact: true,
   },
   { label: "View All Users", href: "/admin-dashboard/view-users", icon: Users },
-  { label: "Provider Requests", href: "/admin-dashboard/provider-requests", icon: PlusCircle },
+  { label: "Provider Requests", href: "/admin-dashboard/provider-request", icon: PlusCircle },
   { label: "Providers", href: "/admin-dashboard/providers", icon: Users },
   { label: "Orders", href: "/admin-dashboard/view-orders", icon: ListOrdered },
   { label: "Manage Categories", href: "/admin-dashboard/manage-categories", icon: User },
