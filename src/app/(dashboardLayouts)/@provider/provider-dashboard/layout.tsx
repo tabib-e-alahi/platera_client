@@ -1,7 +1,7 @@
 // src/app/(provider)/layout.tsx
 import type { Metadata } from "next"
 import "./provider-layout.css"
-import ProviderSidebar from "../../../../components/shared/DashboardSidebar/Sidebar"
+import Sidebar from "@/components/shared/DashboardSidebar/Sidebar"
 
 export const metadata: Metadata = {
   title: {
@@ -17,7 +17,7 @@ export default function ProviderLayout({
 }) {
   return (
     <div className="pd-layout">
-      <ProviderSidebar />
+      <Sidebar role="PROVIDER"/>
       <main className="pd-main">{children}</main>
     </div>
   )

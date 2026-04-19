@@ -10,13 +10,13 @@ import {
   X,
 } from "lucide-react"
 import { toast } from "sonner"
-import "./provider-sidebar.css"
+import "./sidebar.css"
 import { logoutUser } from "@/services/auth.service"
 import { Provider_NAV_ITEMS } from "@/constants/providerRoutes"
 
 const NAV_ITEMS = Provider_NAV_ITEMS
 
-export default function ProviderSidebar() {
+export default function Sidebar(role: "PROVIDER" | "CONSUMER" | "ADMIN" | "SUPER_ADMIN") {
   const pathname = usePathname()
   const router = useRouter()
   const [open, setOpen] = useState(false)
