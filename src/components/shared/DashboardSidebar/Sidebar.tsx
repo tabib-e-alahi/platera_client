@@ -14,12 +14,21 @@ import "./sidebar.css"
 import { logoutUser } from "@/services/auth.service"
 import { Provider_NAV_ITEMS } from "@/constants/providerRoutes"
 
-const NAV_ITEMS = Provider_NAV_ITEMS
 
-export default function Sidebar(role: "PROVIDER" | "CONSUMER" | "ADMIN" | "SUPER_ADMIN") {
+
+export default function Sidebar({role}: {role: "PROVIDER" | "CONSUMER" | "ADMIN" | "SUPER_ADMIN"}) {
   const pathname = usePathname()
   const router = useRouter()
   const [open, setOpen] = useState(false)
+
+  const NAV_ITEMS = Provider_NAV_ITEMS
+  
+  let routes: Routes = { title: "", navItems: [] };
+  switch (user?.role) {
+    case "ADMIN":    routes = adminRoutes;    break;
+    case "CUSTOMER": routes = customerRoutes; break;
+    case "PROVIDER": routes = providerRoutes; break;
+  }
 
   // close drawer on route change
   useEffect(() => {
