@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { getAllProviders, updateProviderStatus } from "@/services/admin.service";
 import { toast } from "sonner";
+import "./admin-providers.css";
 
 type TProvider = {
   id: string;
@@ -30,24 +31,19 @@ export default function AdminProvidersPage() {
     try {
       const res = await getAllProviders();
       const rawProviders: TProvider[] = res?.data?.providers ?? [];
-
-      const mappedProviders: TEditableProvider[] = rawProviders.map((provider) => ({
-        ...provider,
-        draftApprovalStatus: provider.approvalStatus,
-        draftUserStatus: provider.user?.status ?? "ACTIVE",
-      }));
-
-      setProviders(mappedProviders);
-    } catch (error: any) {
-      toast.error(
-        error?.response?.data?.message ?? "Failed to load providers."
+      setProviders(
+        rawProviders.map((p) => ({
+          ...p,
+          draftApprovalStatus: p.approvalStatus,
+          draftUserStatus: p.user?.status ?? "ACTIVE",
+        }))
       );
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message ?? "Failed to load providers.");
     }
   };
 
-  useEffect(() => {
-    fetchProviders();
-  }, []);
+  useEffect(() => { fetchProviders(); }, []);
 
   const updateDraftField = <
     K extends keyof Pick<TEditableProvider, "draftApprovalStatus" | "draftUserStatus">
@@ -57,23 +53,13 @@ export default function AdminProvidersPage() {
     value: TEditableProvider[K]
   ) => {
     setProviders((prev) =>
-      prev.map((provider) =>
-        provider.id === providerId ? { ...provider, [field]: value } : provider
-      )
+      prev.map((p) => (p.id === providerId ? { ...p, [field]: value } : p))
     );
   };
 
-  const hasChanges = (provider: TEditableProvider) => {
-    const currentApproval = provider.approvalStatus;
-    const draftApproval = provider.draftApprovalStatus;
-
-    const currentUserStatus = provider.user?.status ?? "ACTIVE";
-    const draftUserStatus = provider.draftUserStatus;
-
-    return (
-      currentApproval !== draftApproval || currentUserStatus !== draftUserStatus
-    );
-  };
+  const hasChanges = (p: TEditableProvider) =>
+    p.approvalStatus !== p.draftApprovalStatus ||
+    (p.user?.status ?? "ACTIVE") !== p.draftUserStatus;
 
   const handleSaveChanges = async (provider: TEditableProvider) => {
     if (!hasChanges(provider)) {
@@ -81,91 +67,76 @@ export default function AdminProvidersPage() {
       return;
     }
 
-    toast(
-      `Save changes for ${provider.businessName}?`,
-      {
-        action: {
-          label: "Confirm",
-          onClick: async () => {
-            try {
-              setBusyId(provider.id);
-
-              await updateProviderStatus(provider.id, {
-                approvalStatus: provider.draftApprovalStatus,
-                userStatus: provider.draftUserStatus,
-              });
-
-              toast.success("Provider status updated successfully.");
-              await fetchProviders();
-            } catch (error: any) {
-              toast.error(
-                error?.response?.data?.message ?? "Failed to update provider."
-              );
-            } finally {
-              setBusyId(null);
-            }
-          },
+    toast(`Save changes for ${provider.businessName}?`, {
+      action: {
+        label: "Confirm",
+        onClick: async () => {
+          try {
+            setBusyId(provider.id);
+            await updateProviderStatus(provider.id, {
+              approvalStatus: provider.draftApprovalStatus,
+              userStatus: provider.draftUserStatus,
+            });
+            toast.success("Provider status updated.");
+            await fetchProviders();
+          } catch (error: any) {
+            toast.error(error?.response?.data?.message ?? "Update failed.");
+          } finally {
+            setBusyId(null);
+          }
         },
-        cancel: {
-          label: "Cancel",
-          onClick: () => {},
-        },
-      }
-    );
+      },
+      cancel: { label: "Cancel", onClick: () => {} },
+    });
   };
 
   const providerCount = useMemo(() => providers.length, [providers]);
 
   return (
-    <div>
-      <div className="mb-6 flex items-end justify-between gap-4">
+    <div className="aproviders">
+
+      {/* header */}
+      <div className="aproviders__header">
         <div>
-          <h1 className="text-2xl font-semibold">All Providers</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <p className="aproviders__eyebrow">Admin Panel</p>
+          <h1 className="aproviders__title">All Providers</h1>
+          <p className="aproviders__subtitle">
             Manage provider approval and account status.
           </p>
         </div>
-
-        <div className="rounded-xl border bg-card px-4 py-2 text-sm text-muted-foreground">
-          Total Providers: <span className="font-semibold text-foreground">{providerCount}</span>
+        <div className="aproviders__count">
+          Total:{" "}
+          <strong>{providerCount}</strong>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {/* grid */}
+      <div className="aproviders__grid">
         {providers.map((provider) => {
           const changed = hasChanges(provider);
           const isBusy = busyId === provider.id;
 
           return (
-            <div
-              key={provider.id}
-              className="rounded-2xl border bg-card p-5 shadow-sm"
-            >
-              <p className="text-lg font-semibold">{provider.businessName}</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {provider.user?.name ?? "N/A"}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {provider.user?.email ?? "N/A"}
-              </p>
+            <div key={provider.id} className="aprov-card">
 
-              <div className="mt-3 space-y-1 text-sm">
-                <p>
-                  <span className="font-medium">Type:</span>{" "}
+              <p className="aprov-card__name">{provider.businessName}</p>
+              <p className="aprov-card__user">{provider.user?.name ?? "N/A"}</p>
+              <p className="aprov-card__email">{provider.user?.email ?? "N/A"}</p>
+
+              <div className="aprov-card__meta">
+                <span className="aprov-card__meta-item">
                   {provider.businessCategory}
-                </p>
-                <p>
-                  <span className="font-medium">District:</span> {provider.city}
-                </p>
+                </span>
+                <span className="aprov-card__meta-item">
+                  {provider.city}
+                </span>
               </div>
 
-              <div className="mt-4 space-y-3">
-                <div>
-                  <label className="mb-1 block text-sm font-medium">
-                    Approval Status
-                  </label>
+              <div className="aprov-card__fields">
+                <div className="aprov-card__field">
+                  <label className="aprov-card__label">Approval status</label>
                   <select
-                    className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
+                    className="aprov-card__select"
                     value={provider.draftApprovalStatus}
                     disabled={isBusy}
                     onChange={(e) =>
@@ -176,19 +147,17 @@ export default function AdminProvidersPage() {
                       )
                     }
                   >
-                    <option value="DRAFT">DRAFT</option>
-                    <option value="PENDING">PENDING</option>
-                    <option value="APPROVED">APPROVED</option>
-                    <option value="REJECTED">REJECTED</option>
+                    <option value="DRAFT">Draft</option>
+                    <option value="PENDING">Pending</option>
+                    <option value="APPROVED">Approved</option>
+                    <option value="REJECTED">Rejected</option>
                   </select>
                 </div>
 
-                <div>
-                  <label className="mb-1 block text-sm font-medium">
-                    Account Status
-                  </label>
+                <div className="aprov-card__field">
+                  <label className="aprov-card__label">Account status</label>
                   <select
-                    className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
+                    className="aprov-card__select"
                     value={provider.draftUserStatus}
                     disabled={isBusy}
                     onChange={(e) =>
@@ -199,34 +168,34 @@ export default function AdminProvidersPage() {
                       )
                     }
                   >
-                    <option value="ACTIVE">ACTIVE</option>
-                    <option value="SUSPENDED">SUSPENDED</option>
+                    <option value="ACTIVE">Active</option>
+                    <option value="SUSPENDED">Suspended</option>
                   </select>
                 </div>
               </div>
 
-              <div className="mt-5 flex items-center justify-between gap-3">
-                <span
-                  className={`text-xs font-medium ${
-                    changed ? "text-amber-600" : "text-muted-foreground"
-                  }`}
-                >
-                  {changed ? "Unsaved changes" : "No pending changes"}
-                </span>
+              <div className="aprov-card__footer">
+                {changed ? (
+                  <span className="aprov-card__unsaved">Unsaved changes</span>
+                ) : (
+                  <span className="aprov-card__clean">No pending changes</span>
+                )}
 
                 <button
                   type="button"
+                  className="aprov-card__save-btn"
                   disabled={!changed || isBusy}
                   onClick={() => handleSaveChanges(provider)}
-                  className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {isBusy ? "Saving..." : "Save Changes"}
+                  {isBusy ? "Saving…" : "Save changes"}
                 </button>
               </div>
+
             </div>
           );
         })}
       </div>
+
     </div>
   );
 }

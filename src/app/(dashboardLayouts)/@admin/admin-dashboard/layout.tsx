@@ -6,9 +6,9 @@ export default function AdminDashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="">
+    <section className="ad-layout">
         <Sidebar></Sidebar>
-        <main>{children}</main>
+        <main className="ad-main">{children}</main>
     </section>
   );
 }

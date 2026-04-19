@@ -1,0 +1,233 @@
+/* admin-providers.css */
+
+.aproviders {
+  font-family: 'Inter', sans-serif;
+  max-width: 1000px;
+}
+
+/* ── header ── */
+
+.aproviders__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.aproviders__eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  color: hsl(38 70% 55%);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 6px;
+}
+
+.aproviders__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: hsl(20 20% 12%);
+  letter-spacing: -0.4px;
+  margin: 0 0 4px;
+}
+
+.aproviders__subtitle {
+  font-size: 14px;
+  color: #64748B;
+  margin: 0;
+}
+
+.aproviders__count {
+  font-size: 13px;
+  color: #64748B;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.aproviders__count strong {
+  color: hsl(20 20% 12%);
+  font-weight: 700;
+}
+
+/* ── grid ── */
+
+.aproviders__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+/* ── provider card ── */
+
+.aprov-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s;
+}
+
+.aprov-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
+.aprov-card__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: hsl(20 20% 12%);
+  margin: 0 0 3px;
+}
+
+.aprov-card__user {
+  font-size: 13px;
+  color: #64748B;
+  margin: 0 0 1px;
+}
+
+.aprov-card__email {
+  font-size: 12px;
+  color: #94A3B8;
+  margin: 0 0 12px;
+}
+
+.aprov-card__meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.aprov-card__meta-item {
+  font-size: 11px;
+  color: #64748B;
+  background: hsl(30 25% 96%);
+  border: 1px solid #E2E8F0;
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-weight: 500;
+}
+
+/* selects */
+
+.aprov-card__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.aprov-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.aprov-card__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.aprov-card__select {
+  height: 38px;
+  border-radius: 8px;
+  border: 1.5px solid #E2E8F0;
+  background: hsl(30 25% 98%);
+  padding: 0 12px;
+  padding-right: 32px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: hsl(20 20% 12%);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.aprov-card__select:focus {
+  border-color: hsl(38 70% 55%);
+  box-shadow: 0 0 0 3px hsl(38 70% 55% / 0.1);
+  background-color: #ffffff;
+}
+
+.aprov-card__select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* footer */
+
+.aprov-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #F1F5F9;
+  gap: 8px;
+}
+
+.aprov-card__unsaved {
+  font-size: 11px;
+  font-weight: 600;
+  color: hsl(38 70% 40%);
+}
+
+.aprov-card__clean {
+  font-size: 11px;
+  color: #94A3B8;
+}
+
+.aprov-card__save-btn {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    hsl(38 70% 55%),
+    hsl(38 60% 68%)
+  );
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  color: hsl(350 45% 18%);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px hsl(38 70% 55% / 0.3);
+  white-space: nowrap;
+}
+
+.aprov-card__save-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px hsl(38 70% 55% / 0.4);
+}
+
+.aprov-card__save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── responsive ── */
+
+@media (max-width: 640px) {
+  .aproviders__header { flex-direction: column; align-items: flex-start; }
+  .aproviders__grid   { grid-template-columns: 1fr; }
+}
