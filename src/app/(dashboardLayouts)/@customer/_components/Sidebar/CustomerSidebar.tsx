@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import { logOut } from "@/services/auth.service";
 import { toast } from "sonner";
 import "./customer-sidebar.css";
-import { logoutUser } from "@/services/auth.service";
 
 const NAV = [
   { label: "Overview", href: "/customer-dashboard", icon: "⊞", exact: true },
@@ -26,7 +26,7 @@ export default function CustomerSidebar() {
   const handleLogout = async () => {
     try {
       setLoggingOut(true);
-      await logoutUser();
+      await logOut();
       router.push("/login");
     } catch {
       toast.error("Logout failed.");

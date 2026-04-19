@@ -1,7 +1,7 @@
 "use client";
 
 import CustomerProfilePage from "../../_components/CustomerProfilePage";
-import CustomerSidebar from "../../_components/CustomerSidebar";
+import CustomerSidebar from "../../_components/Sidebar/CustomerSidebar";
 
 export default function CustomerProfileRoutePage() {
   return <div>
