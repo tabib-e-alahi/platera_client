@@ -1,3 +1,4 @@
+import { ShoppingBag } from 'lucide-react';
 import {
   UtensilsCrossed,
   ListOrdered,
@@ -7,6 +8,9 @@ import {
   LucideIcon,
   Users,
   Home,
+  User2,
+  Hamburger,
+  ShoppingBasket,
 } from "lucide-react"
 
 export const Provider_NAV_ITEMS = [
@@ -40,10 +44,10 @@ export const Admin_NAV_ITEMS = [
 
 export const Customer_NAV_ITEMS = [
   { label: "Overview", href: "/customer-dashboard", icon: "⊞", exact: true },
-  { label: "My Profile", href: "/customer-dashboard/profile", icon: "◉" },
-  { label: "My Orders", href: "/customer-dashboard/orders", icon: "📦" },
-  { label: "Browse Food", href: "/restaurants", icon: "🍽️" },
-  { label: "My Cart", href: "/cart", icon: "🛒" },
+  { label: "My Profile", href: "/customer-dashboard/profile", icon: User2 },
+  { label: "My Orders", href: "/customer-dashboard/orders", icon: ListOrdered },
+  { label: "Browse Food", href: "/restaurants", icon: Hamburger },
+  { label: "My Cart", href: "/cart", icon: ShoppingBag },
   { label: "Home", href: "/", icon: Home, },
 ]
 
