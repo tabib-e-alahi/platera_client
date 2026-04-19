@@ -38,6 +38,17 @@ export const Admin_NAV_ITEMS = [
   { label: "Home", href: "/", icon: Home },
 ]
 
+export const Customer_NAV_ITEMS = [
+  {
+    label: "Profile",
+    href: "/customer-dashboard/profile",
+    icon: LayoutDashboard,
+    exact: true,
+  },
+  { label: "Orders", href: "/customer-dashboard/view-orders", icon: ListOrdered },
+  { label: "Home", href: "/", icon: Home },
+]
+
 
 export type Route = {
   label: string

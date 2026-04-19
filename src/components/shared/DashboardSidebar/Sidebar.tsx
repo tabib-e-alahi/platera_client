@@ -12,7 +12,7 @@ import {
 import { toast } from "sonner"
 import "./sidebar.css"
 import { logoutUser } from "@/services/auth.service"
-import { Provider_NAV_ITEMS, Routes } from "@/constants/providerRoutes"
+import { Admin_NAV_ITEMS, Provider_NAV_ITEMS, Routes } from "@/constants/roleBasedRoutes"
 
 
 
@@ -25,8 +25,8 @@ export default function Sidebar({ role }: { role: "PROVIDER" | "CUSTOMER" | "ADM
   let NAV_ITEMS: Routes = [] as Routes
 
   switch (role) {
-    // case "ADMIN": NAV_ITEMS = adminRoutes; break;
-    // case "CUSTOMER": NAV_ITEMS = customerRoutes; break;
+    case "ADMIN": NAV_ITEMS = Admin_NAV_ITEMS; break;
+    case "CUSTOMER": NAV_ITEMS = Customer_NAV_ITEMS; break;
     case "PROVIDER": NAV_ITEMS = Provider_NAV_ITEMS as Routes; break;
   }
 
