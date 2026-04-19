@@ -15,10 +15,9 @@ export default function ProviderLayout({
 }: {
   children: React.ReactNode
 }) {
-  const role = "PROVIDER" as const
   return (
     <div className="pd-layout">
-      <Sidebar role={role}/>
+      <Sidebar/>
       <main className="pd-main">{children}</main>
     </div>
   )

@@ -1,4 +1,3 @@
-// src/app/(provider)/_components/ProviderSidebar.tsx
 "use client"
 
 import Link from "next/link"
@@ -13,17 +12,18 @@ import { toast } from "sonner"
 import "./sidebar.css"
 import { logoutUser } from "@/services/auth.service"
 import { Admin_NAV_ITEMS, Customer_NAV_ITEMS, Provider_NAV_ITEMS, Routes } from "@/constants/roleBasedRoutes"
+import { useAuth } from "@/providers/AuthProvider"
 
 
 
-export default function Sidebar({ role }: { role: "PROVIDER" | "CUSTOMER" | "ADMIN" | "SUPER_ADMIN" }) {
+export default function Sidebar() {
   const pathname = usePathname()
   const router = useRouter()
   const [open, setOpen] = useState(false)
-
+  const { user, isLoading } = useAuth()
 
   let NAV_ITEMS: Routes = [] as Routes
-
+  const role = user?.role as "PROVIDER" | "CUSTOMER" | "ADMIN" | "SUPER_ADMIN"
   switch (role) {
     case "ADMIN": NAV_ITEMS = Admin_NAV_ITEMS; break;
     case "CUSTOMER": NAV_ITEMS = Customer_NAV_ITEMS; break;

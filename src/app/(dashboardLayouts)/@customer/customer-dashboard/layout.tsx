@@ -8,7 +8,7 @@ export default function CustomerDashboardLayout({
 }) {
   return (
     <div className="cd-layout">
-      <Sidebar role="CUSTOMER"></Sidebar>
+      <Sidebar></Sidebar>
       <main className="cd-main">{children}</main>
     </div>
   );
