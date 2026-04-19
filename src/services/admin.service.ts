@@ -25,45 +25,22 @@ export const approveProvider = async (id: string) => {
   return res.data;
 };
 
-export const rejectProvider = async (id: string, payload: { rejectionReason: string }) => {
+export const rejectProvider = async (
+  id: string,
+  payload: { rejectionReason: string }
+) => {
   const res = await api.patch(`/admins/providers/${id}/reject`, payload);
   return res.data;
 };
 
-export const getAllUsers = async (params?: Record<string, string | number>) => {
-  const res = await api.get("/admins/users", { params });
-  return res.data;
-};
-
-export const suspendUser = async (id: string, payload?: { reason?: string }) => {
-  const res = await api.patch(`/admins/users/${id}/suspend`, payload ?? {});
-  return res.data;
-};
-
-export const reactivateUser = async (id: string) => {
-  const res = await api.patch(`/admins/users/${id}/reactivate`);
-  return res.data;
-};
-
-export const getAllOrders = async (params?: Record<string, string | number>) => {
-  const res = await api.get("/admins/orders", { params });
-  return res.data;
-};
-
-export const getAllPayments = async (params?: Record<string, string | number>) => {
-  const res = await api.get("/admins/payments", { params });
-  return res.data;
-};
-
-export const getProviderPayablesSummary = async () => {
-  const res = await api.get("/admins/payables/providers");
-  return res.data;
-};
-
-export const markPaymentAsProviderPaid = async (
+export const updateProviderStatus = async (
   id: string,
-  payload?: { note?: string }
+  payload: {
+    approvalStatus?: "DRAFT" | "PENDING" | "APPROVED" | "REJECTED";
+    userStatus?: "ACTIVE" | "SUSPENDED";
+    rejectionReason?: string;
+  }
 ) => {
-  const res = await api.patch(`/admins/payments/${id}/mark-provider-paid`, payload ?? {});
+  const res = await api.patch(`/admins/providers/${id}/status`, payload);
   return res.data;
 };

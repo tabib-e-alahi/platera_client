@@ -11,13 +11,15 @@ export default function AdminDashboardLayout({
         <aside className="rounded-2xl border bg-card p-4">
           <h2 className="mb-4 text-lg font-semibold">Admin Panel</h2>
           <nav className="space-y-2 text-sm">
-            <Link href="/admin-dashboard" className="block rounded-lg px-3 py-2 hover:bg-muted">Dashboard</Link>
-            <Link href="/admin-dashboard/providers" className="block rounded-lg px-3 py-2 hover:bg-muted">Providers</Link>
-            <Link href="/admin-dashboard/users" className="block rounded-lg px-3 py-2 hover:bg-muted">Users</Link>
-            <Link href="/admin-dashboard/orders" className="block rounded-lg px-3 py-2 hover:bg-muted">Orders</Link>
-            <Link href="/admin-dashboard/payments" className="block rounded-lg px-3 py-2 hover:bg-muted">Payments</Link>
-            <Link href="/admin-dashboard/payables" className="block rounded-lg px-3 py-2 hover:bg-muted">Payables</Link>
-            <Link href="/admin-dashboard/admins" className="block rounded-lg px-3 py-2 hover:bg-muted">Admins</Link>
+            <Link href="/admin-dashboard" className="block rounded-lg px-3 py-2 hover:bg-muted">
+              Dashboard
+            </Link>
+            <Link href="/admin-dashboard/provider-request" className="block rounded-lg px-3 py-2 hover:bg-muted">
+              Provider Requests
+            </Link>
+            <Link href="/admin-dashboard/providers" className="block rounded-lg px-3 py-2 hover:bg-muted">
+              Providers
+            </Link>
           </nav>
         </aside>
 
