@@ -67,7 +67,7 @@ export default function AdminProvidersPage() {
       return;
     }
 
-    toast(`Save changes for ${provider.businessName}?`, {
+    toast.warning(`Save changes for ${provider.businessName}?`, {
       action: {
         label: "Confirm",
         onClick: async () => {
