@@ -16,18 +16,19 @@ import { Provider_NAV_ITEMS, Routes } from "@/constants/providerRoutes"
 
 
 
-export default function Sidebar({role}: {role: "PROVIDER" | "CUSTOMER" | "ADMIN" | "SUPER_ADMIN"}) {
+export default function Sidebar({ role }: { role: "PROVIDER" | "CUSTOMER" | "ADMIN" | "SUPER_ADMIN" }) {
   const pathname = usePathname()
   const router = useRouter()
   const [open, setOpen] = useState(false)
 
 
-  let NAV_ITEMS: Routes = 
+  let NAV_ITEMS: Routes = [
+  ]
 
   switch (role) {
-    case "ADMIN":    routes = adminRoutes;    break;
-    case "CUSTOMER": routes = customerRoutes; break;
-    case "PROVIDER": routes = providerRoutes; break;
+    // case "ADMIN": NAV_ITEMS = adminRoutes; break;
+    // case "CUSTOMER": NAV_ITEMS = customerRoutes; break;
+    case "PROVIDER": NAV_ITEMS = Provider_NAV_ITEMS as Routes; break;
   }
 
   // close drawer on route change
