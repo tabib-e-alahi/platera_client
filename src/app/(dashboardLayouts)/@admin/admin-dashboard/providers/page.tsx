@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getAllProviders, updateProviderStatus } from "@/services/admin.service";
 import { toast } from "sonner";
 import "./admin-providers.css";
+import Link from "next/link";
 
 type TProvider = {
   id: string;
@@ -117,7 +118,7 @@ export default function AdminProvidersPage() {
           const isBusy = busyId === provider.id;
 
           return (
-            <div key={provider.id} className="aprov-card">
+            <Link key={provider.id} href={`/admin-dashboard/providers/${provider.id}`} className="aprov-card">
 
               <p className="aprov-card__name">{provider.businessName}</p>
               <p className="aprov-card__user">{provider.user?.name ?? "N/A"}</p>
@@ -191,7 +192,7 @@ export default function AdminProvidersPage() {
                 </button>
               </div>
 
-            </div>
+            </Link>
           );
         })}
       </div>
