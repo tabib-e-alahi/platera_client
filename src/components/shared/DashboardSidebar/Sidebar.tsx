@@ -12,7 +12,7 @@ import {
 import { toast } from "sonner"
 import "./sidebar.css"
 import { logoutUser } from "@/services/auth.service"
-import { Provider_NAV_ITEMS } from "@/constants/providerRoutes"
+import { Provider_NAV_ITEMS, Routes } from "@/constants/providerRoutes"
 
 
 
@@ -21,9 +21,9 @@ export default function Sidebar({role}: {role: "PROVIDER" | "CUSTOMER" | "ADMIN"
   const router = useRouter()
   const [open, setOpen] = useState(false)
 
-  const NAV_ITEMS = Provider_NAV_ITEMS
 
-  let routes: Routes =  Provider_NAV_ITEMS[]
+  let NAV_ITEMS: Routes = 
+
   switch (role) {
     case "ADMIN":    routes = adminRoutes;    break;
     case "CUSTOMER": routes = customerRoutes; break;

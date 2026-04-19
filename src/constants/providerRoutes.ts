@@ -22,12 +22,9 @@ export const Provider_NAV_ITEMS = [
   { label: "Profile", href: "/provider-dashboard/profile", icon: User },
 ]
 
-export type Routes = {
-  title: string;
-  navItems: {
-    label: string;
-    href: string;
-    icon: LucideIcon;
-    badge?: string;
-  }[];
-};
+export type Routes = [
+  label: string,
+  href: string,
+  icon: LucideIcon,
+  exact?: boolean,
+]
