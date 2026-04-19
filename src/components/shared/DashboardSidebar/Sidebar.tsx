@@ -43,8 +43,11 @@ export default function Sidebar() {
     }
   }, [open])
 
-  const isActive = (href: string, exact?: boolean) =>
-    exact ? pathname === href : pathname.startsWith(href)
+  const isActive = (href: string, exact?: boolean, active?: boolean|undefined) =>{
+    if (active !== undefined) return active
+    if (exact) return pathname === href
+    return pathname.startsWith(href)
+  }
 
   const handleLogout = async () => {
     try {
@@ -68,7 +71,7 @@ export default function Sidebar() {
       <nav className="ps-nav">
         {NAV_ITEMS.map((item) => {
           const Icon = item.icon
-          const active = isActive(item.href, item.exact)
+          const active = isActive(item.href, item.exact, active)
           return (
             <Link
               key={item.href}

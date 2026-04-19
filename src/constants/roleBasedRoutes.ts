@@ -48,7 +48,7 @@ export const Customer_NAV_ITEMS = [
   { label: "My Orders", href: "/customer-dashboard/orders", icon: ListOrdered },
   { label: "Browse Food", href: "/restaurants", icon: Hamburger },
   { label: "My Cart", href: "/cart", icon: ShoppingBag },
-  { label: "Home", href: "/", icon: Home, },
+  { label: "Home", href: "/", icon: Home, active: false},
 ]
 
 
@@ -57,6 +57,7 @@ export type Route = {
   href: string
   icon: string | LucideIcon
   exact?: boolean
+  active?: boolean | undefined
 }
 
 export type Routes = Route[]
