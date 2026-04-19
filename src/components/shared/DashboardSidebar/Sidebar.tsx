@@ -60,9 +60,9 @@ export default function Sidebar() {
     <>
       <div className="ps-top">
         <Link href="/" className="ps-logo">
-          Platera
+          {user?.name || "Platera"}
         </Link>
-        <span className="ps-role-badge">Provider</span>
+        <span className="ps-role-badge">{user?.role}</span>
       </div>
 
       <nav className="ps-nav">
@@ -73,7 +73,7 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`ps-nav-item${active ? " ps-nav-item--active" : ""}`}
+              className={`ps-nav-item ${active ? " ps-nav-item--active" : ""}`}
             >
               <Icon size={18} />
               <span>{item.label}</span>

@@ -44,7 +44,7 @@ export const Customer_NAV_ITEMS = [
   { label: "My Orders", href: "/customer-dashboard/orders", icon: "📦" },
   { label: "Browse Food", href: "/restaurants", icon: "🍽️" },
   { label: "My Cart", href: "/cart", icon: "🛒" },
-  { label: "Home", href: "/", icon: Home },
+  { label: "Home", href: "/", icon: Home, },
 ]
 
 
