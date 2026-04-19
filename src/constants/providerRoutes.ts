@@ -22,6 +22,21 @@ export const Provider_NAV_ITEMS = [
   { label: "Profile", href: "/provider-dashboard/profile", icon: User },
 ]
 
+export const Admin_NAV_ITEMS = [
+  {
+    label: "Dashboard",
+    href: "/admin-dashboard",
+    icon: LayoutDashboard,
+    exact: true,
+  },
+  { label: "", href: "/admin-dashboard/menu", icon: UtensilsCrossed },
+  { label: "Add Meal", href: "/admin-dashboard/add-meal", icon: PlusCircle },
+  { label: "Orders", href: "/admin-dashboard/orders", icon: ListOrdered },
+  { label: "Analytics", href: "/admin-dashboard/analytics", icon: BarChart2 },
+  { label: "Profile", href: "/admin-dashboard/profile", icon: User },
+]
+
+
 export type Route = {
   label: string
   href: string
