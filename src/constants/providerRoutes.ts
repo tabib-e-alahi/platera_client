@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   BarChart2,
   LucideIcon,
+  Users,
 } from "lucide-react"
 
 export const Provider_NAV_ITEMS = [
@@ -20,20 +21,22 @@ export const Provider_NAV_ITEMS = [
   { label: "Orders", href: "/provider-dashboard/orders", icon: ListOrdered },
   { label: "Analytics", href: "/provider-dashboard/analytics", icon: BarChart2 },
   { label: "Profile", href: "/provider-dashboard/profile", icon: User },
+  { label: "Home", href: "/", icon: Home },
 ]
 
 export const Admin_NAV_ITEMS = [
   {
-    label: "Dashboard",
+    label: "Overview",
     href: "/admin-dashboard",
     icon: LayoutDashboard,
     exact: true,
   },
-  { label: "", href: "/admin-dashboard/menu", icon: UtensilsCrossed },
-  { label: "Add Meal", href: "/admin-dashboard/add-meal", icon: PlusCircle },
-  { label: "Orders", href: "/admin-dashboard/orders", icon: ListOrdered },
-  { label: "Analytics", href: "/admin-dashboard/analytics", icon: BarChart2 },
-  { label: "Profile", href: "/admin-dashboard/profile", icon: User },
+  { label: "View All Users", href: "/admin-dashboard/view-users", icon: Users },
+  { label: "Provider Requests", href: "/admin-dashboard/provider-requests", icon: PlusCircle },
+  { label: "Providers", href: "/admin-dashboard/providers", icon: ListOrdered },
+  { label: "Orders", href: "/admin-dashboard/view-orders", icon: BarChart2 },
+  { label: "Manage Categories", href: "/admin-dashboard/manage-categories", icon: User },
+  { label: "Home", href: "/", icon: Home },
 ]
 
 
