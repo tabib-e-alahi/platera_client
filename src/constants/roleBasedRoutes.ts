@@ -39,13 +39,11 @@ export const Admin_NAV_ITEMS = [
 ]
 
 export const Customer_NAV_ITEMS = [
-  {
-    label: "Profile",
-    href: "/customer-dashboard/profile",
-    icon: LayoutDashboard,
-    exact: true,
-  },
-  { label: "Orders", href: "/customer-dashboard/view-orders", icon: ListOrdered },
+  { label: "Overview", href: "/customer-dashboard", icon: "⊞", exact: true },
+  { label: "My Profile", href: "/customer-dashboard/profile", icon: "◉" },
+  { label: "My Orders", href: "/customer-dashboard/orders", icon: "📦" },
+  { label: "Browse Food", href: "/restaurants", icon: "🍽️" },
+  { label: "My Cart", href: "/cart", icon: "🛒" },
   { label: "Home", href: "/", icon: Home },
 ]
 
