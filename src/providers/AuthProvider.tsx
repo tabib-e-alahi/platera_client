@@ -23,10 +23,6 @@ export function AuthProvider({
 }) {
   const { data: session, isPending } = useSession();
 
-  // Better Auth's session.user now includes role, status,
-  // isDeleted, phone because of the type extension in better-auth.d.ts
-  // The only remaining mismatch is Date vs string for createdAt/updatedAt
-  // We cast through unknown to handle that safely
   const user = session?.user
     ? (session.user as unknown as IUser)
     : null;
