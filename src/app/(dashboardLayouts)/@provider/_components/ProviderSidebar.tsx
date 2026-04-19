@@ -10,28 +10,15 @@ import {
   User,
   PlusCircle,
   LogOut,
-  LayoutDashboard,
-  BarChart2,
   Menu,
   X,
 } from "lucide-react"
 import { toast } from "sonner"
 import "./provider-sidebar.css"
 import { logoutUser } from "@/services/auth.service"
+import { Provider_NAV_ITEMS } from "@/constants/providerRoutes"
 
-const NAV_ITEMS = [
-  {
-    label: "Dashboard",
-    href: "/provider-dashboard",
-    icon: LayoutDashboard,
-    exact: true,
-  },
-  { label: "My Menu", href: "/provider-dashboard/menu", icon: UtensilsCrossed },
-  { label: "Add Meal", href: "/provider-dashboard/add-meal", icon: PlusCircle },
-  { label: "Orders", href: "/provider-dashboard/orders", icon: ListOrdered },
-  { label: "Analytics", href: "/provider-dashboard/analytics", icon: BarChart2 },
-  { label: "Profile", href: "/provider-dashboard/profile", icon: User },
-]
+const NAV_ITEMS = Provider_NAV_ITEMS
 
 export default function ProviderSidebar() {
   const pathname = usePathname()

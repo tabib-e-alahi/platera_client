@@ -1,4 +1,4 @@
-import { Home, LayoutDashboard, ListOrdered, MessageSquareQuote, ListOrdered, Users } from "lucide-react";
+import { Home, LayoutDashboard, MessageSquareQuote, ListOrdered, Users } from "lucide-react";
 
 export const adminRoutes =
 {
