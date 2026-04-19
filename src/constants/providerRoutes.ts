@@ -5,8 +5,6 @@ import {
   PlusCircle,
   LayoutDashboard,
   BarChart2,
-  Menu,
-  X,
 } from "lucide-react"
 
 export const Provider_NAV_ITEMS = [

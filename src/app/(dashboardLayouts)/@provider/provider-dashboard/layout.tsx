@@ -1,7 +1,7 @@
 // src/app/(provider)/layout.tsx
 import type { Metadata } from "next"
 import "./provider-layout.css"
-import ProviderSidebar from "../_components/ProviderSidebar"
+import ProviderSidebar from "../../../../components/shared/DashboardSidebar/Sidebar"
 
 export const metadata: Metadata = {
   title: {
