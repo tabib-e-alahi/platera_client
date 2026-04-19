@@ -22,8 +22,7 @@ export default function Sidebar({ role }: { role: "PROVIDER" | "CUSTOMER" | "ADM
   const [open, setOpen] = useState(false)
 
 
-  let NAV_ITEMS: Routes = [
-  ]
+  let NAV_ITEMS: Routes = [] as Routes
 
   switch (role) {
     // case "ADMIN": NAV_ITEMS = adminRoutes; break;

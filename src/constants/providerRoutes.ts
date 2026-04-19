@@ -22,9 +22,11 @@ export const Provider_NAV_ITEMS = [
   { label: "Profile", href: "/provider-dashboard/profile", icon: User },
 ]
 
-export type Routes = [
-  label: string,
-  href: string,
-  icon: LucideIcon,
-  exact?: boolean,
-]
+export type Route = {
+  label: string
+  href: string
+  icon: LucideIcon
+  exact?: boolean
+}
+
+export type Routes = Route[]
