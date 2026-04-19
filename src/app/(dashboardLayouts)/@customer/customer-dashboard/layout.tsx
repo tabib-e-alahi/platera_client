@@ -1,5 +1,4 @@
 import CustomerSidebar from "../_components/Sidebar/CustomerSidebar";
-import "./_components/customer-sidebar.css";
 import "./customer-layout.css";
 
 export default function CustomerDashboardLayout({
