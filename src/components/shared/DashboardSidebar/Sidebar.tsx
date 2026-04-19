@@ -71,7 +71,7 @@ export default function Sidebar() {
       <nav className="ps-nav">
         {NAV_ITEMS.map((item) => {
           const Icon = item.icon
-          const active = isActive(item.href, item.exact, active)
+          const active = isActive(item.href, item.exact, item.active)
           return (
             <Link
               key={item.href}

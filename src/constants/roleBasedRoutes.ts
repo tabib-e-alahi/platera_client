@@ -10,7 +10,6 @@ import {
   Home,
   User2,
   Hamburger,
-  ShoppingBasket,
 } from "lucide-react"
 
 export const Provider_NAV_ITEMS = [
@@ -24,7 +23,7 @@ export const Provider_NAV_ITEMS = [
   { label: "Add Meal", href: "/provider-dashboard/add-meal", icon: PlusCircle },
   { label: "Orders", href: "/provider-dashboard/orders", icon: ListOrdered },
   { label: "Profile", href: "/provider-dashboard/profile", icon: User },
-  { label: "Home", href: "/", icon: Home },
+  { label: "Home", href: "/", icon: Home, active: false },
 ]
 
 export const Admin_NAV_ITEMS = [
@@ -39,16 +38,15 @@ export const Admin_NAV_ITEMS = [
   { label: "Providers", href: "/admin-dashboard/providers", icon: Users },
   { label: "Orders", href: "/admin-dashboard/view-orders", icon: ListOrdered },
   { label: "Manage Categories", href: "/admin-dashboard/manage-categories", icon: User },
-  { label: "Home", href: "/", icon: Home },
+  { label: "Home", href: "/", icon: Home, active: false },
 ]
 
 export const Customer_NAV_ITEMS = [
-  { label: "Overview", href: "/customer-dashboard", icon: "⊞", exact: true },
   { label: "My Profile", href: "/customer-dashboard/profile", icon: User2 },
   { label: "My Orders", href: "/customer-dashboard/orders", icon: ListOrdered },
   { label: "Browse Food", href: "/restaurants", icon: Hamburger },
   { label: "My Cart", href: "/cart", icon: ShoppingBag },
-  { label: "Home", href: "/", icon: Home, active: false},
+  { label: "Home", href: "/", icon: Home, active: false },
 ]
 
 
