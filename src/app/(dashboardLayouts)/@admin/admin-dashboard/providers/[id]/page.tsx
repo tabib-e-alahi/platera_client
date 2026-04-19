@@ -10,6 +10,7 @@ import {
 } from "@/services/admin.service";
 import { toast } from "sonner";
 import "./admin-provider-detail.css";
+import LoadingPage from "@/components/shared/loading/LoadingCompo";
 
 export default function AdminProviderDetailPage() {
   const params = useParams();
@@ -65,11 +66,7 @@ export default function AdminProviderDetailPage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="apd">
-        <p className="apd__loading">Loading provider…</p>
-      </div>
-    );
+    return <LoadingPage></LoadingPage>
   }
 
   if (!provider) return null;
