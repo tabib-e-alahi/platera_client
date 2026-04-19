@@ -5,6 +5,7 @@ import {
   PlusCircle,
   LayoutDashboard,
   BarChart2,
+  LucideIcon,
 } from "lucide-react"
 
 export const Provider_NAV_ITEMS = [
@@ -20,3 +21,13 @@ export const Provider_NAV_ITEMS = [
   { label: "Analytics", href: "/provider-dashboard/analytics", icon: BarChart2 },
   { label: "Profile", href: "/provider-dashboard/profile", icon: User },
 ]
+
+export type Routes = {
+  title: string;
+  navItems: {
+    label: string;
+    href: string;
+    icon: LucideIcon;
+    badge?: string;
+  }[];
+};

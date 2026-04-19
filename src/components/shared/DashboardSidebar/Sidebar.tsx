@@ -16,15 +16,15 @@ import { Provider_NAV_ITEMS } from "@/constants/providerRoutes"
 
 
 
-export default function Sidebar({role}: {role: "PROVIDER" | "CONSUMER" | "ADMIN" | "SUPER_ADMIN"}) {
+export default function Sidebar({role}: {role: "PROVIDER" | "CUSTOMER" | "ADMIN" | "SUPER_ADMIN"}) {
   const pathname = usePathname()
   const router = useRouter()
   const [open, setOpen] = useState(false)
 
   const NAV_ITEMS = Provider_NAV_ITEMS
-  
-  let routes: Routes = { title: "", navItems: [] };
-  switch (user?.role) {
+
+  let routes: Routes =  Provider_NAV_ITEMS[]
+  switch (role) {
     case "ADMIN":    routes = adminRoutes;    break;
     case "CUSTOMER": routes = customerRoutes; break;
     case "PROVIDER": routes = providerRoutes; break;
