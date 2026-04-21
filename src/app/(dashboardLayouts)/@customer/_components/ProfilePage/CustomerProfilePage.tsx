@@ -54,7 +54,15 @@ export default function CustomerProfilePage() {
   }, []);
 
   const profileCompletion = useMemo(() => {
-    const required = [form.city.trim(), form.streetAddress.trim()];
+    const required = [
+      form.city.trim(),
+      form.streetAddress.trim(),
+      form.longitude.trim(),
+      form.latitude.trim(),
+      form.houseNumber.trim(),
+      form.apartment.trim(),
+      form.postalCode.trim(),
+    ];
     const filled = required.filter(Boolean).length;
     return Math.round((filled / required.length) * 100);
   }, [form.city, form.streetAddress]);
@@ -234,11 +242,15 @@ export default function CustomerProfilePage() {
               >
                 <option value="">Select your district</option>
                 {BANGLADESH_DISTRICTS.map((district) => (
-                  <option key={district} value={district}>
+                  <option  key={district} value={district}>
                     {district}
                   </option>
                 ))}
               </select>
+              <label htmlFor="cpp-city" className="cpp__label ml-1">
+                City: 
+                <span className="cpp__required">{form.city || "Not set"}</span>
+              </label>
             </div>
 
           </div>

@@ -477,7 +477,7 @@ export default function AddMealForm() {
                     src={mainImagePreview}
                     alt="preview"
                     className="am-upload-thumb"
-                    style={{ width: "100%", height: "120px", objectFit: "cover" }}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
                 ) : (
                   <>

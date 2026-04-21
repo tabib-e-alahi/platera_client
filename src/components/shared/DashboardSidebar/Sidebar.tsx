@@ -12,15 +12,13 @@ import { toast } from "sonner"
 import "./sidebar.css"
 import { logoutUser } from "@/services/auth.service"
 import { Admin_NAV_ITEMS, Customer_NAV_ITEMS, Provider_NAV_ITEMS, Routes } from "@/constants/roleBasedRoutes"
-import { useAuth } from "@/providers/AuthProvider"
 
 
 
-export default function Sidebar() {
+export default function Sidebar({ user }: { user: any }) {
   const pathname = usePathname()
   const router = useRouter()
   const [open, setOpen] = useState(false)
-  const { user, isLoading } = useAuth()
 
   let NAV_ITEMS: Routes = [] as Routes
   const role = user?.role as "PROVIDER" | "CUSTOMER" | "ADMIN" | "SUPER_ADMIN"

@@ -1,6 +1,3 @@
-// src/services/auth.ts
-
-import { authClient } from "@/lib/auth-client"
 import api from "@/lib/axios"
 import { TSessionCheckResponse } from "@/types/auth.type"
 import { NextRequest } from "next/server"

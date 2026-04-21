@@ -14,8 +14,7 @@ export default function LoadingPage() {
       <div className="ld-center">
         {/* Wordmark */}
         <div className="ld-brand">
-          <span className="ld-brand-food">Food</span>
-          <em className="ld-brand-hub">Hub</em>
+          <em className="ld-brand-hub">Platera</em>
         </div>
 
         {/* Animated plate / ring */}

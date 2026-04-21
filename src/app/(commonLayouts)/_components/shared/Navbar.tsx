@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LogIn,
-  LogOut,
   ShoppingCart,
   User,
   UtensilsCrossed,
@@ -26,7 +25,7 @@ const navLinks = [
 ];
 
 // Pages that have a dark hero behind the navbar — start transparent
-const HERO_ROUTES = ["/","/cart"];
+const HERO_ROUTES = ["/","/cart","/restaurants","/meals"];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);

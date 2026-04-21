@@ -23,22 +23,26 @@ export default function AdminDashboardPage() {
     })();
   }, []);
 
+  console.log(stats);
+
   const statCards = [
     {
       label: "Total Users",
-      value: stats?.totalUsers ?? 0,
+      value: stats?.users.customers ?? 0,
       icon: "👥",
       color: "ad-stat--blue",
+      href: "/admin-dashboard",
     },
     {
       label: "Providers",
-      value: stats?.totalProviders ?? 0,
+      value: stats?.users.providers ?? 0,
       icon: "🏪",
       color: "ad-stat--green",
+      href: "/admin-dashboard/providers",
     },
     {
       label: "Pending Requests",
-      value: stats?.pendingProviders ?? 0,
+      value: stats?.providers.pending ?? 0,
       icon: "⏳",
       color: "ad-stat--amber",
       href: "/admin-dashboard/provider-request",
@@ -48,6 +52,7 @@ export default function AdminDashboardPage() {
       value: stats?.totalMeals ?? 0,
       icon: "🍽️",
       color: "ad-stat--wine",
+      href: "/admin-dashboard",
     },
   ];
 
@@ -76,11 +81,11 @@ export default function AdminDashboardPage() {
       ) : (
         <div className="adash__stat-grid">
           {statCards.map((card) => {
-            const Wrapper = card.href ? Link : "div";
+            const Wrapper = Link
             return (
               <Wrapper
                 key={card.label}
-                href={card.href ?? ""}
+                href={card.href}
                 className={`ad-stat ${card.color} ${card.href ? "ad-stat--link" : ""}`}
               >
                 <div className="ad-stat__icon">{card.icon}</div>

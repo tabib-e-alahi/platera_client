@@ -9,6 +9,7 @@ import {
 } from "@/services/admin.service";
 import { toast } from "sonner";
 import "./admin-requests.css";
+import LoadingPage from "@/components/shared/loading/LoadingCompo";
 
 type TProvider = {
   id: string;
@@ -159,7 +160,7 @@ export default function AdminProviderRequestPage() {
         <div className="areq-modal-overlay">
           <div className="areq-modal">
             {loadingDetail || !providerDetail ? (
-              <p style={{ color: "#94A3B8", fontSize: 14 }}>Loading…</p>
+              <LoadingPage></LoadingPage>
             ) : (
               <>
                 {/* modal header */}

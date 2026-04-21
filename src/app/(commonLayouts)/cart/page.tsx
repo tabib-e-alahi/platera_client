@@ -43,18 +43,14 @@ type TCart = {
     city: string;
     imageURL?: string | null;
   };
-  items: TCartItem[];
+  cartItems: TCartItem[];
 };
 
 const n = (v: string | number | null | undefined) => Number(v ?? 0);
 
-/* ─── Optimistic summary helper ─────────────────────────── */
-/**
- * Re-computes subtotal/total locally based on current item quantities + unit prices.
- * This gives instant feedback while the API call is in-flight.
- */
+
 function computeOptimisticSummary(items: TCartItem[], deliveryFee: number, discountAmount: number) {
-  const subtotal = items.reduce((acc, it) => acc + n(it.unitPrice) * it.quantity, 0);
+  const subtotal = items?.reduce((acc, it) => acc + n(it.unitPrice) * it.quantity, 0);
   const total = Math.max(0, subtotal + deliveryFee - discountAmount);
   return { subtotal, total };
 }
@@ -153,7 +149,7 @@ export default function CartPage() {
   const debounceMap = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
 
   useEffect(() => { fetchCart(); }, []);
-  useEffect(() => { if (cart) setOptimisticItems(cart.items); }, [cart]);
+  useEffect(() => { if (cart) setOptimisticItems(cart.cartItems); }, [cart]);
 
   const fetchCart = async () => {
     try {
@@ -191,7 +187,7 @@ export default function CartPage() {
       } catch (err: any) {
         toast.error(err?.response?.data?.message ?? "Failed to update cart.");
         // Rollback optimistic change
-        if (cart) setOptimisticItems(cart.items);
+        if (cart) setOptimisticItems(cart.cartItems);
       } finally {
         setBusyItems((prev) => { const s = new Set(prev); s.delete(itemId); return s; });
         debounceMap.current.delete(itemId);
@@ -221,7 +217,7 @@ export default function CartPage() {
       toast.success("Item removed.");
     } catch (err: any) {
       toast.error(err?.response?.data?.message ?? "Failed to remove item.");
-      if (cart) setOptimisticItems(cart.items);
+      if (cart) setOptimisticItems(cart.cartItems);
     } finally {
       setBusyItems((prev) => { const s = new Set(prev); s.delete(itemId); return s; });
       setRemovingItems((prev) => { const s = new Set(prev); s.delete(itemId); return s; });
@@ -246,7 +242,7 @@ export default function CartPage() {
   const delivery = n(cart?.deliveryFee ?? 0);
   const discount = n(cart?.discountAmount ?? 0);
   const { subtotal, total } = computeOptimisticSummary(optimisticItems, delivery, discount);
-  const itemCount = optimisticItems.reduce((a, it) => a + it.quantity, 0);
+  const itemCount = optimisticItems?.reduce((a, it) => a + it.quantity, 0);
 
   /* ── Loading ── */
   if (isLoading) {
@@ -281,7 +277,7 @@ export default function CartPage() {
   }
 
   /* ── Empty ── */
-  if (!cart || optimisticItems.length === 0) {
+  if (!cart || optimisticItems?.length === 0) {
     return (
       <div className="cart-page">
         <div className="cart-page__hero">
@@ -308,6 +304,7 @@ export default function CartPage() {
     );
   }
 
+
   /* ── Full cart ── */
   return (
     <div className="cart-page">
@@ -327,14 +324,14 @@ export default function CartPage() {
         <div className="cart-page__provider-bar">
           <div className="cart-page__provider-info">
             <div className="cart-page__provider-avatar">
-              {cart.provider.imageURL
+              {cart?.provider.imageURL
                 ? <img src={cart.provider.imageURL} alt={cart.provider.businessName} />
                 : <UtensilsCrossed size={18} />}
             </div>
             <div>
-              <div className="cart-page__provider-name">{cart.provider.businessName}</div>
+              <div className="cart-page__provider-name">{cart?.provider.businessName}</div>
               <div className="cart-page__provider-city">
-                <MapPin size={10} /> {cart.provider.city}
+                <MapPin size={10} /> {cart?.provider.city}
               </div>
             </div>
           </div>
@@ -353,7 +350,7 @@ export default function CartPage() {
         <div className="cart-page__layout">
           {/* Items */}
           <div className="cart-page__items">
-            {optimisticItems.map((item) => (
+            {optimisticItems?.map((item) => (
               <CartItem
                 key={item.id}
                 item={item}
@@ -376,7 +373,7 @@ export default function CartPage() {
             <div className="cart-summary__rows">
               <div className="cart-summary__row">
                 <span>Subtotal</span>
-                <span>৳{subtotal.toFixed(2)}</span>
+                <span>৳{subtotal?.toFixed(2)}</span>
               </div>
               <div className="cart-summary__row">
                 <span>Delivery fee</span>
@@ -401,10 +398,10 @@ export default function CartPage() {
             <div className="cart-summary__actions">
               <button
                 type="button"
-                className="cart-summary__checkout-btn"
                 onClick={() => router.push("/checkout")}
+                className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90"
               >
-                Proceed to Checkout <ArrowRight size={16} />
+                Proceed to Checkout
               </button>
               <Link href="/restaurants" className="cart-summary__continue-btn">
                 ← Continue Shopping

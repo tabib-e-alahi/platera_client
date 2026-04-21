@@ -38,6 +38,7 @@ export const Admin_NAV_ITEMS = [
   { label: "Providers", href: "/admin-dashboard/providers", icon: Users },
   { label: "Orders", href: "/admin-dashboard/view-orders", icon: ListOrdered },
   { label: "Manage Categories", href: "/admin-dashboard/manage-categories", icon: User },
+  { label: "Settlements", href: "/admin-dashboard/settlements", icon: ShoppingBag },
   { label: "Home", href: "/", icon: Home, active: false },
 ]
 
