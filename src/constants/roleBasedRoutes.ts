@@ -15,7 +15,7 @@ import {
 export const Provider_NAV_ITEMS = [
   {
     label: "Overview",
-    href: "/provider-dashboard",
+    href: "/provider-dashboard/statistics",
     icon: LayoutDashboard,
     exact: true,
   },

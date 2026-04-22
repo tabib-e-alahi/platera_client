@@ -1,20 +1,16 @@
 import Sidebar from "@/components/shared/DashboardSidebar/Sidebar";
-import { redirect } from "next/navigation"
-import "./dashboard-layout.css"
-import { IUser } from "@/types/auth.type";
-import { getMe  } from "@/services/auth.service";
-import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+import "./dashboard-layout.css";
 import { cookies } from "next/headers";
 
-
-export default  async function DashboardRootLayout({
+export default async function DashboardRootLayout({
   customer,
   provider,
-  admin
+  admin,
 }: {
-  customer: React.ReactNode
-  provider: React.ReactNode
-  admin: React.ReactNode
+  customer: React.ReactNode;
+  provider: React.ReactNode;
+  admin: React.ReactNode;
 }) {
   const cookieStore = await cookies();
   const cookieHeader = cookieStore
@@ -22,13 +18,18 @@ export default  async function DashboardRootLayout({
     .map((c) => `${c.name}=${c.value}`)
     .join("; ");
 
-  let user: IUser | null = null;
+  let user: any = null;
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
-      headers: { cookie: cookieHeader },
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/me`,
+      {
+        headers: { cookie: cookieHeader },
+        // cache for 30 seconds — revalidates on navigation but not on every
+        // sub-component render within the same request
+        next: { revalidate: 30 },
+      }
+    );
 
     if (res.ok) {
       const data = await res.json();
@@ -38,12 +39,13 @@ export default  async function DashboardRootLayout({
     // network error — treat as unauthenticated
   }
 
-  if(!user){
-    redirect("/login")
+  if (!user) {
+    redirect("/login");
   }
+
   return (
     <div className="cd-layout">
-      <Sidebar user={user}></Sidebar>
+      <Sidebar user={user} />
       <main className="cd-main">
         {customer}
         {provider}

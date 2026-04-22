@@ -92,3 +92,10 @@ export const getCategories = async () => {
   const res = await api.get("/public/categories")
   return res.data
 }
+
+// ─── Dashboard Stats ─────────────────────────────────────────────────────────
+
+export const getProviderDashboardStats = async () => {
+  const res = await api.get("/providers/dashboard/stats");
+  return res.data;
+};

@@ -41,6 +41,7 @@ export default function AdminSettlementsPage() {
   useEffect(() => { fetchPayments(); }, [fetchPayments]);
 
   const handleSettle = async (paymentId: string) => {
+    console.log(paymentId);
     setBusyId(paymentId);
     try {
       const res = await settlePayment(paymentId, noteMap[paymentId]);

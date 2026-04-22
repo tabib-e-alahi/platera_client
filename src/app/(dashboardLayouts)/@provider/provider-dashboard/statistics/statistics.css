@@ -1,0 +1,120 @@
+/* statistics.css — Platera Provider Statistics */
+
+.pstat { font-family: 'Inter', sans-serif; max-width: 1000px; }
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.pstat__header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 14px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.pstat__eyebrow { font-size: 11px; font-weight: 600; color: hsl(38 70% 52%); text-transform: uppercase; letter-spacing: 1.2px; margin: 0 0 6px; }
+.pstat__title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: hsl(20 20% 10%); letter-spacing: -0.4px; margin: 0 0 4px; }
+.pstat__subtitle { font-size: 13.5px; color: #64748b; margin: 0; }
+
+.pstat__status-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 20px; font-size: 11.5px; font-weight: 600;
+  white-space: nowrap; flex-shrink: 0; margin-top: 4px;
+}
+.pstat__status-pill--approved { background: rgba(34,197,94,0.08); color: #15803d; border: 1px solid rgba(34,197,94,0.2); }
+.pstat__status-pill--pending  { background: hsl(38 70% 55% / 0.1); color: hsl(38 65% 32%); border: 1px solid hsl(38 70% 55% / 0.25); }
+.pstat__status-pill--draft    { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+.pstat__status-pill--rejected { background: rgba(239,68,68,0.07); color: #b91c1c; border: 1px solid rgba(239,68,68,0.2); }
+
+/* ── Sections ─────────────────────────────────────────────────────────────── */
+.pstat__section { margin-bottom: 28px; }
+.pstat__section-title {
+  font-size: 11px; font-weight: 700; color: hsl(38 65% 40%);
+  text-transform: uppercase; letter-spacing: 0.9px; margin: 0 0 14px;
+}
+
+/* ── Grids ────────────────────────────────────────────────────────────────── */
+.pstat__grid { display: grid; gap: 12px; }
+.pstat__grid--4 { grid-template-columns: repeat(4, 1fr); }
+.pstat__grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ── Stat card ────────────────────────────────────────────────────────────── */
+.pstat-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px 18px; border-radius: 14px;
+  background: #ffffff; border: 1.5px solid #e2e8f0;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.03); transition: box-shadow 0.15s;
+}
+.pstat-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.pstat-card--large { padding: 20px; }
+
+/* color variants */
+.pstat-card--amber  { border-color: hsl(38 70% 75%); background: hsl(38 80% 98%); }
+.pstat-card--green  { border-color: rgba(34,197,94,0.3); background: rgba(34,197,94,0.03); }
+.pstat-card--blue   { border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.03); }
+.pstat-card--red    { border-color: rgba(239,68,68,0.25); background: rgba(239,68,68,0.03); }
+.pstat-card--neutral { /* default */ }
+
+.pstat-card__icon { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+.pstat-card__body { flex: 1; min-width: 0; }
+.pstat-card__label { font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.7px; margin: 0 0 5px; }
+.pstat-card__value { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #0f172a; margin: 0 0 3px; line-height: 1.1; }
+.pstat-card--large .pstat-card__value { font-size: 26px; }
+.pstat-card__sub { font-size: 11px; color: #94a3b8; margin: 0; }
+
+/* progress bars */
+.pstat__progress-bar { height: 5px; background: #f1f5f9; border-radius: 3px; overflow: hidden; margin-top: 8px; }
+.pstat__progress-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
+.pstat__progress-fill--green { background: #16a34a; }
+.pstat__progress-fill--red   { background: #dc2626; }
+
+/* ── Chart card ───────────────────────────────────────────────────────────── */
+.pstat__chart-card {
+  background: #ffffff; border: 1.5px solid #e2e8f0;
+  border-radius: 16px; padding: 22px 20px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.pstat-chart { display: flex; flex-direction: column; gap: 12px; }
+.pstat-chart__bars {
+  display: flex; align-items: flex-end; gap: 8px; height: 140px;
+}
+.pstat-chart__col {
+  display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1;
+}
+.pstat-chart__bar-wrap {
+  width: 100%; flex: 1; display: flex; align-items: flex-end;
+  background: #f8fafc; border-radius: 6px; overflow: hidden;
+}
+.pstat-chart__bar {
+  width: 100%; background: linear-gradient(180deg, hsl(38 70% 60%), hsl(38 70% 50%));
+  border-radius: 6px 6px 0 0; position: relative;
+  transition: height 0.6s ease; min-height: 4px;
+  cursor: default;
+}
+.pstat-chart__bar-tip {
+  position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+  font-size: 9.5px; font-weight: 700; color: hsl(38 65% 30%); white-space: nowrap;
+  opacity: 0; transition: opacity 0.15s;
+}
+.pstat-chart__bar:hover .pstat-chart__bar-tip { opacity: 1; }
+.pstat-chart__label { font-size: 10.5px; color: #94a3b8; font-weight: 500; white-space: nowrap; }
+.pstat-chart__legend { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: #94a3b8; }
+.pstat-chart__legend-dot { width: 10px; height: 10px; border-radius: 3px; background: hsl(38 70% 55%); flex-shrink: 0; }
+.pstat-chart__empty { font-size: 13px; color: #94a3b8; text-align: center; padding: 32px; }
+
+/* ── Skeleton ─────────────────────────────────────────────────────────────── */
+.pstat-skeleton { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.pstat-skeleton__card { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.pstat-skeleton__line { height: 13px; border-radius: 6px; background: #f1f5f9; animation: pstatShim 1.3s ease-in-out infinite; }
+.pstat-skeleton__line--lg { width: 70%; height: 22px; }
+.pstat-skeleton__line--sm { width: 45%; }
+@keyframes pstatShim { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* ── Error ────────────────────────────────────────────────────────────────── */
+.pstat__error { text-align: center; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; color: #94a3b8; font-size: 14px; }
+.pstat__error span { font-size: 48px; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pstat__grid--4 { grid-template-columns: 1fr 1fr; }
+  .pstat__grid--3 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .pstat__grid--4, .pstat__grid--3 { grid-template-columns: 1fr; }
+  .pstat-skeleton { grid-template-columns: 1fr 1fr; }
+}

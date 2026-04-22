@@ -6,6 +6,16 @@
   border-right: 1px solid hsl(38 70% 55% / 0.08);
   width: 240px;
   height: 100dvh;
+  align-items: stretch;
+}
+
+/* ── sidebar fixed on desktop ── */
+.ps-sidebar--desktop {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow-y: auto;
 }
 
 .ps-top {

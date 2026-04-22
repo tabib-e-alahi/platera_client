@@ -1,25 +1,39 @@
-/* customer-layout.css */
+/* dashboard-layout.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap');
 
 .cd-layout {
-  display: grid;
-  grid-template-columns: 230px 1fr;
-  height: 100vh;
+  display: flex;               /* flex instead of grid so sidebar stays fixed-height */
+  min-height: 100dvh;          /* min-height — not height — so content can grow */
   background: hsl(30 33% 97%);
   font-family: 'Inter', sans-serif;
 }
 
 .cd-main {
+  flex: 1;
+  min-width: 0;                /* prevent flex blowout */
   padding: 36px 40px;
   overflow-y: auto;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
-@media (max-width: 860px) {
+/* ── sidebar fixed on desktop ── */
+.ps-sidebar--desktop {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (max-width: 900px) {
   .cd-layout {
-    grid-template-columns: 1fr;
+    display: block;            /* single column on mobile */
   }
 
   .cd-main {
-    padding: 24px 16px 60px;
+    padding: 16px 16px 80px;
+    min-height: calc(100dvh - 56px); /* leave room for mobile topbar */
   }
 }
