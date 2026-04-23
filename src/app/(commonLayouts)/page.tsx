@@ -1,15 +1,11 @@
 // src/app/(root)/page.tsx
 import type { Metadata } from "next";
 import HeroSection from "./_components/Home/HeroSection";
-import FilterChips from "./_components/Home/FilterChips";
-import FeaturedProviders from "./_components/Home/FeaturedProviders";
-import CuratedCollections from "./_components/Home/CuratedCollections";
 import HowItWorks from "./_components/Home/HowItWorks";
-import AppDownload from "./_components/Home/AppDownload";
 import FeaturedRestaurants from "./_components/Home/FeaturedRestaurant/FeaturesRestaurant";
 import AboutSection from "./_components/Home/AboutSection/AboutSection";
-import TopDishes from "./_components/Home/TopDishes/TopDishes";
 import TestimonialsSection from "./_components/Home/Testimonials/TestimonialsSection";
+import TopDishes from './_components/Home/TopDishes/TopDishes';
 
 
 export const metadata: Metadata = {
@@ -26,14 +22,10 @@ export default function HomePage() {
     <>
       <HeroSection />
       <FeaturedRestaurants></FeaturedRestaurants>
-      <FilterChips />
-      <FeaturedProviders />
-      <CuratedCollections />
       <TopDishes />
       <TestimonialsSection></TestimonialsSection>
       <AboutSection></AboutSection>
       <HowItWorks />
-      <AppDownload />
     </>
   );
 }

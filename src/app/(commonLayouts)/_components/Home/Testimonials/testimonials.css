@@ -1,3 +1,5 @@
+/* testimonials.css — Platera */
+
 .testimonials {
   position: relative;
   padding: 7rem 2rem;
@@ -10,6 +12,7 @@
   margin: 0 auto;
 }
 
+/* ── Header ───────────────────────────────────────────────────────────────── */
 .testimonials__header {
   text-align: center;
   margin-bottom: 3.5rem;
@@ -40,6 +43,7 @@
   font-weight: 700;
   color: hsl(var(--wine-deep));
   line-height: 1.15;
+  margin-bottom: 0.75rem;
 }
 
 .testimonials__title em {
@@ -47,14 +51,22 @@
   font-style: italic;
 }
 
-/* Grid */
+.testimonials__count {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: hsl(var(--wine) / 0.4);
+  font-weight: 400;
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────────────── */
 .testimonials__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
+  min-height: 280px; /* prevent layout shift during loading */
 }
 
-/* Card */
+/* ── Card ─────────────────────────────────────────────────────────────────── */
 .testimonial-card {
   background: hsl(0 0% 100%);
   border-radius: 1.25rem;
@@ -63,6 +75,8 @@
   box-shadow: 0 2px 16px hsl(var(--wine) / 0.04);
   transition: all 0.4s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .testimonial-card:hover {
@@ -70,6 +84,23 @@
   box-shadow: 0 12px 40px hsl(var(--wine) / 0.08);
 }
 
+/* Featured (middle) card — slightly elevated */
+.testimonial-card--featured {
+  border-color: hsl(var(--gold) / 0.2);
+  box-shadow:
+    0 4px 32px hsl(var(--wine) / 0.07),
+    0 0 0 1px hsl(var(--gold) / 0.12);
+  transform: translateY(-6px);
+}
+
+.testimonial-card--featured:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 16px 50px hsl(var(--wine) / 0.1),
+    0 0 0 1px hsl(var(--gold) / 0.18);
+}
+
+/* Quote mark */
 .testimonial-card__quote {
   font-family: var(--font-heading);
   font-size: 2.5rem;
@@ -78,36 +109,87 @@
   margin-bottom: 0.5rem;
 }
 
+/* Stars */
+.testimonial-card__stars {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-bottom: 1.25rem;
+  color: hsl(var(--gold));
+}
+
+.testimonial-card__rating-num {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: hsl(var(--wine) / 0.5);
+  margin-left: 0.3rem;
+}
+
+/* Review text */
 .testimonial-card__text {
   font-family: var(--font-body);
   font-size: 0.92rem;
   color: hsl(var(--wine) / 0.6);
   line-height: 1.7;
   font-weight: 300;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.875rem;
   font-style: italic;
+  flex: 1;                /* push author to bottom */
+
+  /* clamp long reviews */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.testimonial-card__stars {
-  display: flex;
-  gap: 0.2rem;
+/* Meal reference */
+.testimonial-card__meal-ref {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: hsl(var(--wine) / 0.35);
+  font-weight: 500;
   margin-bottom: 1.25rem;
-  color: hsl(var(--gold));
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  /* clamp long meal name */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
+.testimonial-card__meal-ref span {
+  font-weight: 600;
+  color: hsl(var(--wine) / 0.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 140px;
+  display: inline-block;
+}
+
+/* Author */
 .testimonial-card__author {
   display: flex;
   align-items: center;
   gap: 0.875rem;
   padding-top: 1.25rem;
   border-top: 1px solid hsl(var(--wine) / 0.06);
+  margin-top: auto;
 }
 
 .testimonial-card__avatar {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--wine) / 0.08));
+  background: linear-gradient(
+    135deg,
+    hsl(var(--gold) / 0.15),
+    hsl(var(--wine) / 0.08)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,11 +198,19 @@
   font-weight: 700;
   color: hsl(var(--wine-deep));
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.testimonial-card__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .testimonial-card__info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .testimonial-card__name {
@@ -128,30 +218,114 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: hsl(var(--wine-deep));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .testimonial-card__role {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: hsl(var(--wine) / 0.4);
   font-weight: 400;
 }
 
-/* Responsive */
+/* ── Pagination nav ───────────────────────────────────────────────────────── */
+.testimonials__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.testimonials__nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid hsl(var(--wine) / 0.12);
+  background: hsl(0 0% 100%);
+  color: hsl(var(--wine) / 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.testimonials__nav-btn:hover {
+  border-color: hsl(var(--gold) / 0.5);
+  color: hsl(var(--wine-deep));
+  background: hsl(var(--gold) / 0.05);
+}
+
+.testimonials__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.testimonials__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: hsl(var(--wine) / 0.15);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.testimonials__dot--active {
+  background: hsl(var(--gold));
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ── Skeleton ─────────────────────────────────────────────────────────────── */
+.testimonial-card--skeleton {
+  pointer-events: none;
+}
+
+.tc-sk {
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--wine) / 0.06) 25%,
+    hsl(var(--wine) / 0.1) 50%,
+    hsl(var(--wine) / 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: tcShimmer 1.5s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+
+.tc-sk--stars  { width: 100px; height: 14px; }
+.tc-sk--text   { width: 100%; height: 12px; }
+.tc-sk--short  { width: 70%; }
+.tc-sk--avatar { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; }
+.tc-sk--name   { width: 120px; height: 14px; }
+.tc-sk--role   { width: 80px; height: 10px; }
+
+@keyframes tcShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .testimonials__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-card--featured { transform: none; }
 }
 
 @media (max-width: 640px) {
-  .testimonials {
-    padding: 4.5rem 1.25rem;
-  }
+  .testimonials { padding: 4.5rem 1.25rem; }
 
   .testimonials__grid {
     grid-template-columns: 1fr;
     max-width: 480px;
     margin: 0 auto;
   }
+
+  .testimonial-card--featured { transform: none; }
 }

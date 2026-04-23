@@ -1,349 +1,274 @@
 .menu {
-  position: relative;
-  padding: 8rem 2rem;
-  background: hsl(var(--cream));
-  overflow: hidden;
+    position: relative;
+    padding: 0rem 2rem 5rem 2rem;
+    background: hsl(var(--cream));
+    overflow: hidden;
 }
 
 .menu::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 160px;
-  background: linear-gradient(to bottom, hsl(20 15% 8%), hsl(var(--cream)));
-  pointer-events: none;
-  z-index: 1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .menu__container {
-  max-width: 1400px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
+    max-width: 80rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 5rem 0rem;
 }
 
-/* Header */
+/* ── Header ───────────────────────────────────────────────────────────────── */
 .menu__header {
-  text-align: center;
-  margin-bottom: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
 .menu__subtitle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: hsl(var(--gold));
-  margin-bottom: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(var(--gold));
+    margin-bottom: 1.25rem;
 }
 
 .menu__subtitle-line {
-  width: 2.5rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent);
+    width: 2.5rem;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        hsl(var(--gold) / 0.5),
+        transparent
+    );
 }
 
 .menu__title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  font-weight: 700;
-  color: hsl(var(--wine-deep));
-  line-height: 1.1;
-  margin-bottom: 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    line-height: 1.1;
+    margin-bottom: 1rem;
 }
 
 .menu__title em {
-  color: hsl(var(--gold));
-  font-style: italic;
+    color: hsl(var(--gold));
+    font-style: italic;
 }
 
 .menu__description {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: hsl(var(--wine) / 0.55);
-  max-width: 500px;
-  margin: 0 auto;
-  line-height: 1.75;
-  font-weight: 300;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: hsl(var(--wine) / 0.55);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.75;
+    font-weight: 300;
 }
 
-/* Category tabs */
+/* ── Category tabs ────────────────────────────────────────────────────────── */
 .menu__tabs {
-  display: flex;
-  justify-content: center;
-  gap: 0.375rem;
-  margin-bottom: 3.5rem;
-  flex-wrap: wrap;
-  background: hsl(var(--wine-deep) / 0.04);
-  padding: 0.35rem;
-  border-radius: 9999px;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+    display: flex;
+    justify-content: center;
+    gap: 0.375rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+    background: hsl(var(--wine-deep) / 0.04);
+    padding: 0.35rem;
+    border-radius: 9999px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .menu__tab {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 500;
-  padding: 0.55rem 1.5rem;
-  border-radius: 9999px;
-  border: none;
-  background: transparent;
-  color: hsl(var(--wine) / 0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 0.02em;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.55rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    background: transparent;
+    color: hsl(var(--wine) / 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
 }
 
 .menu__tab:hover {
-  color: hsl(var(--wine));
+    color: hsl(var(--wine));
 }
 
 .menu__tab--active {
-  background: hsl(var(--wine-deep));
-  color: hsl(var(--cream));
-  box-shadow: 0 4px 16px hsl(var(--wine) / 0.2);
+    background: hsl(var(--wine-deep));
+    color: hsl(var(--cream));
+    box-shadow: 0 4px 16px hsl(var(--wine) / 0.2);
 }
 
-.menu__tab--active:hover {
-  color: hsl(var(--cream));
-}
-
-/* Grid */
-.menu__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
-}
-
-/* Card — Horizontal layout */
-.menu__card {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-  background: hsl(0 0% 100%);
-  box-shadow: 0 2px 16px hsl(var(--wine) / 0.05);
-  border: 1px solid hsl(var(--wine) / 0.05);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  cursor: pointer;
-}
-
-.menu__card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px hsl(var(--wine) / 0.12), 0 0 0 1px hsl(var(--gold) / 0.1);
-}
-
-.menu__card-image-wrapper {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
-
-.menu__card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.menu__card:hover .menu__card-image {
-  transform: scale(1.1);
-}
-
-.menu__card-badge {
-  position: absolute;
-  top: 0.875rem;
-  left: 0.875rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  z-index: 2;
-}
-
-.menu__card-badge--popular {
-  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
-  color: hsl(20 15% 8%);
-}
-
-.menu__card-badge--new {
-  background: hsl(var(--wine));
-  color: hsl(var(--cream));
-}
-
-.menu__card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: linear-gradient(to top, hsl(0 0% 0% / 0.35), transparent);
-  pointer-events: none;
-}
-
-.menu__card-body {
-  padding: 1.25rem 1.375rem 1.375rem;
-}
-
-.menu__card-category {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: hsl(var(--gold));
-  margin-bottom: 0.5rem;
-}
-
-.menu__card-name {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: hsl(var(--wine-deep));
-  margin-bottom: 0.35rem;
-  line-height: 1.25;
-}
-
-.menu__card-desc {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  color: hsl(var(--wine) / 0.45);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  font-weight: 300;
-}
-
-.menu__card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.menu__card-price {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: hsl(var(--wine-deep));
-}
-
-.menu__card-price-currency {
-  font-size: 0.8rem;
-  color: hsl(var(--gold));
-  margin-right: 1px;
-}
-
-.menu__card-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.45rem 1rem;
-  border-radius: 9999px;
-  border: none;
-  background: hsl(var(--wine-deep));
-  color: hsl(var(--cream));
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 0.02em;
-}
-
-.menu__card-btn:hover {
-  background: hsl(var(--gold));
-  color: hsl(20 15% 8%);
-}
-
-.menu__card-rating {
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  position: absolute;
-  top: 0.875rem;
-  right: 0.875rem;
-  background: hsl(0 0% 0% / 0.55);
-  backdrop-filter: blur(12px);
-  padding: 0.25rem 0.55rem;
-  border-radius: 9999px;
-  z-index: 2;
-}
-
-.menu__card-rating-star {
-  color: hsl(var(--gold));
-}
-
-.menu__card-rating-value {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: hsl(var(--cream));
-}
-
-/* CTA */
+/* ── CTA ──────────────────────────────────────────────────────────────────── */
 .menu__cta {
-  text-align: center;
-  margin-top: 3.5rem;
+    text-align: center;
+    margin-top: 3.5rem;
 }
 
 .menu__cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.9rem 2.5rem;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
-  color: hsl(20 15% 8%);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.9rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 0.02em;
-  box-shadow: 0 4px 20px hsl(var(--gold) / 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--gold)),
+        hsl(var(--gold-light))
+    );
+    color: hsl(20 15% 8%);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 20px hsl(var(--gold) / 0.25);
 }
 
 .menu__cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px hsl(var(--gold) / 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px hsl(var(--gold) / 0.4);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .menu__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* ── Dish price (replaces the MapPin/city in rest-card__header) ───────────── */
+.rest-card__dish-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    flex-shrink: 0;
 }
 
-@media (max-width: 640px) {
-  .menu {
-    padding: 5rem 1.25rem;
-  }
+.rest-card__dish-price-current {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    white-space: nowrap;
+}
 
-  .menu__grid {
-    grid-template-columns: 1fr;
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .menu__tabs {
-    border-radius: 1rem;
-    padding: 0.25rem;
-  }
-
-  .menu__tab {
-    padding: 0.4rem 1rem;
+.rest-card__dish-price-original {
+    font-family: var(--font-body);
     font-size: 0.78rem;
-  }
+    color: hsl(var(--wine) / 0.35);
+    text-decoration: line-through;
+    white-space: nowrap;
+}
+
+/* ── Discount badge ───────────────────────────────────────────────────────── */
+.rest-card__badge--discount {
+    background: hsl(var(--wine));
+    color: hsl(var(--cream));
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.6rem;
+    border-radius: 9999px;
+}
+
+/* ── Image placeholder ────────────────────────────────────────────────────── */
+.rest-card__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--wine-deep) / 0.07),
+        hsl(var(--gold) / 0.05)
+    );
+    color: hsl(var(--gold) / 0.35);
+}
+
+/* ── Skeleton ─────────────────────────────────────────────────────────────── */
+.rest-card--skeleton {
+    pointer-events: none;
+    cursor: default;
+}
+
+.rest-card__image-wrap--sk {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(
+        90deg,
+        hsl(var(--wine) / 0.06) 25%,
+        hsl(var(--wine) / 0.1) 50%,
+        hsl(var(--wine) / 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: topDishShimmer 1.5s ease-in-out infinite;
+}
+
+.rest-card__sk-line {
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(
+        90deg,
+        hsl(var(--wine) / 0.06) 25%,
+        hsl(var(--wine) / 0.1) 50%,
+        hsl(var(--wine) / 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: topDishShimmer 1.5s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+.rest-card__sk-line--lg {
+    width: 80%;
+    height: 18px;
+}
+.rest-card__sk-line--md {
+    width: 60%;
+}
+.rest-card__sk-line--sm {
+    width: 40%;
+    height: 9px;
+}
+
+@keyframes topDishShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .menu {
+        padding: 5rem 1.25rem;
+    }
+
+    .menu__tabs {
+        border-radius: 1rem;
+        padding: 0.25rem;
+    }
+
+    .menu__tab {
+        padding: 0.4rem 1rem;
+        font-size: 0.78rem;
+    }
 }

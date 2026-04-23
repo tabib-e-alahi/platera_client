@@ -1,6 +1,6 @@
 .restaurants {
     position: relative;
-    padding: 7rem 2rem;
+    padding: 4rem 2rem;
     background: hsl(var(--cream));
     overflow: hidden;
 }
@@ -12,17 +12,17 @@
     left: 0;
     right: 0;
     height: 160px;
-    background: linear-gradient(to bottom, hsl(20 15% 8%), hsl(var(--cream)));
+    background: linear-gradient(to bottom, hsl(17, 3%, 50%), hsl(var(--cream)));
     pointer-events: none;
     z-index: 1;
 }
 
 .restaurants__container {
-    max-width: 1400px;
+    max-width: 80rem;
     margin: 0 auto;
     position: relative;
     z-index: 2;
-    padding: 5rem 2rem 4rem;
+    padding: 5rem 0rem;
 }
 
 /* Header */

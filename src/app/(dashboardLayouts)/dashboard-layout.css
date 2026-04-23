@@ -1,39 +1,61 @@
-/* dashboard-layout.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap');
 
-.cd-layout {
-  display: flex;               /* flex instead of grid so sidebar stays fixed-height */
-  min-height: 100dvh;          /* min-height — not height — so content can grow */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ── Root wrapper (used by ALL dashboard layouts) ─────────────────────────── */
+.cd-layout,
+.ad-layout,
+.pd-layout {
+  display: flex;             /* flex, not grid */
+  height: 100dvh;            /* exact viewport — never grows */
+  overflow: hidden;          /* parent CLIPS both columns */
   background: hsl(30 33% 97%);
   font-family: 'Inter', sans-serif;
 }
 
-.cd-main {
-  flex: 1;
-  min-width: 0;                /* prevent flex blowout */
-  padding: 36px 40px;
-  overflow-y: auto;
-  min-height: 100dvh;
-}
-
-/* ── sidebar fixed on desktop ── */
-.ps-sidebar--desktop {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+/* Sidebar column — self-contained scroll */
+.cd-layout > aside,
+.ad-layout > aside,
+.pd-layout > aside {
   flex-shrink: 0;
+  height: 100%;              /* fill parent's clamped height */
   overflow-y: auto;
   overflow-x: hidden;
 }
 
+/* Main content column — independent scroll */
+.cd-main,
+.ad-main,
+.pd-main {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  padding: 36px 40px;
+}
+
+/* ── Mobile: stack vertically ────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .cd-layout {
-    display: block;            /* single column on mobile */
+  .cd-layout,
+  .ad-layout,
+  .pd-layout {
+    display: block;       /* stack: topbar → content */
+    height: auto;
+    overflow: visible;
   }
 
-  .cd-main {
-    padding: 16px 16px 80px;
-    min-height: calc(100dvh - 56px); /* leave room for mobile topbar */
+  .cd-layout > aside,
+  .ad-layout > aside,
+  .pd-layout > aside {
+    height: auto;
+    overflow: visible;
+  }
+
+  .cd-main,
+  .ad-main,
+  .pd-main {
+    height: auto;
+    overflow: visible;
+    padding: 24px 16px 60px;
   }
 }

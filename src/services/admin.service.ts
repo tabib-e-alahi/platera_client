@@ -5,8 +5,19 @@ import api from "@/lib/axios";
 // ── Dashboard ──────────────────────────────────────────────────────────────────
 
 export const getAdminDashboardStats = async () => {
-  const res = await api.get("/admins/dashboard");
-  return res.data;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admins/dashboard`, {
+    method: "GET",
+    credentials: "include", // ✅ include cookies
+    next: {
+      revalidate: 10, // ✅ revalidate every 10 seconds
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch dashboard stats");
+  }
+
+  return res.json();
 };
 
 // ── Provider management ────────────────────────────────────────────────────────
@@ -186,16 +197,12 @@ export const getAdminCategories = async function () {
         next: { revalidate: 60 },
       }
     );
-
     if (!res.ok) {
       throw new Error("Failed to fetch admin categories");
     }
-
     const data = await res.json();
-    console.log("==============", data);
     return data
   } catch (err) {
-    console.error("getAdminCategories error:", err);
     throw err;
   }
 };
