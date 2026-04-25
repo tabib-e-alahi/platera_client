@@ -1,0 +1,267 @@
+.menu {
+    position: relative;
+    padding: 0rem 2rem 3rem 2rem;
+    background: hsl(var(--cream));
+    overflow: hidden;
+}
+
+.menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.menu__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 5rem 0rem;
+}
+
+.menu__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.menu__subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(var(--gold));
+    margin-bottom: 1.25rem;
+}
+
+.menu__subtitle-line {
+    width: 2.5rem;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        hsl(var(--gold) / 0.5),
+        transparent
+    );
+}
+
+.menu__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.menu__title em {
+    color: hsl(var(--gold));
+    font-style: italic;
+}
+
+.menu__description {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: hsl(var(--wine) / 0.55);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.75;
+    font-weight: 300;
+}
+
+.menu__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.375rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+    background: hsl(var(--wine-deep) / 0.04);
+    padding: 0.35rem;
+    border-radius: 9999px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu__tab {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.55rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    background: transparent;
+    color: hsl(var(--wine) / 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+}
+
+.menu__tab:hover {
+    color: hsl(var(--wine));
+}
+
+.menu__tab--active {
+    background: hsl(var(--wine-deep));
+    color: hsl(var(--cream));
+    box-shadow: 0 4px 16px hsl(var(--wine) / 0.2);
+}
+
+.menu__cta {
+    text-align: center;
+    margin-top: 3.5rem;
+}
+
+.menu__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--gold)),
+        hsl(var(--gold-light))
+    );
+    color: hsl(20 15% 8%);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 20px hsl(var(--gold) / 0.25);
+}
+
+.menu__cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px hsl(var(--gold) / 0.4);
+}
+
+.rest-card__dish-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.rest-card__dish-price-current {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    white-space: nowrap;
+}
+
+.rest-card__dish-price-original {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: hsl(var(--wine) / 0.35);
+    text-decoration: line-through;
+    white-space: nowrap;
+}
+
+.rest-card__badge--discount {
+    background: hsl(var(--wine));
+    color: hsl(var(--cream));
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.6rem;
+    border-radius: 9999px;
+}
+
+.rest-card__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--wine-deep) / 0.07),
+        hsl(var(--gold) / 0.05)
+    );
+    color: hsl(var(--gold) / 0.35);
+}
+
+.rest-card--skeleton {
+    pointer-events: none;
+    cursor: default;
+}
+
+.rest-card__image-wrap--sk {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(
+        90deg,
+        hsl(var(--wine) / 0.06) 25%,
+        hsl(var(--wine) / 0.1) 50%,
+        hsl(var(--wine) / 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: topDishShimmer 1.5s ease-in-out infinite;
+}
+
+.rest-card__sk-line {
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(
+        90deg,
+        hsl(var(--wine) / 0.06) 25%,
+        hsl(var(--wine) / 0.1) 50%,
+        hsl(var(--wine) / 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: topDishShimmer 1.5s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+.rest-card__sk-line--lg {
+    width: 80%;
+    height: 18px;
+}
+.rest-card__sk-line--md {
+    width: 60%;
+}
+.rest-card__sk-line--sm {
+    width: 40%;
+    height: 9px;
+}
+
+@keyframes topDishShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .menu {
+        padding: 5rem 1.25rem;
+    }
+
+    .menu__tabs {
+        border-radius: 1rem;
+        padding: 0.25rem;
+    }
+
+    .menu__tab {
+        padding: 0.4rem 1rem;
+        font-size: 0.78rem;
+    }
+}

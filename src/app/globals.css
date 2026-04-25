@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+    /* Core */
+    --background: 30 33% 97%;
+    --foreground: 20 20% 12%;
+
+    --card: 30 25% 95%;
+    --card-foreground: 20 20% 12%;
+
+    --popover: 30 33% 97%;
+    --popover-foreground: 20 20% 12%;
+
+    --primary: 350 40% 30%;
+    --primary-foreground: 30 33% 97%;
+
+    --secondary: 30 25% 90%;
+    --secondary-foreground: 20 20% 12%;
+
+    --muted: 30 15% 92%;
+    --muted-foreground: 20 10% 45%;
+
+    --accent: 38 70% 55%;
+    --accent-foreground: 20 20% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 350 40% 30%;
+
+    --radius: 0.5rem;
+
+    --hero-gradient: linear-gradient(135deg, hsl(20 15% 8%) 0%, hsl(350 30% 15%) 50%, hsl(20 15% 8%) 100%);
+    --gold: 38 70% 55%;
+    --gold-light: 38 60% 70%;
+    --cream: 30 33% 97%;
+    --wine: 350 40% 30%;
+    --wine-deep: 350 45% 20%;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+/* ------------------------------
+   DARK MODE (UNCHANGED)
+------------------------------ */
+.dark {
+    --background: 20 15% 8%;
+    --foreground: 30 33% 97%;
+    --card: 20 15% 12%;
+    --card-foreground: 30 33% 97%;
+    --popover: 20 15% 8%;
+    --popover-foreground: 30 33% 97%;
+    --primary: 38 70% 55%;
+    --primary-foreground: 20 15% 8%;
+
+    --secondary: 20 15% 15%;
+    --secondary-foreground: 30 33% 97%;
+    --muted: 20 10% 18%;
+    --muted-foreground: 30 15% 60%;
+    --accent: 350 40% 40%;
+    --accent-foreground: 30 33% 97%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 20 10% 20%;
+    --input: 20 10% 20%;
+    --ring: 38 70% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+
+/* ------------------------------
+   BASE (MODERNIZED ONLY)
+------------------------------ */
+html,
+body {
+    overflow-x: hidden;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+}
+
+/* ------------------------------
+   UTILITIES (NO DESIGN CHANGE)
+------------------------------ */
+
+/* Hero gradient */
+.hero-bg {
+    background: var(--hero-gradient);
+}
+
+/* Gold CTA gradient */
+.gold-gradient {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+}
+
+/* Hover behavior (exact principle preserved) */
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+}
+
+/* Subtle gold borders */
+.border-gold-subtle {
+    border-color: hsl(38 70% 55% / 0.15);
+}
+
+/* Glass (used in your hero + navbar) */
+.glass {
+    background: hsl(20 15% 10% / 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(38 70% 55% / 0.15);
+}

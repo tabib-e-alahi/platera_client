@@ -1,0 +1,762 @@
+/* ============================================================
+   SINGLE RESTAURANT PAGE
+   ============================================================ */
+
+/* ── Hero ── */
+.rd__hero {
+    position: relative;
+    height: 440px;
+    overflow: hidden;
+    padding-top: 4.5rem;
+    background: hsl(20 15% 8% / 0.88);
+    backdrop-filter: blur(18px);
+}
+.rd__hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.rd__hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        hsl(20 15% 8% / 0.3) 0%,
+        hsl(20 15% 8% / 0.75) 100%
+    );
+}
+.rd__hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--hero-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--gold) / 0.3);
+}
+@media (max-width: 768px) {
+    .rd__hero {
+        height: 220px;
+    }
+}
+
+/* ── Info card (overlaps hero) ── */
+.rd__body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+}
+.rd__info-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 1.5rem;
+    padding: 2rem 2.25rem;
+    margin-top: -8.5rem;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 20px 60px hsl(var(--wine-deep) / 0.1);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+}
+@media (max-width: 768px) {
+    .rd__info-card {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        margin-top: -2rem;
+    }
+}
+
+.rd__info-left {
+}
+.rd__badge-row {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.85rem;
+}
+.rd__badge {
+    padding: 0.28rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.rd__badge--type {
+    background: hsl(var(--wine));
+    color: hsl(var(--cream));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rd__badge--city {
+    background: hsl(var(--gold) / 0.12);
+    color: hsl(var(--wine));
+    border: 1px solid hsl(var(--gold) / 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.rd__name {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    line-height: 1.15;
+    margin-bottom: 0.65rem;
+}
+.rd__bio {
+    font-size: 0.95rem;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.65;
+    max-width: 600px;
+    margin-bottom: 1.2rem;
+}
+.rd__stats {
+    display: flex;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+}
+.rd__stat {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    color: hsl(var(--muted-foreground));
+}
+.rd__stat-value {
+    font-weight: 700;
+    color: hsl(var(--foreground));
+}
+.rd__stat-icon {
+    color: hsl(var(--gold));
+}
+
+.rd__rating-box {
+    background: hsl(var(--wine-deep));
+    border-radius: 1.1rem;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    min-width: 120px;
+    flex-shrink: 0;
+}
+.rd__rating-num {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: hsl(var(--gold));
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+.rd__rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.15rem;
+    margin-bottom: 0.4rem;
+    color: hsl(var(--gold));
+}
+.rd__rating-count {
+    font-size: 0.78rem;
+    color: hsl(var(--cream) / 0.55);
+}
+@media (max-width: 768px) {
+    .rd__rating-box {
+        display: none;
+    }
+}
+
+/* ── Content grid ── */
+.rd__content {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+@media (max-width: 1024px) {
+    .rd__content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Meal Sidebar / Filter bar ── */
+.rd__filter-panel {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    position: sticky;
+    top: 5.5rem;
+}
+@media (max-width: 1024px) {
+    .rd__filter-panel {
+        position: static;
+    }
+}
+.rd__filter-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    margin-bottom: 1.25rem;
+}
+.rd__filter-group {
+    margin-bottom: 1.4rem;
+}
+.rd__filter-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 0.6rem;
+    display: block;
+}
+.rd__filter-input,
+.rd__filter-select {
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    border-radius: 0.7rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-body);
+    font-size: 0.87rem;
+    outline: none;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    -webkit-appearance: none;
+}
+.rd__filter-input:focus,
+.rd__filter-select:focus {
+    border-color: hsl(var(--gold) / 0.6);
+    box-shadow: 0 0 0 3px hsl(var(--gold) / 0.1);
+}
+.rd__filter-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    padding-right: 2rem;
+    cursor: pointer;
+}
+
+.rd__cat-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+.rd__cat-chip {
+    padding: 0.5rem 0.85rem;
+    border-radius: 0.65rem;
+    border: none;
+    background: transparent;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.84rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition:
+        background 0.2s,
+        color 0.2s;
+    font-family: var(--font-body);
+}
+.rd__cat-chip--active {
+    background: hsl(var(--wine) / 0.08);
+    color: hsl(var(--wine));
+    font-weight: 600;
+}
+.rd__cat-chip:hover:not(.rd__cat-chip--active) {
+    background: hsl(var(--muted));
+}
+
+.rd__clear-btn {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 0.7rem;
+    border: 1px solid hsl(var(--border));
+    background: transparent;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.82rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-family: var(--font-body);
+    transition: all 0.2s;
+}
+.rd__clear-btn:hover {
+    border-color: hsl(var(--wine) / 0.4);
+    color: hsl(var(--wine));
+}
+
+/* ── Meals section ── */
+.rd__meals {
+}
+.rd__meals-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.rd__meals-count {
+    font-size: 0.9rem;
+    color: hsl(var(--muted-foreground));
+}
+.rd__meals-count strong {
+    color: hsl(var(--foreground));
+}
+
+.rd__sort-select {
+    padding: 0.5rem 2rem 0.5rem 0.85rem;
+    border-radius: 0.65rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+}
+
+/* ── Meal card ── */
+.mc {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.1rem;
+    padding: 1.1rem;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    transition:
+        border-color 0.25s,
+        box-shadow 0.25s,
+        transform 0.25s;
+}
+.mc:hover {
+    border-color: hsl(var(--gold) / 0.3);
+    box-shadow: 0 8px 24px hsl(var(--wine-deep) / 0.08);
+    transform: translateY(-2px);
+}
+@media (max-width: 480px) {
+    .mc {
+        grid-template-columns: 100px 1fr;
+        gap: 0.85rem;
+        padding: 0.9rem;
+    }
+}
+
+.mc__img-wrap {
+    position: relative;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    background: hsl(var(--muted));
+}
+.mc__img {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.mc:hover .mc__img {
+    transform: scale(1.08);
+}
+.mc__img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--gold) / 0.35);
+    background: linear-gradient(
+        135deg,
+        hsl(var(--wine-deep) / 0.05),
+        hsl(var(--gold) / 0.04)
+    );
+}
+.mc__bestseller {
+    position: absolute;
+    top: 0.4rem;
+    left: 0.4rem;
+    background: hsl(var(--gold));
+    color: hsl(20 15% 8%);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.45rem;
+    border-radius: 999px;
+}
+
+.mc__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+}
+.mc__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+.mc__name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    line-height: 1.25;
+    margin-bottom: 18px !important;
+}
+.mc__subcategory {
+    font-size: 0.72rem;
+    color: hsl(var(--gold));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.mc__desc {
+    font-size: 0.82rem;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.mc__dietary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+.mc__diet-tag {
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: hsl(120 40% 45% / 0.1);
+    color: hsl(120 40% 35%);
+    border: 1px solid hsl(120 40% 45% / 0.2);
+}
+
+.mc__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    gap: 0.5rem;
+}
+.mc__price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+.mc__price {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+}
+.mc__price-original {
+    font-size: 0.82rem;
+    color: hsl(var(--muted-foreground));
+    text-decoration: line-through;
+}
+.mc__price-discount {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: hsl(120 50% 40%);
+    background: hsl(120 50% 40% / 0.1);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+}
+
+.mc__prep {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* ── Reviews ── */
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESTAURANT DETAIL — REVIEWS SECTION  (restaurant-detail.css)
+   Replace everything from "/* ── Reviews ──" to end of rd__review-text block.
+   All variables reference globals.css tokens already in the project.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Reviews section ──────────────────────────────────────────────────────── */
+.rd__reviews {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid hsl(var(--border));
+}
+
+/* Header row: title + aggregate */
+.rd__reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+}
+
+.rd__reviews-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.02em;
+}
+.rd__reviews-sub {
+    font-size: 0.83rem;
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+}
+
+/* Aggregate box (avg + stars) */
+.rd__reviews-agg {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: hsl(var(--wine-deep));
+    border-radius: 0.85rem;
+    padding: 0.65rem 1.1rem;
+    flex-shrink: 0;
+}
+.rd__reviews-agg-num {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: hsl(var(--gold));
+    line-height: 1;
+}
+.rd__reviews-agg-label {
+    font-size: 0.68rem;
+    color: hsl(var(--cream) / 0.5);
+    display: block;
+    margin-top: 0.2rem;
+}
+
+/* ── Review grid ──────────────────────────────────────────────────────────── */
+.rd__review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1rem;
+}
+
+/* ── Review card ──────────────────────────────────────────────────────────── */
+.rd__review-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 1.1rem;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.18s, transform 0.18s;
+    animation: rdCardIn 0.3s ease both;
+}
+.rd__review-card:hover {
+    box-shadow: 0 8px 28px hsl(var(--wine-deep) / 0.08);
+    transform: translateY(-2px);
+}
+@keyframes rdCardIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Rating band — top coloured strip */
+.rd__review-band {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.1rem 0.75rem;
+    background: hsl(var(--wine-deep) / 0.03);
+    border-bottom: 1px solid hsl(var(--border) / 0.6);
+}
+.rd__review-rating-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: hsl(var(--wine));
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex: 1;
+}
+.rd__review-rating-num {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: hsl(var(--gold));
+    flex-shrink: 0;
+}
+
+/* Stars */
+.rd__review-stars {
+    display: flex;
+    gap: 0.15rem;
+}
+.rd__review-star--filled { color: hsl(var(--gold)); }
+.rd__review-star--empty  { color: hsl(var(--muted-foreground) / 0.28); }
+
+/* Feedback quote */
+.rd__review-feedback {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: hsl(var(--foreground));
+    margin: 0;
+    padding: 1rem 1.1rem 0.9rem;
+    flex: 1;
+    font-style: italic;
+    border-left: 3px solid hsl(var(--gold) / 0.4);
+    background: hsl(var(--gold) / 0.025);
+    border-top: none;
+}
+.rd__review-no-text {
+    font-size: 0.8rem;
+    color: hsl(var(--muted-foreground) / 0.6);
+    padding: 0.85rem 1.1rem;
+    font-style: italic;
+    flex: 1;
+    margin: 0;
+}
+
+/* Footer: avatar + name + date */
+.rd__review-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1.1rem;
+    border-top: 1px solid hsl(var(--border) / 0.5);
+    background: hsl(var(--card));
+}
+
+.rd__review-avatar {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background: hsl(var(--wine) / 0.1);
+    border: 1.5px solid hsl(var(--wine) / 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: hsl(var(--wine));
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.rd__review-meta { flex: 1; min-width: 0; }
+.rd__review-name {
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: hsl(var(--foreground));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.1rem;
+}
+.rd__review-date {
+    font-size: 0.7rem;
+    color: hsl(var(--muted-foreground));
+}
+
+/* Legacy compat (kept so nothing breaks if old class is referenced elsewhere) */
+.rd__review-text {
+    font-size: 0.85rem;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.55;
+    padding: 0 1.1rem 1rem;
+    margin: 0;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .rd__review-grid { grid-template-columns: 1fr; }
+    .rd__reviews-agg { padding: 0.5rem 0.85rem; }
+    .rd__reviews-agg-num { font-size: 1.5rem; }
+    .rd__reviews-header { align-items: flex-start; }
+}
+
+/* ── Loading skeleton ── */
+.rd__skeleton {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+.rd__skeleton-bar {
+    border-radius: 999px;
+    background: hsl(var(--muted));
+    height: 14px;
+    margin-bottom: 0.75rem;
+}
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ── Back link ── */
+.rd__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: hsl(var(--muted-foreground));
+    text-decoration: none;
+    padding: 0.75rem 0 0 0;
+    transition: color 0.2s;
+    margin-bottom: 0.75rem;
+}
+.rd__back:hover {
+    color: hsl(var(--wine));
+}
+
+/* Mobile filter toggle */
+.rd__mobile-filter-btn {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.1rem;
+    border-radius: 0.75rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    margin-bottom: 1.25rem;
+}
+@media (max-width: 1024px) {
+    .rd__mobile-filter-btn {
+        display: inline-flex;
+    }
+    .rd__filter-panel--hidden {
+        display: none;
+    }
+}
