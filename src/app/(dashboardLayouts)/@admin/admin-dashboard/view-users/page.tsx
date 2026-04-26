@@ -157,6 +157,7 @@ export default function AdminViewUsersPage() {
           <table className="ausers__table">
             <thead>
               <tr>
+                <th>No.</th>
                 <th>User</th>
                 <th>Role</th>
                 <th>Status</th>
@@ -167,8 +168,11 @@ export default function AdminViewUsersPage() {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
+              {users.map((user,idx) => (
                 <tr key={user.id}>
+                  <td>
+                    <span className="ausers__user-name">{idx+1}</span>
+                  </td>
                   <td>
                     <span className="ausers__user-name">{user.name}</span>
                     <span className="ausers__user-email">{user.email}</span>
@@ -194,7 +198,7 @@ export default function AdminViewUsersPage() {
                   </td>
                   <td>
                     {["ADMIN", "SUPER_ADMIN"].includes(user.role) ? (
-                      <span style={{ fontSize: 12, color: "#CBD5E1" }}>Protected</span>
+                      <span style={{ fontSize: 12, color: "#CBD5E1",opacity:"0.5" }}>Protected</span>
                     ) : (
                       <button
                         className={`ausers__toggle-btn ${user.status === "ACTIVE" ? "ausers__toggle-btn--suspend" : "ausers__toggle-btn--activate"}`}
