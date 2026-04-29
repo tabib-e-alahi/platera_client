@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
 
+=======
+/* ================================================================
+   Platera — ProviderSetup.css
+   Theme: Wine/burgundy primary, gold accent, warm cream background
+   Fonts: Playfair Display (headings) · Inter (body)
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables ───────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 :root {
   --background:        hsl(30, 33%, 97%);
   --foreground:        hsl(20, 20%, 12%);
@@ -32,16 +44,30 @@
   --transition:        0.2s ease;
 }
 
+<<<<<<< HEAD
+=======
+/* ── Base ─────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-body); background: var(--background); color: var(--foreground); -webkit-font-smoothing: antialiased; }
 img  { display: block; max-width: 100%; }
 button { cursor: pointer; font-family: inherit; border: none; }
 a  { text-decoration: none; color: inherit; }
 
+<<<<<<< HEAD
 .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 
 
+=======
+/* ── Scrollbar hide ──────────────────────────────────────────── */
+.scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ================================================================
+   PAGE SHELL
+   ================================================================ */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .ps-page {
   min-height: 100vh;
   background: var(--background);

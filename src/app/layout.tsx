@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// src/app/layout.tsx
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 import type { Metadata } from "next";
 import QueryProvider from "@/providers/QueryProvider";
 import { AuthProvider } from "@/providers/AuthProvider";

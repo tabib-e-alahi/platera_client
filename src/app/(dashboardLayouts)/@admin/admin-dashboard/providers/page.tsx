@@ -7,6 +7,10 @@ import { toast } from "sonner";
 import { getAllProviders, updateProviderStatus } from "@/services/admin.service";
 import "./admin-providers.css";
 
+<<<<<<< HEAD
+=======
+/* ─── Types ──────────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 type TProvider = {
   id: string;
   businessName: string;
@@ -23,6 +27,10 @@ type TProvider = {
 };
 type TEditable = TProvider & { draftApproval: TProvider["approvalStatus"]; draftUserStatus: "ACTIVE" | "SUSPENDED" };
 
+<<<<<<< HEAD
+=======
+/* ─── Constants ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 const APPROVAL_TABS = [
   { label: "All",      value: "" },
   { label: "Pending",  value: "PENDING" },
@@ -42,6 +50,10 @@ function fmt(d: string) {
   return new Date(d).toLocaleDateString("en-BD", { day: "numeric", month: "short", year: "numeric" });
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Skeleton card ──────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function ProviderCardSkeleton() {
   return (
     <div className="aprov-card aprov-card--skeleton">
@@ -55,6 +67,10 @@ function ProviderCardSkeleton() {
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Provider card ──────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function ProviderCard({
   provider, onSave, busyId,
 }: {
@@ -157,6 +173,10 @@ function ProviderCard({
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Main page ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export default function AdminProvidersPage() {
   const [providers, setProviders] = useState<TEditable[]>([]);
   const [isLoading, setIsLoading] = useState(true);

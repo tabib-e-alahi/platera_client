@@ -40,9 +40,14 @@ function StarRow({ rating }: { rating: number }) {
         <Star
           key={s}
           size={13}
+<<<<<<< HEAD
           fill={s <= Math.round(rating) ? "currentColor" : "none"}
           strokeWidth={s <= Math.round(rating) ? 0 : 1.5}
           className={s <= Math.round(rating) ? "rd__review-star--filled" : "rd__review-star--empty"}
+=======
+          fill={s <= rating ? "currentColor" : "none"}
+          className={s <= rating ? "rd__review-star--filled" : "rd__review-star--empty"}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
         />
       ))}
     </div>
@@ -112,9 +117,15 @@ function MealCard({ meal }: { meal: Meal }) {
 interface Review {
   id: string;
   rating: number;
+<<<<<<< HEAD
   feedback?: string | null;
   createdAt: string;
   user?: { name?: string; image?: string | null };
+=======
+  comment?: string;
+  createdAt: string;
+  customer?: { user?: { name?: string; image?: string } };
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 }
 
 interface UniqueCategory { id: string; name: string; }
@@ -159,6 +170,10 @@ export default function RestaurantDetailPage() {
   const fetchData = useCallback(async (filters: Record<string, string>) => {
     try {
       const res = await getRestaurantById(id, filters as any);
+<<<<<<< HEAD
+=======
+      console.log("Id--------:", res);
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
       if (res?.success) setData(res.data);
     } catch { /* silent */ }
     setLoading(false);
@@ -219,9 +234,14 @@ export default function RestaurantDetailPage() {
               <div className="rd__info-left">
                 <div className="rd__badge-row">
                   <span className="rd__badge rd__badge--type">{BADGE_LABEL[r.businessCategory] ?? r.businessCategory}</span>
+<<<<<<< HEAD
                   <span className="rd__badge rd__badge--city"><MapPin size={10} style={{
                     display: "inline",
                   }} /> {r.city}</span>
+=======
+                  <span className="rd__badge rd__badge--city"><MapPin size={10} style={{ 
+                    display: "inline", }} /> {r.city}</span>
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
                 </div>
                 <h1 className="rd__name">{r.businessName}</h1>
                 {r.bio && <p className="rd__bio">{r.bio}</p>}
@@ -391,6 +411,7 @@ export default function RestaurantDetailPage() {
             {/* Reviews */}
             {r && r.reviews && r.reviews.length > 0 && (
               <div className="rd__reviews">
+<<<<<<< HEAD
                 {/* Section header */}
                 <div className="rd__reviews-header">
                   <div>
@@ -464,6 +485,34 @@ export default function RestaurantDetailPage() {
               </div>
             )}
 
+=======
+                <h2 className="rd__reviews-title">Customer Reviews</h2>
+                <div className="rd__review-grid">
+                  {r.reviews.map((rv) => (
+                    <div key={rv.id} className="rd__review-card">
+                      <div className="rd__review-header">
+                        <div className="rd__review-avatar">
+                          {rv.customer?.user?.image ? (
+                            <img src={rv.customer.user.image} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                          ) : (
+                            (rv.customer?.user?.name?.[0] ?? "?").toUpperCase()
+                          )}
+                        </div>
+                        <div className="rd__review-meta">
+                          <div className="rd__review-name">{rv.customer?.user?.name ?? "Customer"}</div>
+                          <div className="rd__review-date">
+                            {new Date(rv.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                          </div>
+                        </div>
+                      </div>
+                      <StarRow rating={rv.rating} />
+                      {rv.comment && <p className="rd__review-text">{rv.comment}</p>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
           </div>
         </div>
       </div>

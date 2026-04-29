@@ -25,7 +25,13 @@ export default async function DashboardRootLayout({
       `${process.env.NEXT_PUBLIC_API_URL}/auth/me`,
       {
         headers: { cookie: cookieHeader },
+<<<<<<< HEAD
         cache: "no-store",
+=======
+        // cache for 30 seconds — revalidates on navigation but not on every
+        // sub-component render within the same request
+        next: { revalidate: 30 },
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
       }
     );
 

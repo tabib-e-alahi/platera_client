@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import api from "@/lib/axios";
 
 export const getHeroStats = async (): Promise<{
@@ -22,12 +23,24 @@ export const getHeroStats = async (): Promise<{
   }
 };
 
+=======
+// src/services/public.service.ts
+
+import api from "@/lib/axios";
+
+/* ── Categories ───────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 export const getCategories = async () => {
   const res = await api.get("/public/categories");
   return res.data;
 };
 
+<<<<<<< HEAD
+=======
+/* ── Restaurants ──────────────────────────────────────────────────────────── */
+
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export const getRestaurants = async (params?: {
   search?: string;
   city?: string;
@@ -42,6 +55,7 @@ export const getRestaurants = async (params?: {
 };
 
 export const getFeaturedRestaurants = async () => {
+<<<<<<< HEAD
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/public/restaurants/featured`, {
     next: { revalidate: 60 },
   });
@@ -51,6 +65,10 @@ export const getFeaturedRestaurants = async () => {
   }
   const data = await res.json();
   return data;
+=======
+  const res = await api.get("/public/restaurants/featured");
+  return res.data;
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 };
 
 export const getRestaurantById = async (
@@ -67,6 +85,16 @@ export const getRestaurantById = async (
   return res.data;
 };
 
+<<<<<<< HEAD
+=======
+/* ── Top dishes (homepage) ────────────────────────────────────────────────── */
+
+/**
+ * Fetches up to 9 featured/bestseller meals for the homepage "Signature
+ * Collection" section. Sorted by order count descending.
+ * GET /public/top-dishes
+ */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export const getTopDishes = async (params?: { limit?: number }) => {
   const res = await api.get("/public/top-dishes", {
     params: { limit: params?.limit ?? 9 },
@@ -74,6 +102,16 @@ export const getTopDishes = async (params?: { limit?: number }) => {
   return res.data;
 };
 
+<<<<<<< HEAD
+=======
+/* ── Testimonials (homepage) ─────────────────────────────────────────────── */
+
+/**
+ * Fetches the most recent 5-star reviews (rating >= 4) with non-empty
+ * feedback, for display in the homepage testimonials section.
+ * GET /public/testimonials
+ */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export const getHomeTestimonials = async (params?: { limit?: number }) => {
   const res = await api.get("/public/testimonials", {
     params: { limit: params?.limit ?? 9 },

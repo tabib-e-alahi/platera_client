@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+<<<<<<< HEAD
   images: {
     remotePatterns: [
       {
@@ -31,6 +32,25 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+=======
+  /* config options here */
+  images:{
+    remotePatterns:[
+      {
+        protocol:"https",
+        hostname:"res.cloudinary.com",
+      },
+      {
+        protocol:"https",
+        hostname:"plus.unsplash.com",
+      },
+      {
+        protocol:"https",
+        hostname:"**"
+      }
+    ],
+  }
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 };
 
 export default nextConfig;

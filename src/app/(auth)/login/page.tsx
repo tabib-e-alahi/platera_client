@@ -2,8 +2,11 @@ import type { Metadata } from "next"
 import "./login.css"
 import { LoginForm } from "../_components/Auth/LoginForm"
 import WantToProvider from "../_components/WantToProviderButton/WantToProvider"
+<<<<<<< HEAD
 import { Suspense } from "react"
 import LoadingPage from "@/components/shared/loading/LoadingCompo"
+=======
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 export const metadata: Metadata = {
   title: "Sign In — Platera",
@@ -58,7 +61,11 @@ export default function LoginPage() {
             </ul>
           </div>
 
+<<<<<<< HEAD
           <WantToProvider></WantToProvider>
+=======
+        <WantToProvider></WantToProvider>
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
         </div>
       </aside>
 
@@ -68,12 +75,19 @@ export default function LoginPage() {
       {/* RIGHT — form */}
       <main className="login-right">
         <div className="login-right__inner">
+<<<<<<< HEAD
           <Suspense fallback={<LoadingPage></LoadingPage>}>
             <LoginForm />
           </Suspense>
         </div>
       </main>
 
+=======
+          <LoginForm />
+        </div>
+      </main>
+  
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
     </div>
   )
 }

@@ -5,8 +5,24 @@ import api from "@/lib/axios";
 // ── Dashboard ──────────────────────────────────────────────────────────────────
 
 export const getAdminDashboardStats = async () => {
+<<<<<<< HEAD
   const res = await api.get("/admins/dashboard");
   return res.data;
+=======
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admins/dashboard`, {
+    method: "GET",
+    credentials: "include", // ✅ include cookies
+    next: {
+      revalidate: 10, // ✅ revalidate every 10 seconds
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch dashboard stats");
+  }
+
+  return res.json();
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 };
 
 // ── Provider management ────────────────────────────────────────────────────────
@@ -87,14 +103,53 @@ export const toggleUserStatus = async (userId: string) => {
 
 // ── Orders ─────────────────────────────────────────────────────────────────────
 
+<<<<<<< HEAD
 export const getAdminOrders = async (params?: {
+=======
+export const getAdminOrders = async function (params?: {
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
   page?: number;
   limit?: number;
   search?: string;
   status?: string;
+<<<<<<< HEAD
 }) => {
   const res = await api.get("/admins/orders", { params });
   return res.data;
+=======
+}) {
+  try {
+    const url = new URL(
+      `${process.env.NEXT_PUBLIC_API_URL}/admins/orders`
+    );
+
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== "") {
+          url.searchParams.append(key, String(value));
+        }
+      });
+    }
+
+    const res = await fetch(url.toString(), {
+      credentials: "include",
+      next: {
+        revalidate: 120, // ⏱ cache for 120 seconds
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch admin orders");
+    }
+
+    const data = await res.json();
+
+    return data
+  } catch (err) {
+    console.error("getAdminOrders error:", err);
+    throw err;
+  }
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 };
 
 export const getAdminOrderDetail = async (id: string) => {
@@ -141,9 +196,36 @@ export const bulkSettleProvider = async (providerId: string, note?: string) => {
   return res.data;
 };
 
+<<<<<<< HEAD
 export const getAdminCategories = async () => {
   const res = await api.get("/admins/categories");
   return res.data;
+=======
+// ── Category management ────────────────────────────────────────────────────────
+
+// export const getAdminCategories = async () => {
+//   const res = await api.get("/admins/categories");
+//   return res.data;
+// };
+
+export const getAdminCategories = async function () {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/admins/categories`,
+      {
+        credentials: "include",
+        next: { revalidate: 60 },
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch admin categories");
+    }
+    const data = await res.json();
+    return data
+  } catch (err) {
+    throw err;
+  }
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 };
 
 export const createCategory = async (payload: {
@@ -178,6 +260,7 @@ export const deleteCategory = async (id: string) => {
 export const toggleCategoryStatus = async (id: string) => {
   const res = await api.patch(`/admins/categories/${id}/toggle`);
   return res.data;
+<<<<<<< HEAD
 };
 
 
@@ -294,4 +377,6 @@ export const reactivateAdminAccount = async (id: string) => {
 export const deleteAdminAccount = async (id: string) => {
   const res = await api.delete(`/admins/admins/${id}`);
   return res.data;
+=======
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 };

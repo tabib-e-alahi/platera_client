@@ -2,12 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+<<<<<<< HEAD
 
 import "./statistics.css";
 import { getProviderDashboardStats } from "@/services/provider.service";
 import { getProviderRevenueChart } from "@/services/order.service";
 
 
+=======
+import { getProviderDashboardStats, getProviderRevenueChart } from "@/services/order.service";
+import "./statistics.css";
+
+/* ─── Types ──────────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 type TStats = {
   totalOrders: number;
   pendingOrders: number;
@@ -28,12 +35,20 @@ type TStats = {
 
 type TChartEntry = { label: string; revenue: number; orders: number };
 
+<<<<<<< HEAD
+=======
+/* ─── Helpers ────────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 const n = (v: any) => Number(v ?? 0);
 const fmt = (v: number) =>
   v >= 1_000_000 ? `৳${(v / 1_000_000).toFixed(1)}M`
   : v >= 1_000   ? `৳${(v / 1_000).toFixed(1)}K`
   : `৳${v.toFixed(0)}`;
 
+<<<<<<< HEAD
+=======
+/* ─── Skeleton ───────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function StatSkeleton() {
   return (
     <div className="pstat-skeleton">
@@ -47,6 +62,10 @@ function StatSkeleton() {
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Mini bar chart ─────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function BarChart({ data }: { data: TChartEntry[] }) {
   if (!data.length) return <div className="pstat-chart__empty">No data available.</div>;
   const maxRev = Math.max(...data.map(d => d.revenue), 1);
@@ -76,6 +95,10 @@ function BarChart({ data }: { data: TChartEntry[] }) {
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Stat card ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function StatCard({
   label, value, sub, icon, color, large,
 }: {
@@ -94,7 +117,11 @@ function StatCard({
   );
 }
 
+<<<<<<< HEAD
 
+=======
+/* ─── Main page ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export default function ProviderStatisticsPage() {
   const [stats, setStats] = useState<TStats | null>(null);
   const [chart, setChart] = useState<TChartEntry[]>([]);

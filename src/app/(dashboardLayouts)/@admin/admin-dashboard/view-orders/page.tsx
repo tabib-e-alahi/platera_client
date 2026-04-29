@@ -5,6 +5,10 @@ import { toast } from "sonner";
 import { getAdminOrderDetail, getAdminOrders } from "@/services/admin.service";
 import "./admin-orders.css";
 
+<<<<<<< HEAD
+=======
+/* ─── Types ──────────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 type TOrderItem = {
   id: string; mealName: string; mealImageUrl?: string | null;
   quantity: number; unitPrice: string | number; totalPrice: string | number;
@@ -30,6 +34,10 @@ type TOrder = {
   orderStatusHistories?: Array<{ id: string; status: string; note?: string | null; createdAt: string; changedByRole?: string }>;
 };
 
+<<<<<<< HEAD
+=======
+/* ─── Constants ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 const n = (v: string | number | null | undefined) => Number(v ?? 0);
 
 const STATUS_META: Record<string, { label: string; icon: string }> = {
@@ -61,6 +69,10 @@ function fmt(d: string, time = false) {
   });
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Skeleton rows ──────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function TableSkeleton() {
   return (
     <>
@@ -75,7 +87,11 @@ function TableSkeleton() {
   );
 }
 
+<<<<<<< HEAD
 
+=======
+/* ─── Detail drawer ──────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function OrderDrawer({ orderId, onClose }: { orderId: string; onClose: () => void }) {
   const [order, setOrder] = useState<TOrder | null>(null);
   const [loading, setLoading] = useState(true);
@@ -255,6 +271,10 @@ function OrderDrawer({ orderId, onClose }: { orderId: string; onClose: () => voi
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Main page ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export default function AdminViewOrdersPage() {
   const [orders, setOrders] = useState<TOrder[]>([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -17,6 +17,10 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/providers/AuthProvider";
 import { validateImageDimensions } from "@/utils/imageValidation";
+<<<<<<< HEAD
+=======
+import { error } from "console";
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 import { BANGLADESH_DISTRICTS } from "@/constants/bangladeshDistricts";
 
 // ─── Types & Enums ────────────────────────────────────────────────────────────
@@ -45,6 +49,11 @@ interface FormData {
   postalCode: string;
 }
 
+<<<<<<< HEAD
+=======
+// ─── Zod Schemas ──────────────────────────────────────────────────────────────
+
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 const step1Schema = z.object({
   businessName: z
     .string()
@@ -84,6 +93,10 @@ const step2Schema = z.object({
 type Step1Values = z.infer<typeof step1Schema>;
 type Step2Values = z.infer<typeof step2Schema>;
 
+<<<<<<< HEAD
+=======
+// ─── Constants ────────────────────────────────────────────────────────────────
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 const BUSINESS_TYPES: {
   value: BusinessCategory;
@@ -483,6 +496,10 @@ export default function ProviderSetupPage() {
       {/* Card */}
       <div className="ps-body">
         {submitted ? (
+<<<<<<< HEAD
+=======
+          /* ── SUCCESS ───────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
           <div className="ps-card">
             <div className="ps-success">
               <div className="ps-success__icon">
@@ -516,6 +533,10 @@ export default function ProviderSetupPage() {
 
           <div className="ps-card" key={step}>
 
+<<<<<<< HEAD
+=======
+            {/* ── STEP 1: Business Information ──────────────────── */}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
             {step === 1 && (
               <>
                 <div className="ps-card__head">
@@ -678,6 +699,11 @@ export default function ProviderSetupPage() {
                 </div>
               </>
             )}
+<<<<<<< HEAD
+=======
+
+            {/* ── STEP 2: Address ───────────────────────────────── */}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
             {step === 2 && (
               <>
                 <div className="ps-card__head">
@@ -822,6 +848,10 @@ export default function ProviderSetupPage() {
               </>
             )}
 
+<<<<<<< HEAD
+=======
+            {/* ── STEP 3: Photos ────────────────────────────────── */}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
             {step === 3 && (
               <>
                 <div className="ps-card__head">
@@ -954,6 +984,10 @@ export default function ProviderSetupPage() {
               </>
             )}
 
+<<<<<<< HEAD
+=======
+            {/* ── STEP 4: Review ────────────────────────────────── */}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
             {step === 4 && saved1 && saved2 && (
               <>
                 <div className="ps-card__head">

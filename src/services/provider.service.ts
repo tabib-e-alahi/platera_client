@@ -36,6 +36,11 @@ export const deleteProviderImage = async (
   return res.data
 }
 
+<<<<<<< HEAD
+=======
+//* ─── Meals ────────────────────────────────────────────────────────────────────
+
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export const getMyMeals = async (params?: {
   page?: number
   limit?: number
@@ -49,6 +54,10 @@ export const getMyMeals = async (params?: {
 
 export const getMyMealById = async (id: string) => {
   const res = await api.get(`/provider/meals/${id}`)
+<<<<<<< HEAD
+=======
+  // console.log("From provider service: =====> ", res);
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
   return res.data
 }
 
@@ -83,12 +92,20 @@ export const deleteGalleryImage = async (id: string, imageUrl: string) => {
   return res.data;
 };
 
+<<<<<<< HEAD
+=======
+// ─── Categories (public — for select dropdown) ────────────────────────────────
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 export const getCategories = async () => {
   const res = await api.get("/public/categories")
   return res.data
 }
 
+<<<<<<< HEAD
+=======
+// ─── Dashboard Stats ─────────────────────────────────────────────────────────
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 export const getProviderDashboardStats = async () => {
   const res = await api.get("/providers/dashboard/stats");

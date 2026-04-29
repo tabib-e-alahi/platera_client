@@ -158,6 +158,10 @@
 .pord-card__amount { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 800; color: hsl(38 70% 35%); margin: 0; }
 .pord-card__date { font-size: 11.5px; color: #94a3b8; }
 
+<<<<<<< HEAD
+=======
+/* status badge */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .pord-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
 .pord-badge--placed           { background: hsl(38 70% 55% / 0.12); color: hsl(38 65% 30%); border: 1px solid hsl(38 70% 55% / 0.25); }
 .pord-badge--accepted         { background: rgba(59,130,246,0.08); color: #1d4ed8; border: 1px solid rgba(59,130,246,0.2); }

@@ -214,6 +214,10 @@ export default function AddMealForm() {
       galleryFiles.forEach((file) => formData.append("galleryImages", file))
 
       const res = await createMeal(formData)
+<<<<<<< HEAD
+=======
+      console.log(res);
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
       if (res?.success) {
         toast.success("Meal created successfully!")
         router.push("/provider-dashboard/menu")

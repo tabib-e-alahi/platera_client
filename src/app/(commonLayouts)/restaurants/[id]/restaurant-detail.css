@@ -497,6 +497,7 @@
 }
 
 /* ── Reviews ── */
+<<<<<<< HEAD
 /* ─────────────────────────────────────────────────────────────────────────────
    RESTAURANT DETAIL — REVIEWS SECTION  (restaurant-detail.css)
    Replace everything from "/* ── Reviews ──" to end of rd__review-text block.
@@ -520,11 +521,19 @@
     flex-wrap: wrap;
 }
 
+=======
+.rd__reviews {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid hsl(var(--border));
+}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .rd__reviews-title {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
     color: hsl(var(--wine-deep));
+<<<<<<< HEAD
     margin: 0 0 0.25rem;
     letter-spacing: -0.02em;
 }
@@ -566,10 +575,20 @@
 }
 
 /* ── Review card ──────────────────────────────────────────────────────────── */
+=======
+    margin-bottom: 1.5rem;
+}
+.rd__review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .rd__review-card {
     background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
     border-radius: 1.1rem;
+<<<<<<< HEAD
     padding: 0;
     overflow: hidden;
     display: flex;
@@ -658,24 +677,55 @@
     object-fit: cover;
     background: hsl(var(--wine) / 0.1);
     border: 1.5px solid hsl(var(--wine) / 0.15);
+=======
+    padding: 1.25rem;
+}
+.rd__review-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+.rd__review-avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background: hsl(var(--wine) / 0.1);
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
+<<<<<<< HEAD
     font-size: 0.82rem;
+=======
+    font-size: 0.9rem;
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
     font-weight: 700;
     color: hsl(var(--wine));
     overflow: hidden;
     flex-shrink: 0;
 }
+<<<<<<< HEAD
 .rd__review-meta { flex: 1; min-width: 0; }
 .rd__review-name {
     font-weight: 600;
     font-size: 0.82rem;
+=======
+.rd__review-meta {
+    flex: 1;
+    min-width: 0;
+}
+.rd__review-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
     color: hsl(var(--foreground));
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+<<<<<<< HEAD
     margin-bottom: 0.1rem;
 }
 .rd__review-date {
@@ -684,10 +734,29 @@
 }
 
 /* Legacy compat (kept so nothing breaks if old class is referenced elsewhere) */
+=======
+}
+.rd__review-date {
+    font-size: 0.72rem;
+    color: hsl(var(--muted-foreground));
+}
+.rd__review-stars {
+    display: flex;
+    gap: 0.15rem;
+    margin-bottom: 0.5rem;
+}
+.rd__review-star--filled {
+    color: hsl(var(--gold));
+}
+.rd__review-star--empty {
+    color: hsl(var(--muted-foreground) / 0.35);
+}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .rd__review-text {
     font-size: 0.85rem;
     color: hsl(var(--muted-foreground));
     line-height: 1.55;
+<<<<<<< HEAD
     padding: 0 1.1rem 1rem;
     margin: 0;
 }
@@ -698,6 +767,8 @@
     .rd__reviews-agg { padding: 0.5rem 0.85rem; }
     .rd__reviews-agg-num { font-size: 1.5rem; }
     .rd__reviews-header { align-items: flex-start; }
+=======
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 }
 
 /* ── Loading skeleton ── */

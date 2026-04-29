@@ -1,6 +1,10 @@
 .menu {
     position: relative;
+<<<<<<< HEAD
     padding: 0rem 2rem 3rem 2rem;
+=======
+    padding: 0rem 2rem 5rem 2rem;
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
     background: hsl(var(--cream));
     overflow: hidden;
 }
@@ -24,6 +28,10 @@
     padding: 5rem 0rem;
 }
 
+<<<<<<< HEAD
+=======
+/* ── Header ───────────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .menu__header {
     text-align: center;
     margin-bottom: 3rem;
@@ -77,6 +85,10 @@
     font-weight: 300;
 }
 
+<<<<<<< HEAD
+=======
+/* ── Category tabs ────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .menu__tabs {
     display: flex;
     justify-content: center;
@@ -115,6 +127,10 @@
     box-shadow: 0 4px 16px hsl(var(--wine) / 0.2);
 }
 
+<<<<<<< HEAD
+=======
+/* ── CTA ──────────────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .menu__cta {
     text-align: center;
     margin-top: 3.5rem;
@@ -148,6 +164,10 @@
     box-shadow: 0 8px 30px hsl(var(--gold) / 0.4);
 }
 
+<<<<<<< HEAD
+=======
+/* ── Dish price (replaces the MapPin/city in rest-card__header) ───────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .rest-card__dish-price {
     display: flex;
     align-items: baseline;
@@ -171,6 +191,10 @@
     white-space: nowrap;
 }
 
+<<<<<<< HEAD
+=======
+/* ── Discount badge ───────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .rest-card__badge--discount {
     background: hsl(var(--wine));
     color: hsl(var(--cream));
@@ -183,6 +207,10 @@
     border-radius: 9999px;
 }
 
+<<<<<<< HEAD
+=======
+/* ── Image placeholder ────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .rest-card__image-placeholder {
     width: 100%;
     height: 100%;
@@ -197,6 +225,10 @@
     color: hsl(var(--gold) / 0.35);
 }
 
+<<<<<<< HEAD
+=======
+/* ── Skeleton ─────────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .rest-card--skeleton {
     pointer-events: none;
     cursor: default;

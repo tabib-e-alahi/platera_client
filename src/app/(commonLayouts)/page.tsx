@@ -6,8 +6,11 @@ import FeaturedRestaurants from "./_components/Home/FeaturedRestaurant/FeaturesR
 import AboutSection from "./_components/Home/AboutSection/AboutSection";
 import TestimonialsSection from "./_components/Home/Testimonials/TestimonialsSection";
 import TopDishes from './_components/Home/TopDishes/TopDishes';
+<<<<<<< HEAD
 import CuisineCategories from "./_components/Home/CuisineCategories/CuisineCategories";
 
+=======
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 
 export const metadata: Metadata = {
@@ -19,11 +22,18 @@ export const metadata: Metadata = {
 // ISR — revalidate every 5 minutes
 export const revalidate = 300;
 
+<<<<<<< HEAD
 export default async function HomePage() {
   return (
     <>
       <HeroSection />
       <CuisineCategories></CuisineCategories>
+=======
+export default function HomePage() {
+  return (
+    <>
+      <HeroSection />
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
       <FeaturedRestaurants></FeaturedRestaurants>
       <TopDishes />
       <TestimonialsSection></TestimonialsSection>

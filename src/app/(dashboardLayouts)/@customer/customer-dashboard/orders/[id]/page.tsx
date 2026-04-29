@@ -9,6 +9,11 @@ import { useOrderTracking } from "@/hooks/useOrderTracking";
 import { cancelMyOrder } from "@/services/order.service";
 import "./order-tracking.css";
 
+<<<<<<< HEAD
+=======
+/* ─── Types & constants ──────────────────────────────────────────────────── */
+
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 const ORDER_STEPS = [
   {
     key: "PENDING_PAYMENT",
@@ -84,6 +89,10 @@ function getDeliveryAddress(data: any): string {
   return parts.join(", ") || "—";
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Sub-components ─────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 function LiveIndicator({
   streamState,
@@ -157,6 +166,10 @@ function CancelModal({
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Main page ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 export default function CustomerOrderTrackingPage() {
   const params = useParams();
@@ -182,7 +195,11 @@ export default function CustomerOrderTrackingPage() {
     }
   };
 
+<<<<<<< HEAD
 
+=======
+  /* ── Loading skeleton ── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
   if (isLoading) {
     return (
       <div className="ot">
@@ -198,7 +215,11 @@ export default function CustomerOrderTrackingPage() {
     );
   }
 
+<<<<<<< HEAD
 
+=======
+  /* ── Error state ── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
   if (isError || !data) {
     return (
       <div className="ot">
@@ -223,6 +244,10 @@ export default function CustomerOrderTrackingPage() {
     );
   }
 
+<<<<<<< HEAD
+=======
+  /* ── Compute step progress ── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
   const isCancelled = data.status === "CANCELLED" || data.status === "REFUNDED";
   const currentStepIdx = ORDER_STEPS.findIndex((s) => s.key === data.status);
   const canCancel = CANCELLABLE_STATUSES.includes(data.status);

@@ -118,6 +118,7 @@ export default function CustomerProfilePage() {
       toast.error("Street address is required.");
       return false;
     }
+<<<<<<< HEAD
     if (!form.phone.trim()) {
       toast.error("Phone number is required.");
       return false;
@@ -126,6 +127,8 @@ export default function CustomerProfilePage() {
       toast.error("House number is required.");
       return false;
     }
+=======
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
     return true;
   };
 
@@ -168,6 +171,10 @@ export default function CustomerProfilePage() {
     }
   };
 
+<<<<<<< HEAD
+=======
+  /* ── loading ── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
   if (isLoading) {
     return (
       <div className="cpp">
@@ -176,11 +183,19 @@ export default function CustomerProfilePage() {
     );
   }
 
+<<<<<<< HEAD
 
   return (
     <div className="cpp">
 
 
+=======
+  /* ── page ── */
+  return (
+    <div className="cpp">
+
+      {/* header card */}
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
       <div className="cpp__header-card">
         <div className="cpp__header-text">
           <h1 className="cpp__title">My profile</h1>
@@ -223,7 +238,11 @@ export default function CustomerProfilePage() {
             <div className="cpp__field">
               <label htmlFor="cpp-phone" className="cpp__label">
                 Phone number
+<<<<<<< HEAD
                 <span className="cpp__required">*</span>
+=======
+                <span className="cpp__optional">optional</span>
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
               </label>
               <input
                 id="cpp-phone"
@@ -288,7 +307,11 @@ export default function CustomerProfilePage() {
             <div className="cpp__field">
               <label htmlFor="cpp-house" className="cpp__label">
                 House number
+<<<<<<< HEAD
                 <span className="cpp__required">*</span>
+=======
+                <span className="cpp__optional">optional</span>
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
               </label>
               <input
                 id="cpp-house"

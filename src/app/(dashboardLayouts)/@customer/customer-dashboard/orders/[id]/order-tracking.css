@@ -166,6 +166,10 @@
   border-color: rgba(239,68,68,0.5);
 }
 
+<<<<<<< HEAD
+=======
+/* ── Status badge ─────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 .ot-badge {
   display: inline-flex;
   align-items: center;

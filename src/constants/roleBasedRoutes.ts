@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // src/constants/roleBasedRoutes.ts
 
+=======
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 import { ShoppingBag } from 'lucide-react';
 import {
   UtensilsCrossed,
@@ -9,9 +12,15 @@ import {
   LayoutDashboard,
   LucideIcon,
   Users,
+<<<<<<< HEAD
   User2,
   Hamburger,
   MessageSquare,  // ✅ NEW — for Support Messages nav item
+=======
+  Home,
+  User2,
+  Hamburger,
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 } from "lucide-react"
 
 export const Provider_NAV_ITEMS = [
@@ -25,6 +34,10 @@ export const Provider_NAV_ITEMS = [
   { label: "Add Meal", href: "/provider-dashboard/add-meal", icon: PlusCircle },
   { label: "Orders", href: "/provider-dashboard/orders", icon: ListOrdered },
   { label: "Profile", href: "/provider-dashboard/profile", icon: User },
+<<<<<<< HEAD
+=======
+  { label: "Home", href: "/", icon: Home, active: false },
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 ]
 
 export const Admin_NAV_ITEMS = [
@@ -40,6 +53,7 @@ export const Admin_NAV_ITEMS = [
   { label: "Orders", href: "/admin-dashboard/view-orders", icon: ListOrdered },
   { label: "Manage Categories", href: "/admin-dashboard/manage-categories", icon: User },
   { label: "Settlements", href: "/admin-dashboard/settlements", icon: ShoppingBag },
+<<<<<<< HEAD
   // ✅ NEW
   { label: "Support Messages", href: "/admin-dashboard/support-messages", icon: MessageSquare },
 ]
@@ -47,13 +61,25 @@ export const Admin_NAV_ITEMS = [
 export const Super_Admin_NAV_ITEMS = [...Admin_NAV_ITEMS,
 { label: "Admins", href: "/admin-dashboard/admins", icon: Users }]
 
+=======
+  { label: "Home", href: "/", icon: Home, active: false },
+]
+
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export const Customer_NAV_ITEMS = [
   { label: "My Profile", href: "/customer-dashboard/profile", icon: User2 },
   { label: "My Orders", href: "/customer-dashboard/orders", icon: ListOrdered },
   { label: "Browse Food", href: "/restaurants", icon: Hamburger },
   { label: "My Cart", href: "/cart", icon: ShoppingBag },
+<<<<<<< HEAD
 ]
 
+=======
+  { label: "Home", href: "/", icon: Home, active: false },
+]
+
+
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export type Route = {
   label: string
   href: string

@@ -9,6 +9,10 @@ import {
 } from "@/services/order.service";
 import "./provider-orders.css";
 
+<<<<<<< HEAD
+=======
+/* ─── Types ──────────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 type TOrderItem = {
   id: string; mealName: string; mealImageUrl?: string | null;
   quantity: number; unitPrice: string | number; totalPrice: string | number;
@@ -26,6 +30,10 @@ type TOrder = {
   payments?: Array<{ status: string; amount: string | number; gatewayName?: string | null }>;
 };
 
+<<<<<<< HEAD
+=======
+/* ─── Constants ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 const n = (v: string | number | null | undefined) => Number(v ?? 0);
 
 const STATUS_META: Record<string, { label: string; icon: string; rowClass: string }> = {
@@ -71,6 +79,10 @@ function fmt(d: string) {
   });
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Confirm modal ──────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function ConfirmModal({
   message, onConfirm, onCancel, isBusy,
 }: {
@@ -92,6 +104,10 @@ function ConfirmModal({
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Skeleton ───────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function OrderSkeleton() {
   return (
     <div className="pord-skeleton">
@@ -111,6 +127,10 @@ function OrderSkeleton() {
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Order card ─────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 function OrderCard({
   order, onAction, busyId,
 }: {
@@ -212,6 +232,10 @@ function OrderCard({
   );
 }
 
+<<<<<<< HEAD
+=======
+/* ─── Main page ──────────────────────────────────────────────────────────── */
+>>>>>>> dc5656236feee959b1e0e891718009336b905842
 export default function ProviderOrdersPage() {
   const [orders, setOrders] = useState<TOrder[]>([]);
   const [stats, setStats] = useState<any>(null);
