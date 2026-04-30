@@ -26,7 +26,7 @@
     font-family: "Playfair Display", serif;
     font-size: 26px;
     font-weight: 700;
-    color: hsl(20 20% 12%);
+    color: hsl(var(--cream-hero));
     letter-spacing: -0.4px;
     margin: 0 0 4px;
 }

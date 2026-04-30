@@ -142,7 +142,7 @@ export const bulkSettleProvider = async (providerId: string, note?: string) => {
 };
 
 export const getAdminCategories = async () => {
-  const res = await api.get("/admins/categories");
+  const res = await api.get("/admins/categories/all");
   return res.data;
 };
 
