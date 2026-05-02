@@ -10,17 +10,17 @@ export const metadata: Metadata = {
 };
 
 const TEAM = [
-  { name: "Arif Hossain",    role: "Co-Founder & CEO",          initials: "AH", color: "wine" },
-  { name: "Nadia Rahman",    role: "Co-Founder & Head of Ops",  initials: "NR", color: "amber" },
-  { name: "Tanvir Ahmed",    role: "Lead Engineer",              initials: "TA", color: "blue" },
-  { name: "Sadia Islam",     role: "Head of Provider Success",  initials: "SI", color: "green" },
+  { name: "Tabib E Alahi",    role: "Co-Founder & CEO",          initials: "TEA", color: "wine" },
+  { name: "Tabib E Alahi",    role: "Co-Founder & CEO",          initials: "TEA", color: "wine" },
+  { name: "Tabib E Alahi",    role: "Co-Founder & CEO",          initials: "TEA", color: "wine" },
+  { name: "Tabib E Alahi",    role: "Co-Founder & CEO",          initials: "TEA", color: "wine" },
 ];
 
 const MILESTONES = [
-  { year: "2023", title: "The idea", body: "Frustrated by poor food delivery apps, two friends decided to build something better for Bangladesh." },
-  { year: "2024 Q1", title: "First 50 providers", body: "Launched in Dhaka with 50 hand-picked home kitchens. Sold out within the first weekend." },
-  { year: "2024 Q3", title: "Full platform launch", body: "Online payments via SSLCommerz, real-time order tracking, and provider dashboards went live." },
-  { year: "2025", title: "Going national", body: "Expanding to Chittagong, Sylhet, and Rajshahi. 500+ verified providers and counting." },
+  { year: "2024", title: "The idea", body: "Frustrated by poor food delivery apps, two friends decided to build something better for Bangladesh." },
+  { year: "2025 Q1", title: "First 50 providers", body: "Launched in Dhaka with 50 hand-picked home kitchens. Sold out within the first weekend." },
+  { year: "2025 Q3", title: "Full platform launch", body: "Online payments via SSLCommerz, real-time order tracking, and provider dashboards went live." },
+  { year: "2026", title: "Going national", body: "Expanding to Chittagong, Sylhet, and Rajshahi. 500+ verified providers and counting." },
 ];
 
 const VALUES = [
