@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-// src/HelpersAndAttributes/CustomerOrder/typesAndConstants.ts  — FULL REPLACEMENT
 
 export type TOrderItem = {
   id:           string;
-  mealId:       string;       // ← added: needed for ReviewButton
+  mealId:       string;   
   mealName:     string;
   mealImageUrl?: string | null;
   quantity:     number;
@@ -13,7 +11,7 @@ export type TOrderItem = {
 
 export type TPayment = {
   id:     string;
-  status: string; // "PENDING" | "SUCCESS" | "FAILED" | "CANCELLED" | "REFUNDED"
+  status: string; 
   amount: string | number;
   gatewayName?: string | null;
   refundedAt?:  string | null;
@@ -25,7 +23,6 @@ export type TPayment = {
   } | null;
 };
 
-// Shape returned by cancelMyOrder (data.refund)
 export type TRefundResult =
   | {
       attempted:   true;
@@ -39,7 +36,6 @@ export type TRefundResult =
       reason:    string;
     };
 
-// Shape of data returned by cancelMyOrder
 export type TCancelResult = {
   order:  { id: string; status: string };
   refund: TRefundResult;
@@ -77,66 +73,12 @@ export type TOrder = {
   payments:   TPayment[];
 };
 
-=======
-export type TOrderItem = {
-  id: string;
-  mealName: string;
-  mealImageUrl?: string | null;
-  quantity: number;
-  unitPrice: string | number;
-  totalPrice: string | number;
-};
-
-export type TPayment = {
-  id: string;
-  status: string;
-  amount: string | number;
-  gatewayName?: string | null;
-};
-
-export type TOrder = {
-  id: string;
-  orderNumber: string;
-  status: string;
-  paymentMethod: string;
-  totalAmount: string | number;
-  subtotal: string | number;
-  deliveryFee: string | number;
-  discountAmount: string | number;
-  createdAt: string;
-  placedAt?: string | null;
-  acceptedAt?: string | null;
-  deliveredAt?: string | null;
-  cancelledAt?: string | null;
-  deliveryCity?: string;
-  deliveryStreetAddress?: string | null;
-  deliveryHouseNumber?: string | null;
-  deliveryApartment?: string | null;
-  deliveryPostalCode?: string | null;
-  deliveryNote?: string | null;
-  customerName?: string | null;
-  customerPhone?: string | null;
-  provider?: {
-    id: string;
-    businessName: string;
-    imageURL?: string | null;
-    city?: string;
-  };
-  orderItems: TOrderItem[];
-  payments: TPayment[];
-};
-
-
-//* ─── Constants ─────────────────────────────────────────────────────────── 
-
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 export const n = (v: string | number | null | undefined) => Number(v ?? 0);
 
 export const STATUS_CONFIG: Record<
   string,
   { label: string; color: string; icon: string; description: string }
 > = {
-<<<<<<< HEAD
   PENDING_PAYMENT:  { label: "Pending Payment", color: "red",    icon: "💳", description: "Awaiting payment confirmation" },
   PLACED:           { label: "Order Placed",    color: "amber",  icon: "📋", description: "Your order has been placed" },
   ACCEPTED:         { label: "Accepted",        color: "blue",   icon: "✅", description: "Provider accepted your order" },
@@ -145,56 +87,6 @@ export const STATUS_CONFIG: Record<
   DELIVERED:        { label: "Delivered",       color: "green",  icon: "🎉", description: "Order delivered successfully" },
   CANCELLED:        { label: "Cancelled",       color: "slate",  icon: "✕",  description: "Order was cancelled" },
   REFUNDED:         { label: "Refunded",        color: "violet", icon: "↩",  description: "Order cancelled — payment refunded" },
-=======
-  PENDING_PAYMENT: {
-    label: "Pending Payment",
-    color: "red",
-    icon: "💳",
-    description: "Awaiting payment confirmation",
-  },
-  PLACED: {
-    label: "Order Placed",
-    color: "amber",
-    icon: "📋",
-    description: "Your order has been placed",
-  },
-  ACCEPTED: {
-    label: "Accepted",
-    color: "blue",
-    icon: "✅",
-    description: "Provider accepted your order",
-  },
-  PREPARING: {
-    label: "Preparing",
-    color: "yellow",
-    icon: "👨‍🍳",
-    description: "Your food is being prepared",
-  },
-  OUT_FOR_DELIVERY: {
-    label: "Out for Delivery",
-    color: "purple",
-    icon: "🛵",
-    description: "Your order is on the way",
-  },
-  DELIVERED: {
-    label: "Delivered",
-    color: "green",
-    icon: "🎉",
-    description: "Order delivered successfully",
-  },
-  CANCELLED: {
-    label: "Cancelled",
-    color: "slate",
-    icon: "✕",
-    description: "Order was cancelled",
-  },
-  REFUNDED: {
-    label: "Refunded",
-    color: "violet",
-    icon: "↩",
-    description: "Payment has been refunded",
-  },
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 };
 
 export const FLOW_STEPS = [
@@ -205,7 +97,6 @@ export const FLOW_STEPS = [
   "DELIVERED",
 ] as const;
 
-<<<<<<< HEAD
 export const CANCELLABLE_STATUSES  = ["PENDING_PAYMENT", "PLACED", "ACCEPTED"];
 export const ACTIVE_STATUSES       = ["PLACED", "ACCEPTED", "PREPARING", "OUT_FOR_DELIVERY"];
 
@@ -217,16 +108,3 @@ export const TAB_FILTERS = [
   { label: "Refunded",        value: "REFUNDED" },
   { label: "Pending Payment", value: "PENDING_PAYMENT" },
 ];
-=======
-export const CANCELLABLE_STATUSES = ["PENDING_PAYMENT", "PLACED", "ACCEPTED"];
-
-export const TAB_FILTERS = [
-  { label: "All orders", value: "all" },
-  { label: "Active", value: "active" },
-  { label: "Delivered", value: "DELIVERED" },
-  { label: "Cancelled", value: "CANCELLED" },
-  { label: "Pending Payment", value: "PENDING_PAYMENT" },
-];
-
-export const ACTIVE_STATUSES = ["PLACED", "ACCEPTED", "PREPARING", "OUT_FOR_DELIVERY"];
->>>>>>> dc5656236feee959b1e0e891718009336b905842

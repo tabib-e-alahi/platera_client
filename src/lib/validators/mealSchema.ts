@@ -1,5 +1,3 @@
-// src/validators/meal.validator.ts
-
 import { z } from "zod";
 
 const optionalIntFromInput = (min?: number, minMessage?: string) =>

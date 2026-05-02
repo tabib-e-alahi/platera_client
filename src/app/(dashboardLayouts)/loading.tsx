@@ -1,4 +1,3 @@
-// src/app/(dashboardLayouts)/loading.tsx
 export default function DashboardLoading() {
   return (
     <div style={{
