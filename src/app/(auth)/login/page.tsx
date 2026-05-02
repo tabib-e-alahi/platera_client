@@ -4,6 +4,7 @@ import { LoginForm } from "../_components/Auth/LoginForm"
 import WantToProvider from "../_components/WantToProviderButton/WantToProvider"
 import { Suspense } from "react"
 import LoadingPage from "@/components/shared/loading/LoadingCompo"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Sign In — Platera",
@@ -24,10 +25,9 @@ export default function LoginPage() {
       {/* LEFT — SEO friendly welcome content */}
       <aside className="login-left" aria-hidden="false">
         <div className="login-left__inner">
-
-          <a href="/" className="login-left__logo">
+          <Link href="/" className="login-left__logo">
             Platera
-          </a>
+          </Link>
 
           <div className="login-left__content">
             <h1 className="login-left__heading">
