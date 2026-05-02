@@ -1,29 +1,24 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* ── Root wrapper (used by ALL dashboard layouts) ─────────────────────────── */
 .cd-layout,
 .ad-layout,
 .pd-layout {
-  display: flex;             /* flex, not grid */
-  height: 100dvh;            /* exact viewport — never grows */
-  overflow: hidden;          /* parent CLIPS both columns */
+  display: flex;           
+  height: 100dvh;           
+  overflow: hidden;         
   background: hsl(30 33% 97%);
   font-family: 'Inter', sans-serif;
 }
 
-/* Sidebar column — self-contained scroll */
 .cd-layout > aside,
 .ad-layout > aside,
 .pd-layout > aside {
   flex-shrink: 0;
-  height: 100%;              /* fill parent's clamped height */
+  height: 100%;          
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-/* Main content column — independent scroll */
 .cd-main,
 .ad-main,
 .pd-main {
@@ -34,12 +29,11 @@
   padding: 36px 40px;
 }
 
-/* ── Mobile: stack vertically ────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .cd-layout,
   .ad-layout,
   .pd-layout {
-    display: block;       /* stack: topbar → content */
+    display: block;    
     height: auto;
     overflow: visible;
   }

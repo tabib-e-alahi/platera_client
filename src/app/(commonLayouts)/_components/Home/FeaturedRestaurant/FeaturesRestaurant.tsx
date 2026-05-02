@@ -5,11 +5,6 @@ import { getFeaturedRestaurants } from "@/services/restaurant.service";
 import FeaturedRestaurantsClient from "./FeaturedRestaurantsClient";
 
 
-<<<<<<< HEAD
-=======
-export const revalidate = false;
-
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 export default async function FeaturedRestaurants() {
   let restaurants = [];
 

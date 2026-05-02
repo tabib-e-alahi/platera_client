@@ -1,5 +1,3 @@
-// src/components/provider/ProviderProfilePage.tsx
-
 "use client"
 
 import { useEffect, useState } from "react"

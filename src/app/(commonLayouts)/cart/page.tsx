@@ -12,10 +12,6 @@ import {
 } from "@/services/cart.service";
 import "./cart-page.css";
 
-<<<<<<< HEAD
-=======
-/* ─── Types ──────────────────────────────────────────────── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 type TCartItem = {
   id: string;
   quantity: number;
@@ -58,10 +54,6 @@ function computeOptimisticSummary(items: TCartItem[], deliveryFee: number, disco
   return { subtotal, total };
 }
 
-<<<<<<< HEAD
-=======
-/* ─── Cart Item ──────────────────────────────────────────── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 function CartItem({
   item,
   isBusy,
@@ -139,10 +131,6 @@ function CartItem({
   );
 }
 
-<<<<<<< HEAD
-=======
-/* ─── Page ───────────────────────────────────────────────── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 export default function CartPage() {
   const router = useRouter();
   const [cart, setCart] = useState<TCart | null>(null);
@@ -253,10 +241,6 @@ export default function CartPage() {
   const { subtotal, total } = computeOptimisticSummary(optimisticItems, delivery, discount);
   const itemCount = optimisticItems?.reduce((a, it) => a + it.quantity, 0);
 
-<<<<<<< HEAD
-=======
-  /* ── Loading ── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   if (isLoading) {
     return (
       <div className="cart-page">
@@ -288,10 +272,6 @@ export default function CartPage() {
     );
   }
 
-<<<<<<< HEAD
-=======
-  /* ── Empty ── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   if (!cart || optimisticItems?.length === 0) {
     return (
       <div className="cart-page">
@@ -319,11 +299,6 @@ export default function CartPage() {
     );
   }
 
-<<<<<<< HEAD
-=======
-
-  /* ── Full cart ── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   return (
     <div className="cart-page">
       {/* Hero */}

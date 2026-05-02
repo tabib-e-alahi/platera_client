@@ -122,11 +122,6 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="adash-page">
-<<<<<<< HEAD
-=======
-
-      {/* ── Header ── */}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
       <div className="adash-header">
         <div>
           <p className="adash-eyebrow">Admin Panel</p>
@@ -144,10 +139,6 @@ export default function AdminDashboardPage() {
         )}
       </div>
 
-<<<<<<< HEAD
-=======
-      {/* ── Revenue KPIs ── */}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
       <section className="adash-section">
         <h2 className="adash-section__title">Platform Revenue</h2>
         <div className="adash-kpi-grid">

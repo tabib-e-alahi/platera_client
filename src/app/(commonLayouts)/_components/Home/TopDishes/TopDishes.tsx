@@ -172,11 +172,7 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
         </div>
 
         {dish.shortDescription && (
-<<<<<<< HEAD
           <p className="rest-card__desc line-clamp-1">{dish.shortDescription}</p>
-=======
-          <p className="rest-card__desc">{dish.shortDescription}</p>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
         )}
 
         <div className="rest-card__footer">

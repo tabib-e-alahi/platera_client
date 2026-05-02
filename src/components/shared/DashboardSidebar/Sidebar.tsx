@@ -4,10 +4,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import {
-<<<<<<< HEAD
   Home,
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   LogOut,
   Menu,
   X,
@@ -15,11 +12,7 @@ import {
 import { toast } from "sonner"
 import "./sidebar.css"
 import { logoutUser } from "@/services/auth.service"
-<<<<<<< HEAD
 import { Admin_NAV_ITEMS, Customer_NAV_ITEMS, Provider_NAV_ITEMS, Routes, Super_Admin_NAV_ITEMS } from "@/constants/roleBasedRoutes"
-=======
-import { Admin_NAV_ITEMS, Customer_NAV_ITEMS, Provider_NAV_ITEMS, Routes } from "@/constants/roleBasedRoutes"
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 
 
@@ -31,16 +24,10 @@ export default function Sidebar({ user }: { user: any }) {
   let NAV_ITEMS: Routes = [] as Routes
   const role = user?.role as "PROVIDER" | "CUSTOMER" | "ADMIN" | "SUPER_ADMIN"
   switch (role) {
-<<<<<<< HEAD
     case "ADMIN": NAV_ITEMS = [...Admin_NAV_ITEMS, { label: "Home", href: "/", icon: Home, active: false }]; break;
     case "SUPER_ADMIN": NAV_ITEMS = [...Super_Admin_NAV_ITEMS, { label: "Home", href: "/", icon: Home, active: false }]; break; // SUPER_ADMIN has full admin access
     case "CUSTOMER": NAV_ITEMS = [...Customer_NAV_ITEMS, { label: "Home", href: "/", icon: Home, active: false }]; break;
     case "PROVIDER": NAV_ITEMS = [...Provider_NAV_ITEMS, { label: "Home", href: "/", icon: Home, active: false }] as Routes; break;
-=======
-    case "ADMIN": NAV_ITEMS = Admin_NAV_ITEMS; break;
-    case "CUSTOMER": NAV_ITEMS = Customer_NAV_ITEMS; break;
-    case "PROVIDER": NAV_ITEMS = Provider_NAV_ITEMS as Routes; break;
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   }
 
   // close drawer on route change
@@ -56,11 +43,7 @@ export default function Sidebar({ user }: { user: any }) {
     }
   }, [open])
 
-<<<<<<< HEAD
   const isActive = (href: string, exact?: boolean, active?: boolean | undefined) => {
-=======
-  const isActive = (href: string, exact?: boolean, active?: boolean|undefined) =>{
->>>>>>> dc5656236feee959b1e0e891718009336b905842
     if (active !== undefined) return active
     if (exact) return pathname === href
     return pathname.startsWith(href)

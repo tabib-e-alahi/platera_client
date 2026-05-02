@@ -1,23 +1,10 @@
 .restaurants {
-<<<<<<< HEAD
     padding: 4rem 2rem 2rem 2rem;
-=======
-    position: relative;
-    padding: 4rem 2rem;
->>>>>>> dc5656236feee959b1e0e891718009336b905842
     background: hsl(var(--cream));
     overflow: hidden;
 }
 
 .restaurants::before {
-<<<<<<< HEAD
-=======
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
->>>>>>> dc5656236feee959b1e0e891718009336b905842
     height: 160px;
     background: linear-gradient(to bottom, hsl(17, 3%, 50%), hsl(var(--cream)));
     pointer-events: none;
@@ -27,11 +14,6 @@
 .restaurants__container {
     max-width: 80rem;
     margin: 0 auto;
-<<<<<<< HEAD
-=======
-    position: relative;
-    z-index: 2;
->>>>>>> dc5656236feee959b1e0e891718009336b905842
     padding: 5rem 0rem;
 }
 
@@ -346,11 +328,7 @@
     font-weight: 300;
     margin-bottom: 1.125rem;
     display: -webkit-box;
-<<<<<<< HEAD
     line-clamp: 1;
-=======
-    -webkit-line-clamp: 2;
->>>>>>> dc5656236feee959b1e0e891718009336b905842
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

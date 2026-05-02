@@ -1,12 +1,10 @@
 "use client";
-// src/app/(dashboardLayouts)/@provider/provider-dashboard/reviews/page.tsx
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { getProviderReviews, TProviderReviewsResponse, TReview } from "@/services/review.service";
 import "./provider-reviews.css";
 
-/* ─── Helpers ──────────────────────────────────────────────────────────────── */
 
 const fmt = (d: string) =>
   new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
@@ -20,7 +18,6 @@ const STAR_FILTERS = [
   { label: "1★",   value: 1 },
 ] as const;
 
-/* ─── StarRow ──────────────────────────────────────────────────────────────── */
 function StarRow({ rating, size = 14 }: { rating: number; size?: number }) {
   return (
     <span className="prev2-stars">
@@ -54,7 +51,7 @@ function StarRow({ rating, size = 14 }: { rating: number; size?: number }) {
   );
 }
 
-/* ─── RatingBar ────────────────────────────────────────────────────────────── */
+
 function RatingBar({ star, count, total, active, onClick }: {
   star: number; count: number; total: number;
   active: boolean; onClick: () => void;

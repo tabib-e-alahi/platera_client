@@ -1,4 +1,4 @@
-// src/app/(provider)/provider-dashboard/add-meal/page.tsx
+
 import type { Metadata } from "next"
 import AddMealForm from "../../_components/AddMealForm"
 import "./add-meal.css"

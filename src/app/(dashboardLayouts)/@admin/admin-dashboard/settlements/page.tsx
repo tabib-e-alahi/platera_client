@@ -41,10 +41,6 @@ export default function AdminSettlementsPage() {
   useEffect(() => { fetchPayments(); }, [fetchPayments]);
 
   const handleSettle = async (paymentId: string) => {
-<<<<<<< HEAD
-=======
-    console.log(paymentId);
->>>>>>> dc5656236feee959b1e0e891718009336b905842
     setBusyId(paymentId);
     try {
       const res = await settlePayment(paymentId, noteMap[paymentId]);
@@ -86,14 +82,11 @@ export default function AdminSettlementsPage() {
 
   const totalPages = Math.ceil(total / limit);
 
-<<<<<<< HEAD
   // Derive how many PENDING rows are non-DELIVERED (i.e. not yet settleable)
   const nonDeliveredPendingCount = payments.filter(
     (p) => p.providerSettlementStatus === "PENDING" && p.order?.status !== "DELIVERED"
   ).length;
 
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   return (
     <div className="sett">
 
@@ -110,7 +103,6 @@ export default function AdminSettlementsPage() {
         </div>
       </div>
 
-<<<<<<< HEAD
       <div className="sett__policy-banner">
         <span className="sett__policy-icon">⚠️</span>
         <div className="sett__policy-text">
@@ -128,8 +120,6 @@ export default function AdminSettlementsPage() {
         </div>
       </div>
 
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
       {/* filters */}
       <div className="sett__filters">
         {["PENDING", "PAID", "all"].map((f) => (
@@ -157,10 +147,7 @@ export default function AdminSettlementsPage() {
             <thead>
               <tr>
                 <th>Order</th>
-<<<<<<< HEAD
                 <th>Order Status</th>
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
                 <th>Provider</th>
                 <th>Customer</th>
                 <th>Amount</th>
@@ -172,17 +159,12 @@ export default function AdminSettlementsPage() {
             </thead>
             <tbody>
               {payments.map((payment) => {
-<<<<<<< HEAD
                 const isRefunded   = payment.status === "REFUNDED";
                 const isPending    = payment.providerSettlementStatus === "PENDING" && !isRefunded;
                 const isBusy       = busyId === payment.id;
                 const orderStatus  = payment.order?.status ?? "—";
                 const isDelivered  = orderStatus === "DELIVERED";
                 const canSettle    = isPending && isDelivered;
-=======
-                const isPending = payment.providerSettlementStatus === "PENDING";
-                const isBusy    = busyId === payment.id;
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
                 return (
                   <tr key={payment.id}>
@@ -192,14 +174,11 @@ export default function AdminSettlementsPage() {
                       </span>
                     </td>
                     <td>
-<<<<<<< HEAD
                       <span className={`sett__order-status sett__order-status--${orderStatus.toLowerCase().replace(/_/g, "-")}`}>
                         {orderStatus.replace(/_/g, " ")}
                       </span>
                     </td>
                     <td>
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
                       <div className="sett__provider">
                         <span className="sett__provider-name">
                           {payment.provider?.businessName}
@@ -230,13 +209,8 @@ export default function AdminSettlementsPage() {
                       </span>
                     </td>
                     <td>
-<<<<<<< HEAD
                       <span className={`sett__status ${isRefunded ? "sett__status--refunded" : isPending ? "sett__status--pending" : "sett__status--paid"}`}>
                         {isRefunded ? "Refunded" : isPending ? "Pending" : "Settled"}
-=======
-                      <span className={`sett__status ${isPending ? "sett__status--pending" : "sett__status--paid"}`}>
-                        {isPending ? "Pending" : "Settled"}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
                       </span>
                       {payment.providerSettledAt && (
                         <span className="sett__settled-date">
@@ -245,7 +219,6 @@ export default function AdminSettlementsPage() {
                       )}
                     </td>
                     <td>
-<<<<<<< HEAD
                       {isRefunded ? (
                         <span className="sett__refunded-note">
                           🔄 Refunded — no settlement required
@@ -276,26 +249,6 @@ export default function AdminSettlementsPage() {
                               disabled={isBusy || !canSettle}
                               onClick={() => handleSettle(payment.id)}
                               title={!isDelivered ? "Can only settle after order is delivered" : "Settle this payment"}
-=======
-                      {isPending ? (
-                        <div className="sett__action-cell">
-                          <input
-                            className="sett__note-input"
-                            placeholder="Settlement note…"
-                            value={noteMap[payment.id] ?? ""}
-                            onChange={(e) =>
-                              setNoteMap((prev) => ({
-                                ...prev,
-                                [payment.id]: e.target.value,
-                              }))
-                            }
-                          />
-                          <div className="sett__btns">
-                            <button
-                              className="sett__settle-btn"
-                              disabled={isBusy}
-                              onClick={() => handleSettle(payment.id)}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
                             >
                               {isBusy ? "…" : "Settle"}
                             </button>
@@ -308,11 +261,7 @@ export default function AdminSettlementsPage() {
                                   payment.provider?.businessName
                                 )
                               }
-<<<<<<< HEAD
                               title="Settle all DELIVERED pending payments for this provider"
-=======
-                              title="Settle all pending for this provider"
->>>>>>> dc5656236feee959b1e0e891718009336b905842
                             >
                               Bulk
                             </button>

@@ -1,10 +1,4 @@
-/* provider-reviews.css — Platera Provider Reviews
-   Design system: Playfair Display headings · Inter body
-   Gold hsl(38 70% 55%) · Wine hsl(350 40% 30%) · Cream hsl(30 33% 97%)
-   Prefix: prev2__  (avoids collision with old prev-* classes)
-*/
 
-/* ── Root ─────────────────────────────────────────────────────────────────── */
 .prev2 {
   font-family: 'Inter', sans-serif;
   max-width: 900px;
@@ -13,7 +7,6 @@
   gap: 20px;
 }
 
-/* ── Header ───────────────────────────────────────────────────────────────── */
 .prev2__header     { margin-bottom: 4px; }
 .prev2__eyebrow    {
   font-size: 11px; font-weight: 600;
@@ -29,7 +22,6 @@
 }
 .prev2__subtitle   { font-size: 13.5px; color: #64748b; margin: 0; }
 
-/* ── Hero stats card ──────────────────────────────────────────────────────── */
 .prev2-hero {
   display: flex;
   align-items: stretch;

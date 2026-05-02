@@ -1,10 +1,5 @@
 "use client";
 
-// src/components/reviews/ReviewModal.tsx
-//
-// Shown when a customer clicks "Write a Review" on a DELIVERED order.
-// Supports: star rating (1-5), written feedback, submit + error handling.
-// Uses vanilla CSS via review-modal.css (matches project pattern).
 
 import { useState } from "react";
 import { X, Star, Loader2, CheckCircle2 } from "lucide-react";

@@ -1,17 +1,10 @@
 "use client"
-<<<<<<< HEAD
 
 import Link from "next/link"
 import { Controller, useForm } from "react-hook-form"
 import { z } from "zod"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
-=======
-import Link from "next/link"
-import { Controller, useForm } from "react-hook-form"
-import { z } from "zod"
-import { useRouter } from "next/navigation"
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
@@ -38,7 +31,6 @@ type FormValues = z.infer<typeof formSchema>
 
 export function LoginForm() {
   const router = useRouter()
-<<<<<<< HEAD
   const searchParams = useSearchParams()
 
   // Show a toast if Google OAuth redirected back with an error
@@ -50,8 +42,6 @@ export function LoginForm() {
       window.history.replaceState({}, "", "/login")
     }
   }, [searchParams])
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -63,28 +53,15 @@ export function LoginForm() {
       const res = await loginUser({ email: data.email, password: data.password })
 
       if (!res?.success) {
-<<<<<<< HEAD
-=======
-        // Server returned a structured error response (non-2xx caught by axios
-        // interceptor won't reach here, but handle gracefully just in case)
->>>>>>> dc5656236feee959b1e0e891718009336b905842
         toast.error(res?.message || "Login failed. Please try again.")
         return
       }
 
       toast.success("Login successful!")
       form.reset()
-<<<<<<< HEAD
       const user = res.data.data.user
       const role = user?.role as string | undefined
       const hasProviderProfile = res?.data.hasProviderProfile
-=======
-      // console.log(res.data);
-      const user = res.data.data.user
-      const role = user?.role as string | undefined
-      const hasProviderProfile = res?.data.hasProviderProfile
-      // console.log(role, hasProviderProfile);
->>>>>>> dc5656236feee959b1e0e891718009336b905842
       if (role === "CUSTOMER") {
         router.push("/")
       } else if (role === "PROVIDER") {

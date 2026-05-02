@@ -5,10 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LogIn,
-<<<<<<< HEAD
   LogOut,
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   ShoppingCart,
   User,
   UtensilsCrossed,
@@ -18,16 +15,12 @@ import { useAuth } from "@/providers/AuthProvider";
 import { toast } from "sonner";
 import { logoutUser } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
-<<<<<<< HEAD
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Restaurants", href: "/restaurants" },
-<<<<<<< HEAD
   { label: "Browse Meals", href: "/meals" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -35,16 +28,6 @@ const navLinks = [
 
 // Pages that have a dark hero behind the navbar — start transparent
 const HERO_ROUTES = ["/", "/cart", "/restaurants", "/meals"];
-=======
-  { label: "Meals", href: "/meals" },
-  { label: "How It Works", href: "/#about" },
-  { label: "Reviews", href: "/#reviews" },
-  { label: "Contact", href: "/#contact" },
-];
-
-// Pages that have a dark hero behind the navbar — start transparent
-const HERO_ROUTES = ["/","/cart","/restaurants","/meals"];
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -128,7 +111,6 @@ const Navbar = () => {
                   <Link href="/cart" className="navbar__icon-btn" aria-label="Cart">
                     <ShoppingCart size={20} />
                   </Link>
-<<<<<<< HEAD
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Link href={dashboardHref} className="navbar__icon-btn" aria-label="Dashboard">
@@ -151,15 +133,6 @@ const Navbar = () => {
                   <Link href="/login" className="navbar__cta_login desktop-only" aria-label="Dashboard">
                     Login
                   </Link>
-=======
-                  <Link href={dashboardHref} className="navbar__icon-btn" aria-label="Dashboard">
-                    <User size={20} />
-                  </Link>
-                </div>
-              ) : (
-                <div className="navbar__auth">
-                  <Link href="/login" className="navbar__cta_login desktop-only">Login</Link>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
                   <Link href="/login" className="navbar__icon-btn mobile-only" aria-label="Login">
                     <LogIn size={20} />
                   </Link>
@@ -206,11 +179,7 @@ const Navbar = () => {
                 <>
                   <Link href={dashboardHref} className="navbar__mobile-cta">Dashboard</Link>
                   <Link href="/cart" className="navbar__mobile-cta-secondary">Cart</Link>
-<<<<<<< HEAD
                   <Button className="navbar__mobile-cta-logout" onClick={handleLogout}>Logout</Button>
-=======
-                  <Link href="/logout" className="navbar__mobile-cta-logout" onClick={handleLogout}>Logout</Link>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
                 </>
               ) : (
                 <Link href="/login" className="navbar__mobile-cta">

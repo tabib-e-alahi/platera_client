@@ -1,18 +1,11 @@
 "use client";
-<<<<<<< HEAD
 // src/app/(commonLayouts)/_components/Home/Testimonials/TestimonialsSection.tsx
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 import { useEffect, useState } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { getHomeTestimonials } from "@/services/public.service";
 import "./testimonials.css";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 export type TTestimonial = {
   id: string;
   rating: number;
@@ -23,10 +16,6 @@ export type TTestimonial = {
   provider: { businessName: string; city: string };
 };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 function initials(name: string): string {
   return name
     .split(" ")
@@ -46,25 +35,17 @@ function timeAgo(dateStr: string): string {
   return `${Math.floor(months / 12)}y ago`;
 }
 
-<<<<<<< HEAD
 /* ── Skeleton ─────────────────────────────────────────────────────────────── */
-=======
-
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 function TestimonialSkeleton() {
   return (
     <div className="testimonial-card testimonial-card--skeleton">
       <div className="tc-sk tc-sk--stars" />
       <div className="tc-sk tc-sk--text" />
       <div className="tc-sk tc-sk--text tc-sk--short" />
-<<<<<<< HEAD
       <div
         className="testimonial-card__author"
         style={{ marginTop: "auto", paddingTop: "1.25rem", borderTop: "1px solid transparent" }}
       >
-=======
-      <div className="testimonial-card__author" style={{ marginTop: "auto", paddingTop: "1.25rem", borderTop: "1px solid transparent" }}>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
         <div className="tc-sk tc-sk--avatar" />
         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
           <div className="tc-sk tc-sk--name" />
@@ -75,7 +56,6 @@ function TestimonialSkeleton() {
   );
 }
 
-<<<<<<< HEAD
 /* ── Card ─────────────────────────────────────────────────────────────────── */
 function TestimonialCard({ t, featured }: { t: TTestimonial; featured?: boolean }) {
   const filled = Math.round(t.rating);
@@ -130,52 +110,12 @@ function TestimonialCard({ t, featured }: { t: TTestimonial; featured?: boolean 
               {t.provider.city} · {timeAgo(t.createdAt)}
             </span>
           </div>
-=======
-function TestimonialCard({ t, featured }: { t: TTestimonial; featured?: boolean }) {
-  return (
-    <div className={`testimonial-card${featured ? " testimonial-card--featured" : ""}`}>
-      <div className="testimonial-card__quote">"</div>
-
-      <div className="testimonial-card__stars">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star
-            key={i}
-            size={13}
-            fill={i < Math.round(t.rating) ? "currentColor" : "none"}
-            stroke="currentColor"
-            strokeWidth={i < Math.round(t.rating) ? 0 : 1.5}
-          />
-        ))}
-        <span className="testimonial-card__rating-num">{t.rating.toFixed(1)}</span>
-      </div>
-
-      <p className="testimonial-card__text">{t.feedback}</p>
-
-      <div className="testimonial-card__meal-ref">
-        🍱 <span>{t.meal.name}</span> · {t.provider.businessName}
-      </div>
-
-      <div className="testimonial-card__author">
-        <div className="testimonial-card__avatar">
-          {t.user.image ? (
-            <img src={t.user.image} alt={t.user.name} className="testimonial-card__avatar-img" />
-          ) : (
-            initials(t.user.name)
-          )}
-        </div>
-        <div className="testimonial-card__info">
-          <span className="testimonial-card__name">{t.user.name}</span>
-          <span className="testimonial-card__role">
-            {t.provider.city} · {timeAgo(t.createdAt)}
-          </span>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
         </div>
       </div>
     </div>
   );
 }
 
-<<<<<<< HEAD
 /* ── Section ──────────────────────────────────────────────────────────────── */
 export default function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState<TTestimonial[]>([]);
@@ -185,19 +125,6 @@ export default function TestimonialsSection() {
   const PER_PAGE   = 3;
   const totalPages = Math.ceil(testimonials.length / PER_PAGE);
   const visible    = testimonials.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
-=======
-
-export default function TestimonialsSection(){
-  const [testimonials, setTestimonials] = useState<TTestimonial[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(0);
-
-  // How many cards visible at a time
-  const PER_PAGE = 3;
-  const totalPages = Math.ceil(testimonials.length / PER_PAGE);
-
-  const visible = testimonials.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
   useEffect(() => {
     (async () => {
@@ -212,25 +139,12 @@ export default function TestimonialsSection(){
     })();
   }, []);
 
-<<<<<<< HEAD
   useEffect(() => {
     if (totalPages <= 1) return;
     const id = setInterval(() => setPage((p) => (p + 1) % totalPages), 6000);
     return () => clearInterval(id);
   }, [totalPages]);
 
-=======
-  // Auto-rotate every 6 seconds
-  useEffect(() => {
-    if (totalPages <= 1) return;
-    const id = setInterval(() => {
-      setPage((p) => (p + 1) % totalPages);
-    }, 6000);
-    return () => clearInterval(id);
-  }, [totalPages]);
-
-  // Don't render section if no data and not loading
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   if (!isLoading && testimonials.length === 0) return null;
 
   return (
@@ -256,23 +170,13 @@ export default function TestimonialsSection(){
         {/* Grid */}
         <div className="testimonials__grid">
           {isLoading
-<<<<<<< HEAD
             ? Array.from({ length: 3 }).map((_, i) => <TestimonialSkeleton key={i} />)
-=======
-            ? Array.from({ length: 3 }).map((_, i) => (
-                <TestimonialSkeleton key={i} />
-              ))
->>>>>>> dc5656236feee959b1e0e891718009336b905842
             : visible.map((t, i) => (
                 <TestimonialCard key={t.id} t={t} featured={i === 1} />
               ))}
         </div>
 
-<<<<<<< HEAD
         {/* Pagination */}
-=======
-        {/* Pagination dots */}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
         {!isLoading && totalPages > 1 && (
           <div className="testimonials__nav">
             <button
@@ -306,8 +210,4 @@ export default function TestimonialsSection(){
       </div>
     </section>
   );
-<<<<<<< HEAD
 }
-=======
-};
->>>>>>> dc5656236feee959b1e0e891718009336b905842

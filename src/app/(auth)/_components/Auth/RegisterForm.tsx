@@ -94,10 +94,6 @@ export function RegisterForm() {
 
   async function onSubmit(data: TRegisterForm) {
     try {
-<<<<<<< HEAD
-=======
-      console.log(data);
->>>>>>> dc5656236feee959b1e0e891718009336b905842
       const res = await registerCustomer({
         name: data.name,
         email: data.email,
@@ -124,10 +120,6 @@ export function RegisterForm() {
   return (
     <Card className="register-card">
 
-<<<<<<< HEAD
-=======
-      {/* HEADER */}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
       <CardHeader className="register-card-header">
         <div className="register-eyebrow">
           <span className="register-eyebrow-dot" />

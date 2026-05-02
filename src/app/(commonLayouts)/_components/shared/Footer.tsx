@@ -1,10 +1,7 @@
 "use client"
 import { UtensilsCrossed } from "lucide-react";
 import "./footer.css";
-<<<<<<< HEAD
 import Link from "next/link";
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 const Footer = () => {
   return (
@@ -48,19 +45,11 @@ const Footer = () => {
         <div>
           <h4 className="footer__col-title">Explore</h4>
           <ul className="footer__links">
-<<<<<<< HEAD
             <li><Link href="/restaurants" className="footer__link">Restaurants</Link></li>
             <li><Link href="/about" className="footer__link">About Us</Link></li>
             <li><Link href="/contact" className="footer__link">Contact</Link></li>
             <li><Link href="#" className="footer__link">Top Rated</Link></li>
             <li><Link href="#" className="footer__link">Near Me</Link></li>
-=======
-            <li><a href="#restaurants" className="footer__link">Restaurants</a></li>
-            <li><a href="#about" className="footer__link">How It Works</a></li>
-            <li><a href="#" className="footer__link">Cuisines</a></li>
-            <li><a href="#" className="footer__link">Top Rated</a></li>
-            <li><a href="#" className="footer__link">Near Me</a></li>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
           </ul>
         </div>
 

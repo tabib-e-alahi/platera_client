@@ -1,7 +1,5 @@
 "use client";
-<<<<<<< HEAD
-// src/app/(dashboardLayouts)/@customer/_components/OrderSubComponents/SubComponents.tsx
-// FULL REPLACEMENT — adds ReviewButton to DELIVERED order cards
+
 
 import { formatDate, getDeliveryAddress } from "@/HelpersAndAttributes/CustomerOrder/functions";
 import {
@@ -18,14 +16,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import ReviewButton from "../reviews/ReviewButton";
-=======
-
-import { formatDate, getDeliveryAddress } from "@/HelpersAndAttributes/CustomerOrder/functions";
-import { ACTIVE_STATUSES, CANCELLABLE_STATUSES, FLOW_STEPS, n, STATUS_CONFIG, TOrder } from "@/HelpersAndAttributes/CustomerOrder/typesAndConstants";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 export function StatusBadge({ status }: { status: string }) {
   const cfg = STATUS_CONFIG[status];
@@ -45,7 +35,6 @@ export function PaymentMethodBadge({ method }: { method: string }) {
   );
 }
 
-<<<<<<< HEAD
 export function RefundBanner({ order }: { order: TOrder }) {
   if (order.status !== "REFUNDED") return null;
 
@@ -82,18 +71,11 @@ export function OrderProgressBar({ status }: { status: string }) {
   if (status === "PENDING_PAYMENT") return null;
   const isCancelled = status === "CANCELLED" || status === "REFUNDED";
   const currentIdx  = FLOW_STEPS.indexOf(status as (typeof FLOW_STEPS)[number]);
-=======
-export function OrderProgressBar({ status }: { status: string }) {
-  if (status === "PENDING_PAYMENT") return null;
-  const isCancelled = status === "CANCELLED" || status === "REFUNDED";
-  const currentIdx = FLOW_STEPS.indexOf(status as (typeof FLOW_STEPS)[number]);
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
   return (
     <div className="cord-progress">
       <div className="cord-progress__track">
         {FLOW_STEPS.map((step, i) => {
-<<<<<<< HEAD
           const isDone   = !isCancelled && currentIdx > i;
           const isActive = !isCancelled && currentIdx === i;
           return (
@@ -107,59 +89,11 @@ export function OrderProgressBar({ status }: { status: string }) {
                   ) : isActive ? <span className="cord-progress__pulse" /> : null}
                 </div>
                 <span className={`cord-progress__label${isDone ? " cord-progress__label--done" : isActive ? " cord-progress__label--active" : ""}`}>
-=======
-          const isDone = !isCancelled && currentIdx > i;
-          const isActive = !isCancelled && currentIdx === i;
-
-          return (
-            <div key={step} className="cord-progress__step-wrapper">
-              <div className="cord-progress__step">
-                <div
-                  className={`cord-progress__dot${
-                    isDone
-                      ? " cord-progress__dot--done"
-                      : isActive
-                      ? " cord-progress__dot--active"
-                      : ""
-                  }`}
-                >
-                  {isDone ? (
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path
-                        d="M1.5 5L4 7.5L8.5 2.5"
-                        stroke="white"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  ) : isActive ? (
-                    <span className="cord-progress__pulse" />
-                  ) : null}
-                </div>
-                <span
-                  className={`cord-progress__label${
-                    isDone
-                      ? " cord-progress__label--done"
-                      : isActive
-                      ? " cord-progress__label--active"
-                      : ""
-                  }`}
-                >
->>>>>>> dc5656236feee959b1e0e891718009336b905842
                   {STATUS_CONFIG[step]?.label ?? step}
                 </span>
               </div>
               {i < FLOW_STEPS.length - 1 && (
-<<<<<<< HEAD
                 <div className={`cord-progress__line${isDone ? " cord-progress__line--done" : isActive ? " cord-progress__line--active" : ""}`} />
-=======
-                <div
-                  className={`cord-progress__line${
-                    isDone ? " cord-progress__line--done" : isActive ? " cord-progress__line--active" : ""
-                  }`}
-                />
->>>>>>> dc5656236feee959b1e0e891718009336b905842
               )}
             </div>
           );
@@ -167,19 +101,14 @@ export function OrderProgressBar({ status }: { status: string }) {
       </div>
       {isCancelled && (
         <div className="cord-progress__cancelled-note">
-<<<<<<< HEAD
           <span>✕</span>{" "}
           {status === "REFUNDED" ? "Order cancelled — payment refunded" : "Order was cancelled"}
-=======
-          <span>✕</span> Order was cancelled
->>>>>>> dc5656236feee959b1e0e891718009336b905842
         </div>
       )}
     </div>
   );
 }
 
-<<<<<<< HEAD
 
 export function CancelConfirmModal({
   order,
@@ -258,28 +187,12 @@ export function CancelConfirmModal({
   }
 
   /* ── VIEW 1: Pre-cancel confirmation ── */
-=======
-export function CancelConfirmModal({
-  orderId,
-  orderNumber,
-  onConfirm,
-  onClose,
-  isBusy,
-}: {
-  orderId: string;
-  orderNumber: string;
-  onConfirm: (id: string) => void;
-  onClose: () => void;
-  isBusy: boolean;
-}) {
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   return (
     <div className="cord-modal-overlay" onClick={onClose}>
       <div className="cord-modal" onClick={(e) => e.stopPropagation()}>
         <div className="cord-modal__icon">⚠️</div>
         <h3 className="cord-modal__title">Cancel this order?</h3>
         <p className="cord-modal__body">
-<<<<<<< HEAD
           Order <strong>#{order.orderNumber}</strong> will be cancelled immediately. This cannot be undone.
         </p>
         {willRefund && (
@@ -313,22 +226,10 @@ export function CancelConfirmModal({
         )}
         <div className="cord-modal__actions">
           <button className="cord-modal__btn cord-modal__btn--ghost" onClick={onClose} disabled={isBusy}>
-=======
-          Order <strong>#{orderNumber}</strong> will be cancelled. This action
-          cannot be undone.
-        </p>
-        <div className="cord-modal__actions">
-          <button
-            className="cord-modal__btn cord-modal__btn--ghost"
-            onClick={onClose}
-            disabled={isBusy}
-          >
->>>>>>> dc5656236feee959b1e0e891718009336b905842
             Keep order
           </button>
           <button
             className="cord-modal__btn cord-modal__btn--danger"
-<<<<<<< HEAD
             onClick={() => onConfirm(order.id)}
             disabled={isBusy}
           >
@@ -336,15 +237,6 @@ export function CancelConfirmModal({
               <><span className="cord-spinner" /> Cancelling…</>
             ) : willRefund ? (
               "Cancel & refund"
-=======
-            onClick={() => onConfirm(orderId)}
-            disabled={isBusy}
-          >
-            {isBusy ? (
-              <>
-                <span className="cord-spinner" /> Cancelling…
-              </>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
             ) : (
               "Yes, cancel it"
             )}
@@ -360,7 +252,6 @@ export function OrderCard({
   onCancelRequest,
   busyId,
 }: {
-<<<<<<< HEAD
   order:           TOrder;
   onCancelRequest: (id: string) => void;
   busyId:          string | null;
@@ -393,37 +284,10 @@ export function OrderCard({
       ].filter(Boolean).join(" ")}
     >
       {/* ── Header ── */}
-=======
-  order: TOrder;
-  onCancelRequest: (id: string) => void;
-  busyId: string | null;
-}) {
-  const [expanded, setExpanded] = useState(false);
-  const canCancel = CANCELLABLE_STATUSES.includes(order.status);
-  const isPendingPayment = order.status === "PENDING_PAYMENT";
-  const isActive = ACTIVE_STATUSES.includes(order.status);
-
-  const SHOW_LIMIT = 2;
-  const visibleItems = expanded
-    ? order.orderItems
-    : order.orderItems.slice(0, SHOW_LIMIT);
-  const hasMore = order.orderItems.length > SHOW_LIMIT;
-  const payment = order.payments?.[0];
-  const cfg = STATUS_CONFIG[order.status];
-
-  return (
-    <div
-      className={`cord-card${isActive ? " cord-card--active" : ""}${
-        order.status === "CANCELLED" ? " cord-card--cancelled" : ""
-      }${order.status === "DELIVERED" ? " cord-card--delivered" : ""}`}
-    >
-      {/* ── Card header ── */}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
       <div className="cord-card__header">
         <div className="cord-card__provider-info">
           {order.provider?.imageURL ? (
             <div className="cord-card__avatar">
-<<<<<<< HEAD
               <Image src={order.provider.imageURL} alt={order.provider.businessName} fill className="object-cover" />
             </div>
           ) : (
@@ -431,49 +295,18 @@ export function OrderCard({
           )}
           <div>
             <p className="cord-card__provider-name">{order.provider?.businessName ?? "Provider"}</p>
-=======
-              <Image
-                src={order.provider.imageURL}
-                alt={order.provider.businessName}
-                fill
-                className="object-cover"
-              />
-            </div>
-          ) : (
-            <div className="cord-card__avatar cord-card__avatar--placeholder">
-              🍽
-            </div>
-          )}
-          <div>
-            <p className="cord-card__provider-name">
-              {order.provider?.businessName ?? "Provider"}
-            </p>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
             <p className="cord-card__order-num">#{order.orderNumber}</p>
             <p className="cord-card__date">{formatDate(order.createdAt)}</p>
           </div>
         </div>
-<<<<<<< HEAD
         <div className="cord-card__header-right">
           <StatusBadge status={order.status} />
           <p className="cord-card__amount">৳{n(order.totalAmount).toFixed(2)}</p>
-=======
-
-        <div className="cord-card__header-right">
-          <StatusBadge status={order.status} />
-          <p className="cord-card__amount">
-            ৳{n(order.totalAmount).toFixed(2)}
-          </p>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
           <PaymentMethodBadge method={order.paymentMethod} />
         </div>
       </div>
 
-<<<<<<< HEAD
       {/* ── Status strip ── */}
-=======
-      {/* ── Status description strip ── */}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
       {cfg && (
         <div className={`cord-card__status-strip cord-card__status-strip--${order.status.toLowerCase()}`}>
           <span>{cfg.icon}</span>
@@ -484,29 +317,18 @@ export function OrderCard({
         </div>
       )}
 
-<<<<<<< HEAD
       {/* ── Refund banner ── */}
       <RefundBanner order={order} />
-=======
-      {/* ── Progress bar ── */}
-      {/* <OrderProgressBar status={order.status} /> */}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
       {/* ── Items ── */}
       <div className="cord-card__items">
         <p className="cord-card__items-label">
-<<<<<<< HEAD
           {order.orderItems.length} item{order.orderItems.length !== 1 ? "s" : ""}
-=======
-          {order.orderItems.length} item
-          {order.orderItems.length !== 1 ? "s" : ""}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
         </p>
         {visibleItems.map((item) => (
           <div key={item.id} className="cord-card__item">
             {item.mealImageUrl ? (
               <div className="cord-card__item-img">
-<<<<<<< HEAD
                 <Image src={item.mealImageUrl} alt={item.mealName} fill className="object-cover" />
               </div>
             ) : (
@@ -520,42 +342,10 @@ export function OrderCard({
         {hasMore && (
           <button className="cord-card__show-more" onClick={() => setExpanded((v) => !v)}>
             {expanded ? "Show less ↑" : `+${order.orderItems.length - SHOW_LIMIT} more items ↓`}
-=======
-                <Image
-                  src={item.mealImageUrl}
-                  alt={item.mealName}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ) : (
-              <div className="cord-card__item-img cord-card__item-img--placeholder">
-                🍱
-              </div>
-            )}
-            <span className="cord-card__item-name">{item.mealName}</span>
-            <span className="cord-card__item-qty">×{item.quantity}</span>
-            <span className="cord-card__item-price">
-              ৳{n(item.totalPrice).toFixed(2)}
-            </span>
-          </div>
-        ))}
-        {hasMore && (
-          <button
-            className="cord-card__show-more"
-            onClick={() => setExpanded((v) => !v)}
-          >
-            {expanded
-              ? "Show less ↑"
-              : `+${order.orderItems.length - SHOW_LIMIT} more item${
-                  order.orderItems.length - SHOW_LIMIT > 1 ? "s" : ""
-                } ↓`}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
           </button>
         )}
       </div>
 
-<<<<<<< HEAD
       {/* ── Price row ── */}
       <div className="cord-card__price-row">
         <span className="cord-card__price-breakdown">
@@ -570,49 +360,15 @@ export function OrderCard({
             {payment.status === "REFUNDED"
               ? "↩ Refunded"
               : payment.gatewayName
-=======
-      {/* ── Price breakdown ── */}
-      <div className="cord-card__price-row">
-        <span className="cord-card__price-breakdown">
-          Subtotal ৳{n(order.subtotal).toFixed(2)}
-          {n(order.deliveryFee) > 0 &&
-            ` · Delivery ৳${n(order.deliveryFee).toFixed(2)}`}
-          {n(order.discountAmount) > 0 && (
-            <span className="cord-card__saved">
-              {" "}
-              · Saved ৳{n(order.discountAmount).toFixed(2)}
-            </span>
-          )}
-        </span>
-
-        {payment && (
-          <span
-            className={`cord-payment-status cord-payment-status--${payment.status.toLowerCase()}`}
-          >
-            {payment.gatewayName
->>>>>>> dc5656236feee959b1e0e891718009336b905842
               ? `via ${payment.gatewayName}`
               : payment.status}
           </span>
         )}
       </div>
 
-<<<<<<< HEAD
       {/* ── Address ── */}
       <div className="cord-card__address">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-=======
-      {/* ── Delivery address ── */}
-      <div className="cord-card__address">
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
->>>>>>> dc5656236feee959b1e0e891718009336b905842
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
           <circle cx="12" cy="10" r="3" />
         </svg>
@@ -622,21 +378,11 @@ export function OrderCard({
         )}
       </div>
 
-<<<<<<< HEAD
       {/* ── Footer ── */}
       <div className="cord-card__footer">
         <div className="cord-card__footer-left">
           {order.placedAt && (
             <span className="cord-card__timestamp">Placed {formatDate(order.placedAt, false)}</span>
-=======
-      {/* ── Footer actions ── */}
-      <div className="cord-card__footer">
-        <div className="cord-card__footer-left">
-          {order.placedAt && (
-            <span className="cord-card__timestamp">
-              Placed {formatDate(order.placedAt, false)}
-            </span>
->>>>>>> dc5656236feee959b1e0e891718009336b905842
           )}
           {order.deliveredAt && (
             <span className="cord-card__timestamp cord-card__timestamp--green">
@@ -645,54 +391,26 @@ export function OrderCard({
           )}
           {order.cancelledAt && (
             <span className="cord-card__timestamp cord-card__timestamp--red">
-<<<<<<< HEAD
               {isRefunded ? "↩ Refunded" : "Cancelled"} {formatDate(order.cancelledAt, false)}
-=======
-              Cancelled {formatDate(order.cancelledAt, false)}
->>>>>>> dc5656236feee959b1e0e891718009336b905842
             </span>
           )}
         </div>
 
         <div className="cord-card__actions">
           {isPendingPayment && (
-<<<<<<< HEAD
             <Link href={`/checkout/payment?orderId=${order.id}`} className="cord-btn cord-btn--pay">
-=======
-            <Link
-              href={`/checkout/payment?orderId=${order.id}`}
-              className="cord-btn cord-btn--pay"
-            >
->>>>>>> dc5656236feee959b1e0e891718009336b905842
               💳 Pay now
             </Link>
           )}
 
           <Link
             href={`/customer-dashboard/orders/${order.id}`}
-<<<<<<< HEAD
             className={`cord-btn cord-btn--track${(isCancelled || isRefunded) ? " cord-btn--disabled" : ""}`}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
             </svg>
             {isRefunded ? "View details" : "Track order"}
-=======
-            className={`cord-btn cord-btn--track  ${order.status === "CANCELLED" ? "pointer-events-none cursor-not-allowed opacity-10" : ""}`}
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            Track order
->>>>>>> dc5656236feee959b1e0e891718009336b905842
           </Link>
 
           {canCancel && (
@@ -704,7 +422,6 @@ export function OrderCard({
               Cancel
             </button>
           )}
-<<<<<<< HEAD
 
           {/* ── Review button — only shown for DELIVERED orders ── */}
           {isDelivered && primaryMeal && (
@@ -716,18 +433,12 @@ export function OrderCard({
               orderStatus={order.status}
             />
           )}
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
         </div>
       </div>
     </div>
   );
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 export function OrderSkeleton() {
   return (
     <div className="cord-skeleton">

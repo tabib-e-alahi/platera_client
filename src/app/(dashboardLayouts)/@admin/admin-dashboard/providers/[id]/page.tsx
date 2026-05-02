@@ -8,10 +8,6 @@ import { approveProvider, getProviderDetail, rejectProvider, updateProviderStatu
 import { toast } from "sonner";
 import "./admin-provider-detail.css";
 
-<<<<<<< HEAD
-=======
-/* ─── Detail skeleton ────────────────────────────────────────────────────── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 function DetailSkeleton() {
   return (
     <div className="apd">
@@ -36,10 +32,6 @@ function DetailSkeleton() {
   );
 }
 
-<<<<<<< HEAD
-=======
-/* ─── Info row ───────────────────────────────────────────────────────────── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 function InfoRow({ label, value, highlight }: { label: string; value: React.ReactNode; highlight?: "green" | "red" }) {
   return (
     <div className="apd__row">
@@ -51,10 +43,6 @@ function InfoRow({ label, value, highlight }: { label: string; value: React.Reac
   );
 }
 
-<<<<<<< HEAD
-=======
-/* ─── Main page ──────────────────────────────────────────────────────────── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 export default function AdminProviderDetailPage() {
   const params = useParams();
   const router = useRouter();
