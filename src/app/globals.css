@@ -58,17 +58,17 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
 
     /* new added */
-    --primary-dark: hsl(350, 45%, 20%);
-    --primary-fg: hsl(30, 33%, 97%);
-    --muted-fg: hsl(20, 10%, 45%);
-    --gold-pale: hsl(38, 70%, 95%);
-    --gold-border: hsl(38, 70%, 55%, 0.18);
+    --primary-dark: 350, 45%, 20%;
+    --primary-fg: 30, 33%, 97%;
+    --muted-fg: 210, 40%, 98%;
+    --gold-pale: 38, 70%, 95%;
+    --gold-border: 38, 70%, 55%, 0.18;
     --gold-gradient: linear-gradient(
         135deg,
         hsl(38, 70%, 55%),
         hsl(38, 60%, 70%)
     );
-    --border-gold: hsl(38, 70%, 55%, 0.2);
+    --border-gold: 38, 70%, 55%, 0.2;
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.09);
     --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.13);
@@ -102,6 +102,7 @@
     --secondary: 20 15% 15%;
     --secondary-foreground: 30 33% 97%;
     --muted: 20 10% 18%;
+    --muted-fg: 20, 10%, 45%;
     --muted-foreground: 30 15% 60%;
     --accent: 350 40% 40%;
     --accent-foreground: 30 33% 97%;

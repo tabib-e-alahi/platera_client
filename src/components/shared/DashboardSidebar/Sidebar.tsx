@@ -13,6 +13,7 @@ import { toast } from "sonner"
 import "./sidebar.css"
 import { logoutUser } from "@/services/auth.service"
 import { Admin_NAV_ITEMS, Customer_NAV_ITEMS, Provider_NAV_ITEMS, Routes, Super_Admin_NAV_ITEMS } from "@/constants/roleBasedRoutes"
+import ThemeToggle from "../ThemeToggle"
 
 
 
@@ -62,10 +63,13 @@ export default function Sidebar({ user }: { user: any }) {
   const sidebarContent = (
     <>
       <div className="ps-top">
-        <Link href="/" className="ps-logo">
-          {user?.name || "Platera"}
-        </Link>
-        <span className="ps-role-badge">{user?.role}</span>
+        <div className="ps-top-content">
+          <Link href="/" className="ps-logo">
+            {user?.name || "Platera"}
+          </Link>
+          <span className="ps-role-badge">{user?.role}</span>
+        </div>
+        <ThemeToggle></ThemeToggle>
       </div>
 
       <nav className="ps-nav">

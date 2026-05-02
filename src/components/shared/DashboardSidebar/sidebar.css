@@ -15,6 +15,14 @@
   padding: 26px 24px 22px;
   border-bottom: 1px solid hsl(38 70% 55% / 0.08);
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.ps-top-content {
+  border-bottom: 1px solid hsl(38 70% 55% / 0.08);
+  display: flex;
   flex-direction: column;
   gap: 8px;
   flex-shrink: 0;

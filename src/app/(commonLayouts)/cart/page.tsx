@@ -392,7 +392,7 @@ export default function CartPage() {
               <button
                 type="button"
                 onClick={() => router.push("/checkout")}
-                className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+                className="cart-summary__checkout-btn"
               >
                 Proceed to Checkout
               </button>

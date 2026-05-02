@@ -264,7 +264,7 @@ export default function CustomerProfilePage() {
         </div>
 
         {/* address section */}
-        <div className="cpp__section">
+        <div className="cpp__section mt-8">
           <p className="cpp__section-label">Delivery address</p>
           <div className="cpp__grid">
 
@@ -340,7 +340,7 @@ export default function CustomerProfilePage() {
         </div>
 
         {/* coordinates section */}
-        <div className="cpp__section">
+        <div className="cpp__section mt-8">
           <p className="cpp__section-label">
             Location coordinates
           </p>

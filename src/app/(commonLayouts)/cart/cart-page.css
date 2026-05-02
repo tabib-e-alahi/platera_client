@@ -361,7 +361,7 @@
 }
 
 .cart-summary__header {
-  background: hsl(var(--wine-deep));
+  background: var(--hero-gradient);
   padding: 1.5rem 1.5rem 1.25rem;
 }
 .cart-summary__header-label {
@@ -380,7 +380,7 @@
 }
 .cart-summary__header-count {
   font-size: 0.82rem;
-  color: hsl(var(--cream) / 0.5);
+  color: hsl(var(--cream-hero-title) / 0.5);
   margin-top: 0.2rem;
 }
 
@@ -442,22 +442,22 @@
   gap: 0.65rem;
 }
 .cart-summary__checkout-btn {
-  width: 100%;
-  padding: 0.9rem;
+   width: 100%;
+  padding: 0.75rem;
   border-radius: 0.85rem;
+  border: 1px solid hsl(var(--border));
   background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
-  border: none;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 700;
-  color: hsl(20 15% 8%);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(24, 23, 23);
   cursor: pointer;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px hsl(var(--gold) / 0.3);
+  gap: 0.4rem;
+  transition: all 0.2s;
 }
 .cart-summary__checkout-btn:hover {
   transform: translateY(-2px);

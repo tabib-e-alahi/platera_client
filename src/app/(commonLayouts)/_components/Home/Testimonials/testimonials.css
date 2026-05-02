@@ -80,7 +80,7 @@
   flex-direction: row;
   border-radius: 1.125rem;
   overflow: hidden;
-  background: hsl(var(--gold-gradient));
+  background: hsl(var(--card));
   border: 1px solid hsl(var(--wine) / 0.08);
   box-shadow:
     0 1px 2px hsl(var(--wine) / 0.05),
