@@ -212,7 +212,6 @@ export default function CustomerProfilePage() {
         </div>
       )}
 
-      {/* form */}
       <form onSubmit={handleSubmit} className="cpp__form-card">
 
         {/* contact section */}
@@ -233,6 +232,7 @@ export default function CustomerProfilePage() {
                 onChange={(e) => setField("phone", e.target.value)}
                 placeholder="01700000000"
                 autoComplete="tel"
+                required
               />
             </div>
 

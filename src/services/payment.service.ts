@@ -1,14 +1,7 @@
-// src/services/payment.service.ts — replace entirely
-
 import api from "@/lib/axios";
 
-// Initiate SSLCommerz — backend returns { gatewayURL, transactionId }
 export const initiatePayment = async (orderId: string) => {
   const res = await api.post(`/payments/initiate/${orderId}`);
-<<<<<<< HEAD
-=======
-  console.log("From payment service initiatePayement line 8:", res.data);
->>>>>>> dc5656236feee959b1e0e891718009336b905842
   return res.data;
 };
 
@@ -18,7 +11,6 @@ export const getPaymentStatus = async (orderId: string) => {
   return res.data;
 };
 
-// Admin
 export const getAdminPayments = async (params?: {
   settlementStatus?: string;
   providerId?: string;

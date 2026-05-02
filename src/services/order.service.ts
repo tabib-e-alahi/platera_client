@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 // src/services/order.service.ts  — FULL REPLACEMENT
 
 import api from "@/lib/axios";
 import { TCancelResult } from "@/HelpersAndAttributes/CustomerOrder/typesAndConstants";
-=======
-// src/services/order.service.ts
-
-import api from "@/lib/axios";
-
-/* ─── Types ──────────────────────────────────────────────────────────────── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 export type TCheckoutPayload = {
   customerName: string;
@@ -25,7 +17,6 @@ export type TCreateOrderPayload = TCheckoutPayload & {
   paymentMethod: "ONLINE" | "COD";
 };
 
-<<<<<<< HEAD
 
 export const updateProviderOrderStatus = async (
   id: string,
@@ -36,9 +27,6 @@ export const updateProviderOrderStatus = async (
   return res.data;
 };
 
-=======
-/* ─── Customer orders ────────────────────────────────────────────────────── */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 
 export const getCheckoutPreview = async (payload: TCheckoutPayload) => {
   const res = await api.post("/orders/checkout-preview", payload);
@@ -75,18 +63,12 @@ export const getOrderTracking = async (id: string) => {
   return res.data;
 };
 
-<<<<<<< HEAD
-=======
-/* ─── Provider orders ────────────────────────────────────────────────────── */
-
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 export const getProviderOrders = async (params?: {
   status?: string;
   page?: number;
   limit?: number;
   search?: string;
 }) => {
-<<<<<<< HEAD
   const res = await api.get("/orders/provider/orders", { params });
   return res.data;
 };
@@ -97,37 +79,6 @@ export const getProviderDashboardStats = async () => {
   return res.data;
 };
 
-=======
-  const res = await api.get("/orders/provider-orders", { params });
-  return res.data;
-};
-
-export const updateProviderOrderStatus = async (
-  id: string,
-  status: "ACCEPTED" | "PREPARING" | "OUT_FOR_DELIVERY" | "DELIVERED" | "CANCELLED",
-  note?: string
-) => {
-  const res = await api.patch(`/orders/${id}/provider-status`, { status, note });
-  return res.data;
-};
-
-/* ─── Provider dashboard stats ───────────────────────────────────────────── */
-
-/**
- * Fetches the provider's own dashboard statistics.
- * Backend: GET /providers/dashboard/stats
- */
-export const getProviderDashboardStats = async () => {
-  const res = await api.get("/providers/dashboard/stats");
-  console.log(res.data);
-  return res.data;
-};
-
-/**
- * Fetches the provider's revenue chart data for the last N days.
- * Backend: GET /providers/dashboard/revenue-chart?days=7
- */
->>>>>>> dc5656236feee959b1e0e891718009336b905842
 export const getProviderRevenueChart = async (days = 7) => {
   const res = await api.get("/providers/dashboard/revenue-chart", { params: { days } });
   return res.data;

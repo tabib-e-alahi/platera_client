@@ -1,5 +1,3 @@
-// src/services/review.service.ts
-
 import api from "@/lib/axios";
 
 export type TCreateReviewPayload = {
@@ -50,7 +48,6 @@ export type TProviderReviewsResponse = {
   stats: TReviewStats;
 };
 
-// ── Customer ──────────────────────────────────────────────────────────────────
 
 export const createReview = async (payload: TCreateReviewPayload) => {
   const res = await api.post("/reviews", payload);
@@ -62,7 +59,6 @@ export const getMyReviews = async () => {
   return res.data;
 };
 
-/** Check if the customer can review a specific order */
 export const canReviewOrder = async (orderId: string) => {
   const res = await api.get(`/reviews/can-review/${orderId}`);
   return res.data as {
@@ -75,7 +71,6 @@ export const canReviewOrder = async (orderId: string) => {
   };
 };
 
-// ── Provider ──────────────────────────────────────────────────────────────────
 
 export const getProviderReviews = async (params?: {
   page?:   number;
@@ -86,8 +81,6 @@ export const getProviderReviews = async (params?: {
   const res = await api.get("/reviews/provider", { params });
   return res.data as { success: boolean; data: TProviderReviewsResponse };
 };
-
-// ── Public ────────────────────────────────────────────────────────────────────
 
 export const getPublicProviderReviews = async (
   providerId: string,
