@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Star, Flame, Clock, ShoppingBag, UtensilsCrossed } from "lucide-react";
 import { getTopDishes } from "@/services/public.service";
 import "./top-dishes.css";
+import AddToCartButton from "@/components/shared/AddToCartButton";
 
 
 export type TTopDish = {
@@ -68,8 +69,7 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
   const badge = dish.isBestseller ? "bestseller" : dish.isFeatured ? "featured" : null;
 
   return (
-    <Link
-      href={`/restaurants/${dish.provider.id}`}
+    <div
       className="rest-card"
       style={{ textDecoration: "none", display: "block", color: "inherit" }}
     >
@@ -179,12 +179,12 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
           <span className="rest-card__delivery">
             {dish.provider.businessName} · {dish.provider.city}
           </span>
-          <span className="rest-card__btn">
-            Order Now <ArrowRight size={13} />
+          <span className="">
+            <AddToCartButton mealId={dish.id}></AddToCartButton>
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

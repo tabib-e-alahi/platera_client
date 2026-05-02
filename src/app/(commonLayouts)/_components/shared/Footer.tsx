@@ -81,9 +81,9 @@ const Footer = () => {
             © 2024 Platera. All rights reserved.
           </span>
           <div className="footer__socials">
-            <a href="#" className="footer__social" aria-label="Instagram"><img src="instagram.svg" alt=""/></a>
-            <a href="#" className="footer__social" aria-label="Facebook"><img src="instagram.svg" alt=""/></a>
-            <a href="#" className="footer__social" aria-label="Twitter"><img src="instagram.svg" alt=""/></a>
+            <Link href="https://github.com/tabib-e-alahi" className="footer__social" aria-label="Instagram"><img src="/github.png" alt=""/></Link>
+            <Link href="https://www.facebook.com/etabib.alahi" className="footer__social" aria-label="Facebook"><img src="/fb.png" alt=""/></Link>
+            <Link href="https://www.linkedin.com/in/tabib-e-alahi" className="footer__social" aria-label="Twitter"><img src="/linkedin.png" alt=""/></Link>
           </div>
         </div>
       </div>

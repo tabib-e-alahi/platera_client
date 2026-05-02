@@ -22,7 +22,6 @@ import ThemeToggle from "@/components/shared/ThemeToggle";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Restaurants", href: "/restaurants" },
-  { label: "Browse Meals", href: "/meals" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

@@ -55,7 +55,7 @@
 }
 .rp__hero-desc {
     font-size: 1.05rem;
-    color: hsl(var(--cream) / 0.55);
+    color: hsl(var(--cream-hero-title) / 0.55);
     max-width: 480px;
     margin: 0 auto;
     line-height: 1.7;
