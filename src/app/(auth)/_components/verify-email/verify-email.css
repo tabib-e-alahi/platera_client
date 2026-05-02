@@ -103,7 +103,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 18px;
-  border: 1.5px solid #e5e7eb;
+  border: 1.5px solid hsl(var(--border));
   background: #f9fafb;
   outline: none;
   text-align: center;

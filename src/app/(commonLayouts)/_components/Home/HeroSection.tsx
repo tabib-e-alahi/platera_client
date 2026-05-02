@@ -100,29 +100,6 @@ export default async function HeroSection() {
           </div>
         </div>
       </div>
-
-      {/* Bottom Stats */}
-      <div className="hero__stats">
-        <div className="hero__stats-inner">
-          <div className="hero__stat">
-            <Store size={20} style={{ color: 'var(--gold)' }} />
-            <span className="hero__stat-number">{restaurantLabel}</span>
-            <span className="hero__stat-label">Restaurants</span>
-          </div>
-          <div className="hero__stat-divider" />
-          <div className="hero__stat">
-            <Flame size={20} style={{ color: 'var(--gold)' }} />
-            <span className="hero__stat-number">{cuisineLabel}</span>
-            <span className="hero__stat-label">Cuisines</span>
-          </div>
-          <div className="hero__stat-divider" />
-          <div className="hero__stat">
-            <UtensilsCrossed size={20} style={{ color: 'var(--gold)' }} />
-            <span className="hero__stat-number">{foodiesLabel}</span>
-            <span className="hero__stat-label">Happy Foodies</span>
-          </div>
-        </div>
-      </div>
     </section>
   )
 }

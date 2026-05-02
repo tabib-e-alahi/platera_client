@@ -1,6 +1,6 @@
 .menu {
     position: relative;
-    padding: 0rem 2rem 3rem 2rem;
+    padding: 0rem  2rem;
     background: hsl(var(--cream));
     overflow: hidden;
 }
@@ -21,7 +21,7 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
-    padding: 5rem 0rem;
+    padding-top: 5rem;
 }
 
 .menu__header {
@@ -124,8 +124,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.9rem 2.5rem;
-    border-radius: 9999px;
+    padding: 0.7rem 1.5rem;
+    border-radius: 95px;
     background: linear-gradient(
         135deg,
         hsl(var(--gold)),
@@ -134,10 +134,9 @@
     color: hsl(20 15% 8%);
     font-family: var(--font-body);
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     border: none;
     cursor: pointer;
-    text-decoration: none;
     transition: all 0.3s ease;
     letter-spacing: 0.02em;
     box-shadow: 0 4px 20px hsl(var(--gold) / 0.25);
@@ -173,7 +172,7 @@
 
 .rest-card__badge--discount {
     background: hsl(var(--wine));
-    color: hsl(var(--cream));
+    color: hsl(var(--cream-hero-title));
     font-family: var(--font-body);
     font-size: 0.62rem;
     font-weight: 700;

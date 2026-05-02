@@ -1,6 +1,5 @@
-import CategoriesCarouselClient from "./CuisineCategoriesClient";
 import "./cuisine-categories.css";
-
+import CategoryCarousel from "./CuisineCategoriesClient";
 export type TCategory = {
   id: string;
   name: string;
@@ -16,7 +15,7 @@ async function getCategories(): Promise<TCategory[]> {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/public/categories`,
       {
-        next: { revalidate: 400 }, 
+        next: { revalidate: 400 },
       }
     );
 
@@ -38,7 +37,7 @@ export default async function CategoriesCarousel() {
     <section className="cat-section">
       <div className="cat-section__inner">
         <h2 className="cat-section__title">Cuisines</h2>
-        <CategoriesCarouselClient categories={categories} />
+        <CategoryCarousel categories={categories} />
       </div>
     </section>
   );

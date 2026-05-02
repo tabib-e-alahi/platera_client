@@ -69,7 +69,7 @@
   font-family: var(--font-heading);
   font-size: clamp(2rem, 3.5vw, 2.75rem);
   font-weight: 700;
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
   line-height: 1.15;
   margin-bottom: 1.5rem;
 }
@@ -124,7 +124,7 @@
   font-family: var(--font-heading);
   font-size: 0.9rem;
   font-weight: 600;
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
 }
 
 .about__feature-desc {

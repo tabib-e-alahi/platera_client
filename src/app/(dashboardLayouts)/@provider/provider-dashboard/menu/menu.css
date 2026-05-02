@@ -223,7 +223,7 @@
 .menu-avail-btn--active {
   background: hsl(var(--wine));
   border-color: hsl(var(--wine));
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
 }
 .menu-avail-dot {
   width: 6px;
@@ -334,7 +334,7 @@
 }
 .meal-card__badge--featured {
   background: hsl(var(--wine) / 0.85);
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
 }
 
 .meal-card__info {
@@ -521,7 +521,7 @@
 .menu-page-btn--active {
   background: hsl(var(--wine));
   border-color: hsl(var(--wine));
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
   font-weight: 700;
 }
 .menu-page-btn:disabled { opacity: 0.35; cursor: not-allowed; }

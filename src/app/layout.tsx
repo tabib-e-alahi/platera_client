@@ -4,6 +4,7 @@ import { AuthProvider } from "@/providers/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css"
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "next-themes";
 
 
 export const metadata: Metadata = {
@@ -36,12 +37,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className="">
-        <QueryProvider>
-          <AuthProvider>
-            <TooltipProvider>{children}</TooltipProvider>
-            <Toaster position="top-right" richColors />
-          </AuthProvider>
-        </QueryProvider>
+        <ThemeProvider 
+          attribute="data-theme"   // sets data-theme="dark" on <html>
+          defaultTheme="system"    // respects OS preference by default
+          enableSystem
+        >
+          <QueryProvider>
+            <AuthProvider>
+              <TooltipProvider>{children}</TooltipProvider>
+              <Toaster position="top-right" richColors />
+            </AuthProvider>
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

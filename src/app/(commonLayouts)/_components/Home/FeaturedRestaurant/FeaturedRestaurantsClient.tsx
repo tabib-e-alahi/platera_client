@@ -44,9 +44,9 @@ export default function FeaturedRestaurantsClient({ restaurants }: Props) {
     activeType === "All"
       ? restaurants
       : restaurants.filter(
-          (r) =>
-            (BADGE_LABEL[r.businessCategory] ?? r.businessCategory) === activeType
-        );
+        (r) =>
+          (BADGE_LABEL[r.businessCategory] ?? r.businessCategory) === activeType
+      );
 
   if (!restaurants.length) {
     return (
@@ -70,9 +70,8 @@ export default function FeaturedRestaurantsClient({ restaurants }: Props) {
           {types.map((t) => (
             <button
               key={t}
-              className={`restaurants__tab ${
-                activeType === t ? "restaurants__tab--active" : ""
-              }`}
+              className={`restaurants__tab ${activeType === t ? "restaurants__tab--active" : ""
+                }`}
               onClick={() => setActiveType(t)}
             >
               {t}
@@ -83,7 +82,7 @@ export default function FeaturedRestaurantsClient({ restaurants }: Props) {
 
       <div className="restaurants__grid">
         {filtered.map((r) => (
-          <div 
+          <div
             key={r.id}
             className="rest-card"
             style={{
@@ -186,14 +185,17 @@ export default function FeaturedRestaurantsClient({ restaurants }: Props) {
                 </span>
               </div>
 
-              {r.bio && <p className="rest-card__desc">{r.bio}</p>}
+              {/* {r.bio && <p className="rest-card__desc">{r.bio}</p>} */}
+              <p className="rest-card__desc">
+                {r.bio || "\u00A0"}
+              </p>
 
               <div className="rest-card__footer">
                 <span className="rest-card__delivery">
                   {BADGE_LABEL[r.businessCategory] ?? r.businessCategory}
                 </span>
 
-                <Link  href={`/restaurants/${r.id}`} className="rest-card__btn">
+                <Link href={`/restaurants/${r.id}`} className="rest-card__btn">
                   View Menu <ArrowRight size={13} />
                 </Link>
               </div>

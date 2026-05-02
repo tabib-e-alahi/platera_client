@@ -43,7 +43,7 @@
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
   line-height: 1.1;
   margin-bottom: 0.5rem;
 }
@@ -376,7 +376,7 @@
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
 }
 .cart-summary__header-count {
   font-size: 0.82rem;

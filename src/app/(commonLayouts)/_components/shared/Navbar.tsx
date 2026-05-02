@@ -17,6 +17,7 @@ import { logoutUser } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import ThemeToggle from "@/components/shared/ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -105,6 +106,7 @@ const Navbar = () => {
           </ul>
 
           <div className="navbar__right">
+            <ThemeToggle></ThemeToggle>
             {!isLoading &&
               (user ? (
                 <div className="navbar__auth navbar__auth--logged">

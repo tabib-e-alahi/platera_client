@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 120;
+    z-index: 100;
     width: 100%;
     padding: 1rem 1rem;
     transition:
@@ -15,11 +15,10 @@
 }
 
 .navbar--scrolled {
-    background: hsl(20 15% 8% / 0.88);
-    backdrop-filter: blur(18px);
+    background: hsl(var(--hero-gradient));
     border-bottom: 1px solid hsl(var(--gold) / 0.1);
     box-shadow: 0 10px 30px hsl(20 15% 4% / 0.18);
-    padding: 0.7rem 1rem;
+    padding: 1.2rem 1rem;
 }
 
 .navbar__inner {
@@ -61,7 +60,7 @@
     font-family: var(--font-heading);
     font-size: 1.45rem;
     font-weight: 700;
-    color: hsl(var(--cream));
+    color: hsl(var(--cream-hero-title));
     letter-spacing: -0.02em;
     white-space: nowrap;
 }
@@ -82,7 +81,7 @@
     font-family: var(--font-body);
     font-size: 0.92rem;
     font-weight: 500;
-    color: hsl(var(--cream) / 0.72);
+    color: hsl(var(--cream-hero-title)/ 0.82);
     text-decoration: none;
     letter-spacing: 0.02em;
     transition: color 0.25s ease;
@@ -101,7 +100,7 @@
 }
 
 .navbar__link:hover {
-    color: hsl(var(--cream));
+    color: hsl(var(--cream-hero-title));
 }
 
 .navbar__link:hover::after {
@@ -134,7 +133,7 @@
     justify-content: center;
     border-radius: 0.75rem;
     text-decoration: none;
-    color: hsl(var(--cream));
+    color: hsl(var(--cream-hero-title));
     border: 1px solid hsl(var(--gold) / 0.18);
     background: hsl(var(--gold) / 0.06);
     box-shadow: 0 2px 12px hsl(var(--gold) / 0.16);
@@ -171,7 +170,7 @@
     letter-spacing: 0.02em;
     border-radius: 0.55rem;
     text-decoration: none;
-    color: hsl(var(--cream));
+    color: hsl(var(--cream-hero-title));
     border: 1px solid hsl(var(--gold) / 0.18);
     background: hsl(var(--gold) / 0.06);
     box-shadow: 0 2px 12px hsl(var(--gold) / 0.16);
@@ -346,7 +345,7 @@
 .navbar__mobile-cta-secondary {
     border: 1px solid hsl(var(--gold) / 0.18);
     background: hsl(var(--gold) / 0.06);
-    color: hsl(var(--cream));
+    color: hsl(var(--cream-hero-title));
 }
 
 .navbar__mobile-cta-logout {

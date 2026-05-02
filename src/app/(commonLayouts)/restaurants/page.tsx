@@ -67,17 +67,30 @@ function RestaurantCard({ r }: { r: Restaurant }) {
             {r.city}
           </span>
         </div>
-        {r.bio && <p className="rc__desc">{r.bio}</p>}
-        {r.subcategories.length > 0 && (
-          <div className="rc__tags">
-            {(r.subcategories as string[]).slice(0, 4).map((s) => (
-              <span className="rc__tag" key={s}>{s}</span>
-            ))}
-            {r.subcategories.length > 4 && (
-              <span className="rc__tag">+{r.subcategories.length - 4} more</span>
-            )}
-          </div>
-        )}
+        {/* {r.bio && <p className="rc__desc">{r.bio}</p>} */}
+        <p className="rc__desc">
+          {r.bio || "\u00A0"}
+        </p>
+
+        <div className="rc__tags">
+          {r.subcategories.length > 0 ? (
+            <>
+              {(r.subcategories as string[]).slice(0, 4).map((s) => (
+                <span className="rc__tag" key={s}>
+                  {s}
+                </span>
+              ))}
+
+              {r.subcategories.length > 4 && (
+                <span className="rc__tag">
+                  +{r.subcategories.length - 4} more
+                </span>
+              )}
+            </>
+          ) : (
+            <span className="rc__tag rc__tag--empty">&nbsp;</span>
+          )}
+        </div>
         <div className="rc__footer">
           <div className="rc__meta">
             <span className="rc__meta-item">

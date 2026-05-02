@@ -7,6 +7,7 @@ import AboutSection from "./_components/Home/AboutSection/AboutSection";
 import TestimonialsSection from "./_components/Home/Testimonials/TestimonialsSection";
 import TopDishes from './_components/Home/TopDishes/TopDishes';
 import CuisineCategories from "./_components/Home/CuisineCategories/CuisineCategories";
+import HeroStats from "./_components/Home/HeroStats";
 
 
 
@@ -23,6 +24,7 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection />
+      <HeroStats></HeroStats>
       <CuisineCategories></CuisineCategories>
       <FeaturedRestaurants></FeaturedRestaurants>
       <TopDishes />

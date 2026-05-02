@@ -230,7 +230,7 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.08em;
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
   text-shadow:
     0 12px 32px hsl(var(--wine-deep) / 0.32),
     0 0 20px hsl(var(--gold) / 0.08);

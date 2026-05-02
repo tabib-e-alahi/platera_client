@@ -538,7 +538,7 @@
   padding: 0.6rem 1.1rem;
   border-radius: 0.75rem;
   background: hsl(var(--wine-deep));
-  color: hsl(var(--cream));
+  color: hsl(var(--cream-hero-title));
   font-size: 0.88rem;
   margin-top: 0.75rem;
   flex-wrap: wrap;

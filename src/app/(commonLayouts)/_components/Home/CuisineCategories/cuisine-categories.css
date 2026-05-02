@@ -2,28 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 .cat-section {
-  padding: 44px 0 12px;
+  padding-top: 5rem;
+  background: hsl(var(--cream));
 }
 
 .cat-section__inner {
   max-width: 80rem;
   margin: 0 auto;
-  /* padding: 0 40px; */
 }
 
 .cat-section__title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 32px;
-  font-weight: 800;
-  color: #111827;
-  letter-spacing: -0.5px;
-  margin: 0 0 28px;
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+    color: hsl(var(--wine-deep));
+    line-height: 1.1;
+    margin-bottom: 1rem;
 }
 
 
 .cat-carousel-wrap {
   position: relative;
-  padding: 0 48px;
 }
 
 .cat-carousel {
@@ -36,8 +35,8 @@
 
 
 .cat-carousel__item {
-  /* ~7 items on large screens */
-  flex: 0 0 calc(100% / 7);
+  /* ~10 items on large screens */
+  flex: 0 0 calc(100% / 10);
   min-width: 0;
   padding: 0 7px;
 }

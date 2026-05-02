@@ -27,7 +27,7 @@ const nextConfig: NextConfig = {
       {
         // Explicitly map v1 API requests
         source: "/api/v1/:path*",
-        destination: "https://platera-server-side.vercel.app/api/v1/:path*",
+        destination: "http://localhost:5000/api/v1/:path*",
       },
     ];
   },

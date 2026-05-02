@@ -85,7 +85,7 @@
 }
 .rd__badge--type {
     background: hsl(var(--wine));
-    color: hsl(var(--cream));
+    color: hsl(var(--cream-hero-title));
     display: flex;
     justify-content: center;
     align-items: center;
