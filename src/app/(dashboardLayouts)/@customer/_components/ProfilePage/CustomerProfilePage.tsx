@@ -118,6 +118,14 @@ export default function CustomerProfilePage() {
       toast.error("Street address is required.");
       return false;
     }
+    if (!form.phone.trim()) {
+      toast.error("Phone number is required.");
+      return false;
+    }
+    if (!form.houseNumber.trim()) {
+      toast.error("House number is required.");
+      return false;
+    }
     return true;
   };
 
@@ -160,7 +168,6 @@ export default function CustomerProfilePage() {
     }
   };
 
-  /* ── loading ── */
   if (isLoading) {
     return (
       <div className="cpp">
@@ -169,11 +176,11 @@ export default function CustomerProfilePage() {
     );
   }
 
-  /* ── page ── */
+
   return (
     <div className="cpp">
 
-      {/* header card */}
+
       <div className="cpp__header-card">
         <div className="cpp__header-text">
           <h1 className="cpp__title">My profile</h1>
@@ -216,7 +223,7 @@ export default function CustomerProfilePage() {
             <div className="cpp__field">
               <label htmlFor="cpp-phone" className="cpp__label">
                 Phone number
-                <span className="cpp__optional">optional</span>
+                <span className="cpp__required">*</span>
               </label>
               <input
                 id="cpp-phone"
@@ -281,7 +288,7 @@ export default function CustomerProfilePage() {
             <div className="cpp__field">
               <label htmlFor="cpp-house" className="cpp__label">
                 House number
-                <span className="cpp__optional">optional</span>
+                <span className="cpp__required">*</span>
               </label>
               <input
                 id="cpp-house"
