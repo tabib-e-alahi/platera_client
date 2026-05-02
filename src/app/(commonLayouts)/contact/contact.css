@@ -1,6 +1,6 @@
-/* contact.css */
 
 .contact-page {
+  position: relative;
   font-family: 'Inter', sans-serif;
 }
 
@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 100px 24px 110px;
+  padding: 140px 24px 80px;
   text-align: center;
 }
 
@@ -74,7 +74,6 @@
 
 /* ── Contact cards ── */
 .contact-cards {
-  background: hsl(30 33% 97%);
   padding: 0 24px;
   margin-top: 1.5rem;
 }
@@ -91,8 +90,10 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: #fff;
-  border: 1.5px solid hsl(30 20% 88%);
+  background-color: hsl(var(--cream) / 0.3);
+  border: 1px solid;
+  border-color: hsla(350, 38%, 30%, 0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
   border-radius: 18px;
   padding: 24px 22px;
   text-decoration: none;
@@ -100,7 +101,7 @@
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   animation: contact-fadein 0.5s ease both;
   animation-delay: calc(var(--i, 0) * 0.1s);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px hsla(350, 38%, 30%, 0.3);
 }
 .contact-card:hover {
   border-color: hsl(350 40% 30% / 0.3);
@@ -126,7 +127,7 @@
 .contact-card__value {
   font-size: 14px;
   font-weight: 700;
-  color: hsl(20 20% 10%);
+  color: hsl(var(--cream-hero));
   margin-bottom: 3px;
 }
 
@@ -152,7 +153,6 @@
 /* ── Main form + FAQ grid ── */
 .contact-main {
   padding: 72px 24px 100px;
-  background: hsl(30 33% 97%);
 }
 
 .contact-main__inner {
@@ -166,9 +166,11 @@
 
 /* ── Form wrapper ── */
 .contact-form-wrap {
-  background: #fff;
-  border: 1.5px solid hsl(30 20% 88%);
-  border-radius: 24px;
+  background: hsl(var(--card));
+  border: 1.5px solid;
+  border-color: hsla(350, 38%, 30%, 0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  border-radius: 16px;
   overflow: hidden;
 }
 
@@ -183,7 +185,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   font-weight: 700;
-  color: hsl(20 20% 10%);
+  color: hsl(var(--cream-hero));
   margin: 0 0 6px;
 }
 
@@ -217,7 +219,7 @@
 .contact-form__label {
   font-size: 13px;
   font-weight: 600;
-  color: hsl(20 20% 20%);
+  color: hsl(var(--cream-hero));
 }
 
 .contact-req {
@@ -229,8 +231,7 @@
 .contact-form__select {
   height: 44px;
   border-radius: 11px;
-  border: 1.5px solid hsl(30 20% 88%);
-  background: #fff;
+  background: hsl(var(--cream-hero-title)/0.8);
   padding: 0 14px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
@@ -246,7 +247,7 @@
   border-color: hsl(350 40% 30%);
   box-shadow: 0 0 0 3px hsl(350 40% 30% / 0.10);
 }
-.contact-form__input::placeholder { color: #CBD5E1; }
+.contact-form__input::placeholder { color: hsl(var(--cream-hero)); }
 .contact-form__select { cursor: pointer; }
 
 .contact-form__textarea {
@@ -381,7 +382,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   font-weight: 700;
-  color: hsl(20 20% 10%);
+  color: hsl(var(--cream-hero));
   margin: 0 0 20px;
 }
 
@@ -397,7 +398,6 @@
 
 .contact-faq__item {
   border-bottom: 1px solid hsl(30 20% 90%);
-  background: #fff;
   transition: background 0.15s;
 }
 .contact-faq__item:last-child { border-bottom: none; }
@@ -415,7 +415,7 @@
   text-align: left;
   font-size: 14px;
   font-weight: 600;
-  color: hsl(20 20% 12%);
+  color: hsl(var(--cream-hero));
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   transition: color 0.15s;
