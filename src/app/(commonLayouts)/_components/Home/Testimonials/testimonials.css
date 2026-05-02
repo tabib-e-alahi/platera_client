@@ -1,12 +1,12 @@
 .testimonials {
   position: relative;
-  padding: 4rem 2rem;
-  background: hsl(var(--cream));
+  padding: 0rem 2rem;
   overflow: hidden;
+  background-color: hsl(var(--cream));
 }
 
 .testimonials__container {
-  max-width: 1320px;
+  max-width: 80rem;
   margin: 0 auto;
   position: relative;
 }
@@ -80,7 +80,7 @@
   flex-direction: row;
   border-radius: 1.125rem;
   overflow: hidden;
-  background: #ffffff;
+  background: hsl(var(--gold-gradient));
   border: 1px solid hsl(var(--wine) / 0.08);
   box-shadow:
     0 1px 2px hsl(var(--wine) / 0.05),
@@ -101,7 +101,7 @@
 .testimonial-card__rail {
   width: 54px;
   flex-shrink: 0;
-  background: hsl(var(--wine-deep));
+  background: hsl(var(--cream));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -174,7 +174,6 @@
   overflow: hidden;
 }
 
-/* Large ambient closing quote — decorative only */
 .testimonial-card__body::before {
   content: "\201D";
   position: absolute;
@@ -183,7 +182,7 @@
   font-family: var(--font-heading);
   font-size: 8rem;
   line-height: 1;
-  color: hsl(var(--wine) / 0.042);
+  color: hsl(var(--wine-deep));
   pointer-events: none;
   user-select: none;
 }
@@ -193,13 +192,13 @@
   font-family: var(--font-body);
   font-size: 0.875rem;
   line-height: 1.78;
-  color: hsl(var(--wine) / 0.62);
+  color: hsl(var(--wine-deep)/0.8);
   font-weight: 300;
   font-style: italic;
   margin: 0 0 1rem;
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -212,7 +211,7 @@
   font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: 500;
-  color: hsl(var(--wine) / 0.38);
+  color: hsl(var(--wine) / 0.88);
   margin-bottom: 1.1rem;
   overflow: hidden;
   white-space: nowrap;

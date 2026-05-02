@@ -167,7 +167,7 @@ html {
 }
 
 body {
-    background: hsl(var(--background));
+    background: hsl(var(--cream));
     color: hsl(var(--foreground));
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;

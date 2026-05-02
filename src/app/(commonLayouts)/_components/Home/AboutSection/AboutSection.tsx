@@ -1,5 +1,6 @@
 import { Leaf, Award, Truck, ShieldCheck, ArrowRight } from "lucide-react";
 import "./aboutSection.css";
+import Link from "next/link";
 
 const features = [
   { icon: ShieldCheck, label: "Verified Partners", desc: "Every restaurant vetted" },
@@ -56,10 +57,10 @@ const AboutSection = () => {
               ))}
             </div>
 
-            <button className="about__btn">
+            <Link href={"/about"} className="about__btn">
               Learn More
               <ArrowRight size={16} />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

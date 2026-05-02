@@ -23,7 +23,8 @@ export const revalidate = 300;
 export default async function HomePage() {
   return (
     <>
-      <HeroSection />
+      <div className="space-y-24">
+        <HeroSection />
       <HeroStats></HeroStats>
       <CuisineCategories></CuisineCategories>
       <FeaturedRestaurants></FeaturedRestaurants>
@@ -31,6 +32,7 @@ export default async function HomePage() {
       <TestimonialsSection></TestimonialsSection>
       <AboutSection></AboutSection>
       <HowItWorks />
+      </div>
     </>
   );
 }
