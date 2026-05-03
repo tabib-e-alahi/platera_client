@@ -27,15 +27,15 @@ export default async function HomePage() {
     <>
       <div className="space-y-24 pb-24">
         <HeroSection />
-      <HeroStats></HeroStats>
-      <CuisineCategories></CuisineCategories>
-      <FeaturedRestaurants></FeaturedRestaurants>
-      <TopDishes />
-      <TestimonialsSection></TestimonialsSection>
-      <AboutSection></AboutSection>
-      <HowItWorks />
-      <OrderTracker></OrderTracker>
-      <ChefSpotlight></ChefSpotlight>
+        <HeroStats></HeroStats>
+        <CuisineCategories></CuisineCategories>
+        <FeaturedRestaurants></FeaturedRestaurants>
+        <TopDishes />
+        <TestimonialsSection></TestimonialsSection>
+        <AboutSection></AboutSection>
+        <HowItWorks />
+        <OrderTracker></OrderTracker>
+        <ChefSpotlight></ChefSpotlight>
       </div>
     </>
   );

@@ -1,5 +1,4 @@
 .chef-spotlight {
-  background: hsl(var(--background));
   position: relative;
   overflow: hidden;
   transition: background 0.35s ease;

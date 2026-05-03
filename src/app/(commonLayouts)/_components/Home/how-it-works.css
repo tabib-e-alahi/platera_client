@@ -1,11 +1,6 @@
-/* =====================================================================
-   how-it-works.css — Redesigned HowItWorks Section
-   Uses Platera global CSS variables (globals.css)
-   ===================================================================== */
 
 .how {
   padding: 7rem 0;
-  background: hsl(var(--background));
   position: relative;
   overflow: hidden;
   transition: background 0.35s ease;

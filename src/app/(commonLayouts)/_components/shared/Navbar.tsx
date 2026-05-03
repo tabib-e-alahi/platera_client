@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  CreditCardIcon,
   LogIn,
   LogOut,
+  LogOutIcon,
+  SettingsIcon,
   ShoppingCart,
   User,
+  UserIcon,
   UtensilsCrossed,
 } from "lucide-react";
 import "./navbar.css";
@@ -18,6 +22,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/shared/ThemeToggle";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -73,6 +78,13 @@ const Navbar = () => {
         ? "/admin-dashboard"
         : "/customer-dashboard";
 
+  const dashboardProfileHref =
+    user?.role === "PROVIDER"
+      ? "/provider-dashboard/profile"
+      : user?.role === "ADMIN" || user?.role === "SUPER_ADMIN"
+        ? "/admin-dashboard"
+        : "/customer-dashboard/profile";
+
   const handleLogout = async () => {
     try {
       await logoutUser();
@@ -112,14 +124,33 @@ const Navbar = () => {
                   <Link href="/cart" className="navbar__icon-btn" aria-label="Cart">
                     <ShoppingCart size={20} />
                   </Link>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Link href={dashboardHref} className="navbar__icon-btn" aria-label="Dashboard">
-                        <User size={20} />
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent className="text-white bg-inherit">Dashboard</TooltipContent>
-                  </Tooltip>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button className="navbar__icon-btn" variant="outline"><User size={20} /></Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>
+                        <Link href={dashboardProfileHref} className="flex gap-0.5 items-center" aria-label="Profile">
+                          <UserIcon />
+                          Profile
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Link href={dashboardHref} className="flex gap-0.5 items-center" aria-label="Dashboard">
+                          <CreditCardIcon />
+                          Dashboard
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem variant="destructive">
+                        <Button className="flex gap-0.5 items-center" onClick={handleLogout}>
+                          <LogOutIcon />
+                          Log out
+                        </Button>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button onClick={handleLogout} className="navbar__icon-btn" aria-label="Dashboard">
