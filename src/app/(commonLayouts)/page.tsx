@@ -8,6 +8,8 @@ import TestimonialsSection from "./_components/Home/Testimonials/TestimonialsSec
 import TopDishes from './_components/Home/TopDishes/TopDishes';
 import CuisineCategories from "./_components/Home/CuisineCategories/CuisineCategories";
 import HeroStats from "./_components/Home/HeroStats";
+import OrderTracker from "./_components/Home/OrderTracking/OrderTracker";
+import ChefSpotlight from "./_components/Home/ChefSpotLight/ChefSpotlight";
 
 
 
@@ -23,7 +25,7 @@ export const revalidate = 300;
 export default async function HomePage() {
   return (
     <>
-      <div className="space-y-24">
+      <div className="space-y-24 pb-24">
         <HeroSection />
       <HeroStats></HeroStats>
       <CuisineCategories></CuisineCategories>
@@ -32,6 +34,8 @@ export default async function HomePage() {
       <TestimonialsSection></TestimonialsSection>
       <AboutSection></AboutSection>
       <HowItWorks />
+      <OrderTracker></OrderTracker>
+      <ChefSpotlight></ChefSpotlight>
       </div>
     </>
   );

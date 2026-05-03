@@ -1,94 +1,351 @@
-/* src/components/home/how-it-works.css */
+/* =====================================================================
+   how-it-works.css — Redesigned HowItWorks Section
+   Uses Platera global CSS variables (globals.css)
+   ===================================================================== */
 
 .how {
-  padding: 80px 0;
-  background: var(--card);
+  padding: 7rem 0;
+  background: hsl(var(--background));
+  position: relative;
+  overflow: hidden;
+  transition: background 0.35s ease;
 }
+
+/* Background orbs */
+.how::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    hsl(var(--wine) / 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.how::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  right: -60px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    hsl(var(--gold) / 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────── */
 
 .how__header {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Eyebrow pill */
+.how__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: hsl(var(--gold));
+  background: hsl(var(--gold) / 0.1);
+  border: 1px solid hsl(var(--gold) / 0.22);
+  border-radius: 9999px;
+  padding: 0.28rem 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+.how__eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: hsl(var(--gold));
+  animation: how-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes how-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 0.65; }
 }
 
 .how__title {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: hsl(var(--foreground));
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  transition: color 0.35s ease;
+}
+
+.how__title em {
+  font-style: italic;
+  color: hsl(var(--gold));
 }
 
 .how__subtitle {
-  font-size: 16px;
-  color: var(--text-muted);
-  margin-top: 8px;
+  font-size: 1rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+  transition: color 0.35s ease;
 }
+
+/* ─── Grid ───────────────────────────────────────────────────────────── */
 
 .how__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  /* 3 steps + 2 connectors */
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 0 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
+/* ─── Connector ──────────────────────────────────────────────────────── */
+
+.how__connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4rem; /* vertically aligns with icon centre */
+}
+
+.how__connector-line {
+  width: 64px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--gold) / 0.45),
+    hsl(var(--gold) / 0.12)
+  );
+  position: relative;
+}
+
+/* Arrow head */
+.how__connector-line::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid hsl(var(--gold) / 0.4);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+/* ─── Step ───────────────────────────────────────────────────────────── */
+
 .how__step {
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  text-align: center;
+  gap: 0;
+}
+
+/* Icon wrapper */
+.how__step-icon-wrap {
   position: relative;
+  margin-bottom: 1.6rem;
 }
 
-.how__step:not(:last-child)::after {
-  content: '→';
+/* Hover glow ring */
+.how__step-glow {
   position: absolute;
-  right: -24px;
-  top: 28px;
-  font-size: 24px;
-  color: var(--border);
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    hsl(var(--gold) / 0.13) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
+.how__step:hover .how__step-glow {
+  opacity: 1;
+}
+
+/* Icon circle */
 .how__step-icon {
-  width: 72px;
-  height: 72px;
-  background: var(--accent-light);
-  border-radius: var(--radius);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: hsl(var(--card));
+  border: 2px solid hsl(var(--border));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
   position: relative;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.35s ease;
+  box-shadow: 0 1px 3px hsl(0 0% 0% / 0.06);
 }
 
+.how__step:hover .how__step-icon {
+  border-color: hsl(var(--gold) / 0.55);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px hsl(var(--gold) / 0.25);
+}
+
+.how__step-emoji {
+  font-size: 2rem;
+  line-height: 1;
+  display: block;
+}
+
+/* Step number badge */
 .how__step-number {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 24px;
-  height: 24px;
-  background: var(--accent);
-  color: white;
+  top: -6px;
+  right: -6px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  font-size: 12px;
-  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--gold)),
+    hsl(var(--gold-light))
+  );
+  color: hsl(20 15% 8%);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 8px hsl(var(--gold) / 0.4);
+  border: 2px solid hsl(var(--background));
 }
 
 .how__step-title {
-  font-size: 20px;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: hsl(var(--foreground));
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+  transition: color 0.35s ease;
 }
 
 .how__step-desc {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 240px;
+  font-size: 0.88rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+  max-width: 220px;
+  transition: color 0.35s ease;
 }
 
-@media (max-width: 768px) {
-  .how__grid { grid-template-columns: 1fr; gap: 32px; }
-  .how__step::after { display: none; }
+/* ─── CTA ────────────────────────────────────────────────────────────── */
+
+.how__cta {
+  text-align: center;
+  margin-top: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.how__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--wine)),
+    hsl(var(--wine-deep))
+  );
+  color: hsl(var(--cream));
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px hsl(var(--wine) / 0.3);
+  letter-spacing: 0.01em;
+}
+
+[data-theme="dark"] .how__cta-btn {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--gold)),
+    hsl(var(--gold-light))
+  );
+  color: hsl(20 15% 8%);
+  box-shadow: 0 4px 20px hsl(var(--gold) / 0.3);
+}
+
+.how__cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px hsl(var(--wine) / 0.4);
+}
+
+[data-theme="dark"] .how__cta-btn:hover {
+  box-shadow: 0 8px 28px hsl(var(--gold) / 0.42);
+}
+
+.how__cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: hsl(255 100% 100% / 0.15);
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.how__cta-btn:hover .how__cta-arrow {
+  transform: translateX(3px);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .how__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .how__connector {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .how {
+    padding: 4.5rem 0;
+  }
+
+  .how__header {
+    margin-bottom: 3rem;
+  }
 }
