@@ -6,6 +6,8 @@ import { ArrowRight, Star, Flame, Clock, ShoppingBag, UtensilsCrossed } from "lu
 import { getTopDishes } from "@/services/public.service";
 import "./top-dishes.css";
 import AddToCartButton from "@/components/shared/AddToCartButton";
+import { scoreDishes, ScoredDish } from "@/lib/trendingScore";
+import TrendingBadge from "@/components/shared/TrendingBadge";
 
 
 export type TTopDish = {
@@ -63,7 +65,7 @@ function DishCardSkeleton() {
 }
 
 
-function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
+function DishCard({ dish, rank }: { dish: ScoredDish; rank: number }) {
   const price = effectivePrice(dish);
   const hasDiscount = isDiscountActive(dish);
   const badge = dish.isBestseller ? "bestseller" : dish.isFeatured ? "featured" : null;
@@ -73,7 +75,6 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
       className="rest-card"
       style={{ textDecoration: "none", display: "block", color: "inherit" }}
     >
-      {/* Image */}
       <div className="rest-card__image-wrap">
         {dish.mainImageURL ? (
           <img
@@ -92,20 +93,13 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
 
         <div className="rest-card__image-overlay" />
 
-        {/* Rank badge — mirrors #1 Top Rated from featured restaurants */}
         <div className="rest-card__badges">
           {badge === "bestseller" ? (
-            <span className="rest-card__badge rest-card__badge--featured">
-              ★ Bestseller
-            </span>
+            <span className="rest-card__badge rest-card__badge--featured">★ Bestseller</span>
           ) : badge === "featured" ? (
-            <span className="rest-card__badge rest-card__badge--featured">
-              ✦ Featured
-            </span>
+            <span className="rest-card__badge rest-card__badge--featured">✦ Featured</span>
           ) : (
-            <span className="rest-card__badge rest-card__badge--featured">
-              #{rank} Top Dish
-            </span>
+            <span className="rest-card__badge rest-card__badge--featured">#{rank} Top Dish</span>
           )}
 
           {hasDiscount && (
@@ -115,24 +109,14 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
           )}
         </div>
 
-        {/* Rating pill — identical to featured restaurants */}
         {dish.avgRating > 0 && (
           <div className="rest-card__rating">
-            <Star
-              size={11}
-              className="rest-card__rating-star"
-              fill="currentColor"
-            />
-            <span className="rest-card__rating-value">
-              {dish.avgRating.toFixed(1)}
-            </span>
-            <span className="rest-card__rating-count">
-              ({dish.reviewCount})
-            </span>
+            <Star size={11} className="rest-card__rating-star" fill="currentColor" />
+            <span className="rest-card__rating-value">{dish.avgRating.toFixed(1)}</span>
+            <span className="rest-card__rating-count">({dish.reviewCount})</span>
           </div>
         )}
 
-        {/* Cuisine tags — subcategory or category */}
         <div className="rest-card__cuisine-row">
           {dish.subcategory && (
             <span className="rest-card__cuisine-tag">{dish.subcategory}</span>
@@ -141,11 +125,9 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
         </div>
       </div>
 
-      {/* Body */}
       <div className="rest-card__body">
         <div className="rest-card__header">
           <h3 className="rest-card__name">{dish.name}</h3>
-          {/* Price where the city/location sits in restaurant cards */}
           <div className="rest-card__dish-price">
             {hasDiscount && (
               <span className="rest-card__dish-price-original">৳{dish.basePrice}</span>
@@ -153,6 +135,13 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
             <span className="rest-card__dish-price-current">৳{price}</span>
           </div>
         </div>
+
+        {/* ── Trending badge row ── */}
+        {dish.trendingTier && (
+          <div style={{ marginBottom: 6 }}>
+            <TrendingBadge tier={dish.trendingTier} />
+          </div>
+        )}
 
         <div className="rest-card__meta">
           <span className="rest-card__meta-item">
@@ -179,8 +168,8 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
           <span className="rest-card__delivery">
             {dish.provider.businessName} · {dish.provider.city}
           </span>
-          <span className="">
-            <AddToCartButton mealId={dish.id}></AddToCartButton>
+          <span>
+            <AddToCartButton mealId={dish.id} />
           </span>
         </div>
       </div>
@@ -189,9 +178,9 @@ function DishCard({ dish, rank }: { dish: TTopDish; rank: number }) {
 }
 
 export default function TopDishes() {
-  const [dishes, setDishes] = useState<TTopDish[]>([]);
-  const [filtered, setFiltered] = useState<TTopDish[]>([]);
-  const [categories, setCategories] = useState<string[]>(["All"]);
+  const [scoredDishes, setScoredDishes] = useState<ScoredDish[]>([]);
+  const [filtered, setFiltered] = useState<ScoredDish[]>([]);
+  const [categories, setCategories] = useState<string[]>(["All", "🔥 Trending"]);
   const [active, setActive] = useState("All");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -200,16 +189,16 @@ export default function TopDishes() {
       try {
         const res = await getTopDishes();
         const data: TTopDish[] = res?.data ?? [];
-        setDishes(data);
-        setFiltered(data);
 
-        // Build category tabs from actual data
-        const cats = Array.from(
-          new Set(data.map((d) => d.category.name))
-        );
-        setCategories(["All", ...cats]);
+        // Score every dish client-side — no API call needed
+        const scored = scoreDishes(data);
+        setScoredDishes(scored);
+        setFiltered(scored);
+
+        const cats = Array.from(new Set(data.map((d) => d.category.name)));
+        setCategories(["All", "🔥 Trending", ...cats]);
       } catch {
-        // silently fail — section just won't show
+        // silently fail
       } finally {
         setIsLoading(false);
       }
@@ -218,20 +207,25 @@ export default function TopDishes() {
 
   const handleTabChange = (cat: string) => {
     setActive(cat);
-    setFiltered(
-      cat === "All"
-        ? dishes
-        : dishes.filter((d) => d.category.name === cat)
-    );
+    if (cat === "All") {
+      setFiltered(scoredDishes);
+    } else if (cat === "🔥 Trending") {
+      // Show only hot + rising dishes, sorted by score
+      setFiltered(
+        [...scoredDishes]
+          .filter((d) => d.trendingTier === "hot" || d.trendingTier === "rising")
+          .sort((a, b) => b.trendingScore - a.trendingScore)
+      );
+    } else {
+      setFiltered(scoredDishes.filter((d) => d.category.name === cat));
+    }
   };
 
-  // Don't render section at all if no data and not loading
-  if (!isLoading && dishes.length === 0) return null;
+  if (!isLoading && scoredDishes.length === 0) return null;
 
   return (
     <section className="menu" id="menu">
       <div className="menu__container">
-        {/* Header */}
         <div className="menu__header">
           <div className="menu__subtitle">
             <span className="menu__subtitle-line" />
@@ -247,7 +241,7 @@ export default function TopDishes() {
           </p>
         </div>
 
-        {/* Category tabs */}
+        {/* Category tabs — now includes 🔥 Trending */}
         {!isLoading && categories.length > 2 && (
           <div className="menu__tabs">
             {categories.map((cat) => (
@@ -262,7 +256,6 @@ export default function TopDishes() {
           </div>
         )}
 
-        {/* Grid */}
         <div className="restaurants__grid">
           {isLoading
             ? Array.from({ length: 6 }).map((_, i) => <DishCardSkeleton key={i} />)
@@ -271,7 +264,6 @@ export default function TopDishes() {
               ))}
         </div>
 
-        {/* CTA */}
         {!isLoading && (
           <div className="menu__cta">
             <Link href="/restaurants" className="menu__cta-btn">
@@ -283,4 +275,4 @@ export default function TopDishes() {
       </div>
     </section>
   );
-};
+}

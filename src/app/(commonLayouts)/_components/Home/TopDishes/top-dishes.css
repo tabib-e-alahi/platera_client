@@ -1,6 +1,6 @@
 .menu {
     position: relative;
-    padding: 0rem  2rem;
+    padding: 0rem 2rem;
     background: hsl(var(--cream));
     overflow: hidden;
 }
@@ -245,6 +245,40 @@
     100% {
         background-position: -200% 0;
     }
+}
+
+/* ── Add these rules to your existing top-dishes.css ─────────────────── */
+
+.trending-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    line-height: 1.4;
+}
+
+/* 🔥 Trending — coral/orange */
+.trending-badge--hot {
+    background: #faece7;
+    color: #993c1d;
+    border: 0.5px solid #f0997b;
+}
+
+/* ⬆ Rising — amber */
+.trending-badge--rising {
+    background: #faeeda;
+    color: #854f0b;
+    border: 0.5px solid #ef9f27;
+}
+
+/* ★ Popular — green */
+.trending-badge--popular {
+    background: #eaf3de;
+    color: #3b6d11;
+    border: 0.5px solid #97c459;
 }
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
