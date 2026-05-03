@@ -418,7 +418,7 @@ export default function EditMealPage({ mealId }: { mealId: string }) {
                     ? <img src={mainImagePreview} alt="main" className="em-main-preview" />
                     : <div className="em-upload-icon"><ImageIcon size={28} /></div>}
                   <span className="em-upload-text">{mainImagePreview ? "Click to replace" : "Click to upload"}</span>
-                  <span className="em-upload-hint">JPG, PNG or WebP — max 5MB</span>
+                  <span className="em-upload-hint">JPG, PNG or WebP — max 1MB</span>
                 </div>
               </div>
 

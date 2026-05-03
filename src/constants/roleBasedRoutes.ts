@@ -22,6 +22,7 @@ export const Provider_NAV_ITEMS = [
   { label: "My Menu", href: "/provider-dashboard/menu", icon: UtensilsCrossed },
   { label: "Add Meal", href: "/provider-dashboard/add-meal", icon: PlusCircle },
   { label: "Orders", href: "/provider-dashboard/orders", icon: ListOrdered },
+  { label: "Reviews", href: "/provider-dashboard/reviews", icon: ListOrdered },
   { label: "Profile", href: "/provider-dashboard/profile", icon: User },
 ]
 

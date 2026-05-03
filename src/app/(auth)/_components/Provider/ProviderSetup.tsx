@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/providers/AuthProvider";
 import { validateImageDimensions } from "@/utils/imageValidation";
 import { BANGLADESH_DISTRICTS } from "@/constants/bangladeshDistricts";
+import ThemeToggle from "@/components/shared/ThemeToggle";
 
 // ─── Types & Enums ────────────────────────────────────────────────────────────
 
@@ -434,6 +435,7 @@ export default function ProviderSetupPage() {
           Plate<span>ra</span>
         </Link>
         <div className="ps-topbar__help">
+        <ThemeToggle></ThemeToggle>
           <HelpCircle size={13} />
           Need help?
         </div>

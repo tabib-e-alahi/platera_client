@@ -66,8 +66,8 @@ export const updateMeal = async (id: string, payload: FormData) => {
   return res.data;
 };
 
-export const toggleMealAvailability = async (id: string) => {
-  const res = await api.patch(`/provider/meals/${id}/availability`);
+export const toggleMealAvailability = async (id: string, isAvailable: boolean) => {
+  const res = await api.patch(`/provider/meals/${id}/availability`, { isAvailable });
   return res.data;
 };
 

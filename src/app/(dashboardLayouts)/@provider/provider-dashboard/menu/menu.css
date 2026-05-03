@@ -1,3 +1,7 @@
+/* menu.css — Platera Provider Dashboard
+   Fully theme-aware: consumes globals.css tokens.
+   Light = :root defaults  |  Dark = [data-theme="dark"] overrides
+*/
 
 /* ── Page wrapper ── */
 .menu-page {
@@ -60,7 +64,7 @@
   font-size: 0.88rem;
   font-weight: 700;
   font-family: var(--font-body);
-  color: hsl(20 15% 8%);
+  color: rgb(44, 41, 41);
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -87,6 +91,10 @@
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  transition: box-shadow 0.15s;
+}
+.menu-stat-card:hover {
+  box-shadow: var(--shadow-md);
 }
 .menu-stat-icon {
   width: 2.4rem;
@@ -99,8 +107,13 @@
 }
 .menu-stat-icon--gold { background: hsl(var(--gold) / 0.12); color: hsl(var(--gold)); }
 .menu-stat-icon--wine { background: hsl(var(--wine) / 0.1); color: hsl(var(--wine)); }
-.menu-stat-icon--green { background: hsl(120 45% 45% / 0.1); color: hsl(120 45% 38%); }
-.menu-stat-icon--red { background: hsl(0 65% 55% / 0.1); color: hsl(0 65% 50%); }
+.menu-stat-icon--green { background: hsl(120 45% 45% / 0.12); color: hsl(120 45% 42%); }
+.menu-stat-icon--red { background: hsl(0 65% 55% / 0.12); color: hsl(0 65% 52%); }
+
+/* Dark mode: green/red need slightly lighter tones for contrast */
+[data-theme="dark"] .menu-stat-icon--green { color: hsl(120 50% 58%); }
+[data-theme="dark"] .menu-stat-icon--red { color: hsl(0 65% 65%); }
+
 .menu-stat-info {}
 .menu-stat-value {
   font-family: var(--font-heading);
@@ -160,7 +173,7 @@
   border-color: hsl(var(--gold) / 0.6);
   box-shadow: 0 0 0 3px hsl(var(--gold) / 0.1);
 }
-.menu-search::placeholder { color: hsl(var(--muted-foreground) / 0.65); }
+.menu-search::placeholder { color: hsl(var(--muted-foreground) / 0.6); }
 
 .menu-filter-divider {
   width: 1px;
@@ -193,8 +206,8 @@
   color: hsl(var(--wine));
 }
 .menu-chip--active {
-  background: hsl(var(--wine) / 0.08);
-  border-color: hsl(var(--wine) / 0.35);
+  background: hsl(var(--wine) / 0.1);
+  border-color: hsl(var(--wine) / 0.4);
   color: hsl(var(--wine));
   font-weight: 600;
 }
@@ -223,7 +236,7 @@
 .menu-avail-btn--active {
   background: hsl(var(--wine));
   border-color: hsl(var(--wine));
-  color: hsl(var(--cream-hero-title));
+  color: hsl(var(--cream));
 }
 .menu-avail-dot {
   width: 6px;
@@ -232,8 +245,11 @@
   background: currentColor;
   opacity: 0.75;
 }
+/* Green/red availability dots — use hsl directly (these are semantic, not themed) */
 .menu-avail-dot--green { color: hsl(120 50% 42%); }
 .menu-avail-dot--red { color: hsl(0 65% 52%); }
+[data-theme="dark"] .menu-avail-dot--green { color: hsl(120 50% 58%); }
+[data-theme="dark"] .menu-avail-dot--red { color: hsl(0 65% 65%); }
 
 /* ── Grid ── */
 .menu-grid {
@@ -257,8 +273,8 @@
 }
 .meal-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px hsl(var(--wine-deep) / 0.1);
-  border-color: hsl(var(--gold) / 0.25);
+  box-shadow: 0 12px 32px hsl(var(--wine-deep) / 0.12);
+  border-color: hsl(var(--gold) / 0.3);
 }
 
 .meal-card__image {
@@ -281,12 +297,12 @@
   align-items: center;
   justify-content: center;
   color: hsl(var(--gold) / 0.35);
-  background: linear-gradient(135deg, hsl(var(--wine-deep) / 0.05), hsl(var(--gold) / 0.05));
+  background: linear-gradient(135deg, hsl(var(--wine-deep) / 0.06), hsl(var(--gold) / 0.06));
 }
 .meal-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, hsl(20 15% 8% / 0.5), transparent 50%);
+  background: linear-gradient(to top, hsl(20 15% 8% / 0.55), transparent 50%);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -334,7 +350,7 @@
 }
 .meal-card__badge--featured {
   background: hsl(var(--wine) / 0.85);
-  color: hsl(var(--cream-hero-title));
+  color: hsl(var(--cream));
 }
 
 .meal-card__info {
@@ -400,10 +416,14 @@
 .meal-card__price-tag {
   font-size: 0.65rem;
   font-weight: 700;
-  color: hsl(120 50% 38%);
-  background: hsl(120 50% 38% / 0.1);
+  color: hsl(120 50% 42%);
+  background: hsl(120 50% 42% / 0.1);
   padding: 0.15rem 0.4rem;
   border-radius: 999px;
+}
+[data-theme="dark"] .meal-card__price-tag {
+  color: hsl(120 50% 60%);
+  background: hsl(120 50% 60% / 0.12);
 }
 
 .meal-card__toggle {
@@ -422,12 +442,15 @@
   flex-shrink: 0;
 }
 .meal-card__toggle--on {
-  color: hsl(120 50% 38%);
-  border-color: hsl(120 50% 38% / 0.3);
-  background: hsl(120 50% 38% / 0.06);
+  color: hsl(120 50% 42%);
+  border-color: hsl(120 50% 42% / 0.3);
+  background: hsl(120 50% 42% / 0.07);
 }
-.meal-card__toggle--on:hover {
-  background: hsl(120 50% 38% / 0.12);
+.meal-card__toggle--on:hover { background: hsl(120 50% 42% / 0.14); }
+[data-theme="dark"] .meal-card__toggle--on {
+  color: hsl(120 50% 60%);
+  border-color: hsl(120 50% 60% / 0.3);
+  background: hsl(120 50% 60% / 0.08);
 }
 .meal-card__toggle--off {
   color: hsl(var(--muted-foreground));
@@ -521,7 +544,7 @@
 .menu-page-btn--active {
   background: hsl(var(--wine));
   border-color: hsl(var(--wine));
-  color: hsl(var(--cream-hero-title));
+  color: hsl(var(--cream));
   font-weight: 700;
 }
 .menu-page-btn:disabled { opacity: 0.35; cursor: not-allowed; }

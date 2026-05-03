@@ -58,7 +58,7 @@ export default function MenuPage() {
   }, [page, search, selectedCategory, availFilter])
 
   useEffect(() => {
-    getCategories().then(res => setCategories(res?.data ?? [])).catch(() => {})
+    getCategories().then(res => setCategories(res?.data ?? [])).catch(() => { })
   }, [])
 
   useEffect(() => { fetchMeals() }, [page, selectedCategory, availFilter])
@@ -74,10 +74,11 @@ export default function MenuPage() {
 
   const handleToggle = async (e: React.MouseEvent, meal: IMeal) => {
     e.preventDefault(); e.stopPropagation()
+    const newAvailability = !meal.isAvailable
     try {
-      await toggleMealAvailability(meal.id)
-      setMeals(prev => prev.map(m => m.id === meal.id ? { ...m, isAvailable: !m.isAvailable } : m))
-      toast.success(`${meal.name} marked as ${!meal.isAvailable ? "available" : "unavailable"}.`)
+      await toggleMealAvailability(meal.id, newAvailability)
+      setMeals(prev => prev.map(m => m.id === meal.id ? { ...m, isAvailable: newAvailability } : m))
+      toast.success(`${meal.name} marked as ${newAvailability ? "available" : "unavailable"}.`)
     } catch { toast.error("Failed to update availability.") }
   }
 

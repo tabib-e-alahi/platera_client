@@ -407,7 +407,7 @@ export default function ProviderProfilePage() {
                   : "Click to upload profile photo"}
               </span>
               <span className="pp-upload-hint">
-                JPG, PNG, WebP — max 5MB
+                JPG, PNG, WebP — max 1MB
               </span>
             </div>
           </div>

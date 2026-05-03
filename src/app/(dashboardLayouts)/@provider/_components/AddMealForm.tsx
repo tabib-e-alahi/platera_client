@@ -484,7 +484,7 @@ export default function AddMealForm() {
                       Click to upload main image
                     </span>
                     <span className="am-upload-hint">
-                      JPG, PNG, WebP — max 5MB
+                      JPG, PNG, WebP — max 1MB
                     </span>
                   </>
                 )}

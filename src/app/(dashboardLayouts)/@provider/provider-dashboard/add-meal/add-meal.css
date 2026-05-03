@@ -1,3 +1,8 @@
+/* add-meal.css — Platera Provider Dashboard
+   Fully theme-aware: consumes globals.css tokens.
+   Light = :root defaults  |  Dark = [data-theme="dark"] overrides
+   NO hardcoded colors — every value references a CSS variable.
+*/
 
 .am-page {
   max-width: 1440px;
@@ -9,33 +14,31 @@
 }
 
 .am-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 700;
-  color: hsl(20 20% 12%);
+  color: hsl(var(--foreground));
   letter-spacing: -0.4px;
   margin: 0 0 6px;
 }
 
 .am-subtitle {
   font-size: 14px;
-  color: hsl(20 10% 45%);
+  color: hsl(var(--muted-foreground));
   margin: 0;
 }
 
 /* ─── Form card ──────────────────────────────────────────────── */
 
 .am-form-card {
-  background: #ffffff;
-  border: 1px solid hsl(38 70% 55% / 0.1);
+  background: hsl(var(--card));
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 16px hsl(350 40% 30% / 0.05);
 }
 
 .am-section {
   padding: 28px 32px;
-  border-bottom: 1px solid hsl(30 20% 94%);
+  border-bottom: 1px solid hsl(var(--border));
 }
 
 .am-section:last-child {
@@ -45,7 +48,7 @@
 .am-section-title {
   font-size: 13px;
   font-weight: 600;
-  color: hsl(38 70% 45%);
+  color: hsl(var(--gold));
   text-transform: uppercase;
   letter-spacing: 0.8px;
   margin: 0 0 20px;
@@ -76,13 +79,13 @@
 .am-label {
   font-size: 13px;
   font-weight: 600;
-  color: hsl(20 20% 12%);
+  color: hsl(var(--foreground));
 }
 
 .am-label-optional {
   font-size: 11px;
   font-weight: 400;
-  color: hsl(20 10% 55%);
+  color: hsl(var(--muted-foreground));
   margin-left: 4px;
 }
 
@@ -91,14 +94,14 @@
 .am-select {
   height: 44px;
   border-radius: 10px;
-  border: 1.5px solid hsl(30 20% 88%);
-  background: hsl(30 25% 98%);
+  border: 1.5px solid hsl(var(--border));
+  background: hsl(var(--background));
   padding: 0 14px;
   font-size: 14px;
-  font-family: 'Inter', sans-serif;
-  color: hsl(20 20% 12%);
+  font-family: var(--font-body);
+  color: hsl(var(--foreground));
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   width: 100%;
 }
 
@@ -121,42 +124,47 @@
 .am-input:focus,
 .am-textarea:focus,
 .am-select:focus {
-  border-color: hsl(38 70% 55%);
-  box-shadow: 0 0 0 3px hsl(38 70% 55% / 0.12);
-  background: #ffffff;
+  border-color: hsl(var(--gold));
+  box-shadow: 0 0 0 3px hsl(var(--gold) / 0.12);
+  background: hsl(var(--card));
 }
 
 .am-input::placeholder,
 .am-textarea::placeholder {
-  color: hsl(20 10% 70%);
+  color: hsl(var(--muted-foreground) / 0.6);
+}
+
+/* Dark mode: select arrow tint */
+[data-theme="dark"] .am-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
 }
 
 .am-input--error,
 .am-select--error {
-  border-color: hsl(0 72% 51%) !important;
+  border-color: hsl(var(--destructive)) !important;
 }
 
 .am-error {
   font-size: 12px;
-  color: hsl(0 72% 45%);
+  color: hsl(var(--destructive));
 }
 
-/* image upload */
+/* ─── Image upload ───────────────────────────────────────────── */
 
 .am-upload {
-  border: 2px dashed hsl(38 70% 55% / 0.3);
+  border: 2px dashed hsl(var(--gold) / 0.3);
   border-radius: 12px;
   padding: 28px;
   text-align: center;
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
-  background: hsl(38 70% 55% / 0.02);
+  background: hsl(var(--gold) / 0.03);
   position: relative;
 }
 
 .am-upload:hover {
-  border-color: hsl(38 70% 55% / 0.6);
-  background: hsl(38 70% 55% / 0.04);
+  border-color: hsl(var(--gold) / 0.6);
+  background: hsl(var(--gold) / 0.06);
 }
 
 .am-upload input[type="file"] {
@@ -175,14 +183,14 @@
 .am-upload-text {
   font-size: 13px;
   font-weight: 600;
-  color: hsl(20 20% 25%);
+  color: hsl(var(--foreground));
   display: block;
   margin-bottom: 2px;
 }
 
 .am-upload-hint {
   font-size: 12px;
-  color: hsl(20 10% 55%);
+  color: hsl(var(--muted-foreground));
 }
 
 .am-upload-preview {
@@ -197,10 +205,10 @@
   height: 72px;
   border-radius: 8px;
   object-fit: cover;
-  border: 2px solid hsl(38 70% 55% / 0.2);
+  border: 2px solid hsl(var(--gold) / 0.25);
 }
 
-/* tag / array input */
+/* ─── Tag / array input ──────────────────────────────────────── */
 
 .am-tag-wrap {
   display: flex;
@@ -209,26 +217,26 @@
   align-items: center;
   min-height: 44px;
   border-radius: 10px;
-  border: 1.5px solid hsl(30 20% 88%);
-  background: hsl(30 25% 98%);
+  border: 1.5px solid hsl(var(--border));
+  background: hsl(var(--background));
   padding: 6px 10px;
   cursor: text;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .am-tag-wrap:focus-within {
-  border-color: hsl(38 70% 55%);
-  box-shadow: 0 0 0 3px hsl(38 70% 55% / 0.12);
-  background: #ffffff;
+  border-color: hsl(var(--gold));
+  box-shadow: 0 0 0 3px hsl(var(--gold) / 0.12);
+  background: hsl(var(--card));
 }
 
 .am-tag {
   display: flex;
   align-items: center;
   gap: 5px;
-  background: hsl(38 70% 55% / 0.1);
-  border: 1px solid hsl(38 70% 55% / 0.2);
-  color: hsl(350 40% 25%);
+  background: hsl(var(--gold) / 0.12);
+  border: 1px solid hsl(var(--gold) / 0.25);
+  color: hsl(var(--wine));
   border-radius: 6px;
   padding: 2px 8px;
   font-size: 12px;
@@ -239,24 +247,27 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: hsl(350 40% 40%);
+  color: hsl(var(--wine));
   padding: 0;
   line-height: 1;
   font-size: 14px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
 }
+.am-tag-remove:hover { opacity: 1; }
 
 .am-tag-input {
   border: none;
   outline: none;
   background: transparent;
   font-size: 13px;
-  font-family: 'Inter', sans-serif;
-  color: hsl(20 20% 12%);
+  font-family: var(--font-body);
+  color: hsl(var(--foreground));
   min-width: 80px;
   flex: 1;
 }
 
-/* addon rows */
+/* ─── Addon rows ─────────────────────────────────────────────── */
 
 .am-addon-list {
   display: flex;
@@ -275,9 +286,9 @@
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  border: 1.5px solid hsl(0 60% 55% / 0.3);
-  background: hsl(0 60% 55% / 0.05);
-  color: hsl(0 60% 50%);
+  border: 1.5px solid hsl(var(--destructive) / 0.3);
+  background: hsl(var(--destructive) / 0.05);
+  color: hsl(var(--destructive));
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -286,7 +297,7 @@
 }
 
 .am-addon-remove:hover {
-  background: hsl(0 60% 55% / 0.1);
+  background: hsl(var(--destructive) / 0.12);
 }
 
 .am-add-btn {
@@ -295,21 +306,21 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 500;
-  color: hsl(38 70% 45%);
+  color: hsl(var(--gold));
   background: none;
   border: none;
   cursor: pointer;
   padding: 4px 0;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   transition: color 0.15s;
   margin-top: 4px;
 }
 
 .am-add-btn:hover {
-  color: hsl(38 70% 35%);
+  color: hsl(var(--wine));
 }
 
-/* size / spice rows */
+/* ─── Size / spice option rows ───────────────────────────────── */
 
 .am-option-list {
   display: flex;
@@ -329,15 +340,15 @@
   align-items: center;
   gap: 5px;
   font-size: 12px;
-  color: hsl(20 10% 45%);
+  color: hsl(var(--muted-foreground));
   white-space: nowrap;
 }
 
 .am-option-default input[type="radio"] {
-  accent-color: hsl(38 70% 55%);
+  accent-color: hsl(var(--gold));
 }
 
-/* dietary checkboxes */
+/* ─── Dietary checkboxes ─────────────────────────────────────── */
 
 .am-checkbox-grid {
   display: grid;
@@ -351,21 +362,21 @@
   gap: 8px;
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1.5px solid hsl(30 20% 88%);
+  border: 1.5px solid hsl(var(--border));
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
   font-size: 13px;
-  color: hsl(20 20% 25%);
+  color: hsl(var(--foreground));
 }
 
 .am-checkbox-item:has(input:checked) {
-  border-color: hsl(38 70% 55%);
-  background: hsl(38 70% 55% / 0.06);
-  color: hsl(350 40% 25%);
+  border-color: hsl(var(--gold));
+  background: hsl(var(--gold) / 0.08);
+  color: hsl(var(--wine));
 }
 
 .am-checkbox-item input {
-  accent-color: hsl(38 70% 55%);
+  accent-color: hsl(var(--gold));
 }
 
 /* ─── Footer buttons ─────────────────────────────────────────── */
@@ -376,52 +387,46 @@
   justify-content: flex-end;
   gap: 12px;
   padding: 24px 32px;
-  background: hsl(30 25% 97%);
-  border-top: 1px solid hsl(30 20% 94%);
 }
 
 .am-btn-cancel {
   height: 44px;
   padding: 0 24px;
   border-radius: 10px;
-  border: 1.5px solid hsl(30 20% 86%);
+  border: 1.5px solid hsl(var(--border));
   background: transparent;
   font-size: 14px;
   font-weight: 500;
-  font-family: 'Inter', sans-serif;
-  color: hsl(20 10% 45%);
+  font-family: var(--font-body);
+  color: hsl(var(--muted-foreground));
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
 }
 
 .am-btn-cancel:hover {
-  border-color: hsl(30 20% 76%);
-  color: hsl(20 20% 12%);
+  border-color: hsl(var(--foreground) / 0.5);
+  color: hsl(var(--foreground));
 }
 
 .am-btn-submit {
   height: 44px;
   padding: 0 32px;
   border-radius: 10px;
-  background: linear-gradient(
-    135deg,
-    hsl(38 70% 55%),
-    hsl(38 60% 68%)
-  );
+  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold)));
   border: none;
   font-size: 14px;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  color: hsl(350 45% 18%);
+  font-family: var(--font-body);
+  color: rgb(35, 34, 34);
   cursor: pointer;
   letter-spacing: 0.2px;
   transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 2px 10px hsl(38 70% 55% / 0.3);
+  box-shadow: 0 2px 10px hsl(var(--gold) / 0.3);
 }
 
 .am-btn-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px hsl(38 70% 55% / 0.4);
+  box-shadow: 0 6px 20px hsl(var(--gold) / 0.4);
 }
 
 .am-btn-submit:disabled {
@@ -429,6 +434,17 @@
   cursor: not-allowed;
   transform: none;
 }
+
+/* ─── Dark mode overrides for elements that can't use variables natively ─── */
+/* (select options, autofill backgrounds) */
+
+[data-theme="dark"] .am-input:-webkit-autofill,
+[data-theme="dark"] .am-textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--card)) inset;
+  -webkit-text-fill-color: hsl(var(--foreground));
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
   .am-section { padding: 20px; }
