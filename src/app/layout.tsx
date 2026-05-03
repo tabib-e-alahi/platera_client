@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css"
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
+import AIChatAssistant from "@/components/shared/AIChatAssistant/AIChatAssistant";
 
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function RootLayout({
             <AuthProvider>
               <TooltipProvider>{children}</TooltipProvider>
               <Toaster position="top-right" richColors />
+               <AIChatAssistant />
             </AuthProvider>
           </QueryProvider>
         </ThemeProvider>
