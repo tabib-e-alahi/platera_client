@@ -6,11 +6,11 @@ import {
   Search, MapPin, Star, UtensilsCrossed, ShoppingBag,
   ChefHat, ArrowRight, SlidersHorizontal, X
 } from "lucide-react";
-// import { getRestaurants, getCategories, type Restaurant } from "./utils";
 import { BANGLADESH_DISTRICTS } from "@/constants/bangladeshDistricts";
 import "./restaurants.css";
 import { getRestaurants, Restaurant } from "@/services/restaurant.service";
 import { getCategories } from "./utils";
+import AISearchSuggestions from "@/components/shared/AISearchSuggestions/AISearchSuggestions";
 
 const BUSINESS_CATEGORIES = [
   { value: "", label: "All Types" },
@@ -67,24 +67,15 @@ function RestaurantCard({ r }: { r: Restaurant }) {
             {r.city}
           </span>
         </div>
-        {/* {r.bio && <p className="rc__desc">{r.bio}</p>} */}
-        <p className="rc__desc">
-          {r.bio || "\u00A0"}
-        </p>
-
+        <p className="rc__desc">{r.bio || "\u00A0"}</p>
         <div className="rc__tags">
           {r.subcategories.length > 0 ? (
             <>
               {(r.subcategories as string[]).slice(0, 4).map((s) => (
-                <span className="rc__tag" key={s}>
-                  {s}
-                </span>
+                <span className="rc__tag" key={s}>{s}</span>
               ))}
-
               {r.subcategories.length > 4 && (
-                <span className="rc__tag">
-                  +{r.subcategories.length - 4} more
-                </span>
+                <span className="rc__tag">+{r.subcategories.length - 4} more</span>
               )}
             </>
           ) : (
@@ -93,18 +84,10 @@ function RestaurantCard({ r }: { r: Restaurant }) {
         </div>
         <div className="rc__footer">
           <div className="rc__meta">
-            <span className="rc__meta-item">
-              <ShoppingBag size={12} />
-              {r.mealCount} meals
-            </span>
-            <span className="rc__meta-item">
-              <ChefHat size={12} />
-              {r.totalOrdersCompleted} orders
-            </span>
+            <span className="rc__meta-item"><ShoppingBag size={12} />{r.mealCount} meals</span>
+            <span className="rc__meta-item"><ChefHat size={12} />{r.totalOrdersCompleted} orders</span>
           </div>
-          <span className="rc__view-btn">
-            View Menu <ArrowRight size={13} />
-          </span>
+          <span className="rc__view-btn">View Menu <ArrowRight size={13} /></span>
         </div>
       </div>
     </Link>
@@ -130,6 +113,91 @@ function SkeletonGrid() {
 
 interface Category { id: string; name: string; slug: string; }
 
+// ─── FilterPanel moved OUTSIDE RestaurantsPage so it never remounts on re-render ───
+interface FilterPanelProps {
+  search: string;
+  city: string;
+  categoryId: string;
+  subcategory: string;
+  businessCategory: string;
+  categories: Category[];
+  hasFilters: boolean;
+  onSearch: (val: string) => void;
+  onCity: (val: string) => void;
+  onCategoryId: (val: string) => void;
+  onSubcategory: (val: string) => void;
+  onBusinessCategory: (val: string) => void;
+  onClear: () => void;
+}
+
+function FilterPanel({
+  search, city, categoryId, subcategory, businessCategory,
+  categories, hasFilters,
+  onSearch, onCity, onCategoryId, onSubcategory, onBusinessCategory, onClear,
+}: FilterPanelProps) {
+  return (
+    <>
+      <div className="rp__filter-group" id="search-group">
+        <label className="rp__filter-label">Search</label>
+        <AISearchSuggestions
+          value={search}
+          onChange={onSearch}
+          placeholder="Search restaurants…"
+        />
+      </div>
+
+      <div className="rp__filter-group">
+        <label className="rp__filter-label">City / District</label>
+        <select className="rp__filter-select" value={city} onChange={(e) => onCity(e.target.value)}>
+          <option value="">All Cities</option>
+          {BANGLADESH_DISTRICTS.map((d) => <option key={d} value={d}>{d}</option>)}
+        </select>
+      </div>
+
+      <div className="rp__filter-group">
+        <label className="rp__filter-label">Food Category</label>
+        <select className="rp__filter-select" value={categoryId} onChange={(e) => onCategoryId(e.target.value)}>
+          <option value="">All Categories</option>
+          {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+        </select>
+      </div>
+
+      <div className="rp__filter-group">
+        <label className="rp__filter-label">Sub-Category</label>
+        <input
+          className="rp__filter-input"
+          placeholder="e.g. Burger, Pizza, Biryani…"
+          value={subcategory}
+          onChange={(e) => onSubcategory(e.target.value)}
+        />
+      </div>
+
+      <div className="rp__filter-group">
+        <label className="rp__filter-label">Business Type</label>
+        <div className="rp__type-chips">
+          {BUSINESS_CATEGORIES.map((bc) => (
+            <button
+              key={bc.value}
+              className={`rp__type-chip ${businessCategory === bc.value ? "rp__type-chip--active" : ""}`}
+              onClick={() => onBusinessCategory(bc.value)}
+            >
+              {bc.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {hasFilters && (
+        <button className="rp__clear-btn" onClick={onClear}>
+          <X size={13} style={{ display: "inline", marginRight: "0.35rem" }} />
+          Clear All Filters
+        </button>
+      )}
+    </>
+  );
+}
+
+// ─── Main page ───────────────────────────────────────────────────────────────
 export default function RestaurantsPage() {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -160,7 +228,6 @@ export default function RestaurantsPage() {
     setLoading(false);
   }, []);
 
-  // Debounced fetch on filter changes
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
@@ -175,7 +242,6 @@ export default function RestaurantsPage() {
     return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
   }, [search, city, categoryId, subcategory, businessCategory, page, fetchRestaurants]);
 
-  // Load categories
   useEffect(() => {
     getCategories().then((res) => {
       if (res?.success) setCategories(res.data ?? []);
@@ -185,73 +251,18 @@ export default function RestaurantsPage() {
   const clearFilters = () => {
     setSearch(""); setCity(""); setCategoryId(""); setSubcategory(""); setBusinessCategory(""); setPage(1);
   };
-  const hasFilters = search || city || categoryId || subcategory || businessCategory;
+  const hasFilters = !!(search || city || categoryId || subcategory || businessCategory);
 
-  const FilterPanel = () => (
-    <>
-      <div className="rp__filter-group" id="search-group">
-        <label className="rp__filter-label">Search</label>
-        <div style={{ position: "relative" }}>
-          <Search size={14} style={{ position: "absolute", left: "0.8rem", top: "50%", transform: "translateY(-50%)", color: "hsl(var(--muted-foreground))", pointerEvents: "none" }} />
-          <input
-            className="rp__filter-input"
-            style={{ paddingLeft: "2.2rem" }}
-            placeholder="Search restaurants…"
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-          />
-        </div>
-      </div>
-
-      <div className="rp__filter-group">
-        <label className="rp__filter-label">City / District</label>
-        <select className="rp__filter-select" value={city} onChange={(e) => { setCity(e.target.value); setPage(1); }}>
-          <option value="">All Cities</option>
-          {BANGLADESH_DISTRICTS.map((d) => <option key={d} value={d}>{d}</option>)}
-        </select>
-      </div>
-
-      <div className="rp__filter-group">
-        <label className="rp__filter-label">Food Category</label>
-        <select className="rp__filter-select" value={categoryId} onChange={(e) => { setCategoryId(e.target.value); setPage(1); }}>
-          <option value="">All Categories</option>
-          {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
-        </select>
-      </div>
-
-      <div className="rp__filter-group">
-        <label className="rp__filter-label">Sub-Category</label>
-        <input
-          className="rp__filter-input"
-          placeholder="e.g. Burger, Pizza, Biryani…"
-          value={subcategory}
-          onChange={(e) => { setSubcategory(e.target.value); setPage(1); }}
-        />
-      </div>
-
-      <div className="rp__filter-group">
-        <label className="rp__filter-label">Business Type</label>
-        <div className="rp__type-chips">
-          {BUSINESS_CATEGORIES.map((bc) => (
-            <button
-              key={bc.value}
-              className={`rp__type-chip ${businessCategory === bc.value ? "rp__type-chip--active" : ""}`}
-              onClick={() => { setBusinessCategory(bc.value); setPage(1); }}
-            >
-              {bc.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {hasFilters && (
-        <button className="rp__clear-btn" onClick={clearFilters}>
-          <X size={13} style={{ display: "inline", marginRight: "0.35rem" }} />
-          Clear All Filters
-        </button>
-      )}
-    </>
-  );
+  const filterProps = {
+    search, city, categoryId, subcategory, businessCategory,
+    categories, hasFilters,
+    onSearch: (val: string) => { setSearch(val); setPage(1); },
+    onCity: (val: string) => { setCity(val); setPage(1); },
+    onCategoryId: (val: string) => { setCategoryId(val); setPage(1); },
+    onSubcategory: (val: string) => { setSubcategory(val); setPage(1); },
+    onBusinessCategory: (val: string) => { setBusinessCategory(val); setPage(1); },
+    onClear: clearFilters,
+  };
 
   return (
     <div className="rp">
@@ -262,9 +273,7 @@ export default function RestaurantsPage() {
           Explore Platera
           <span className="rp__hero-label-line" />
         </div>
-        <h1 className="rp__hero-title">
-          All <em>Restaurants</em>
-        </h1>
+        <h1 className="rp__hero-title">All <em>Restaurants</em></h1>
         <p className="rp__hero-desc">
           Discover home kitchens, restaurants and street food near you — fresh, local, delivered fast.
         </p>
@@ -277,23 +286,18 @@ export default function RestaurantsPage() {
             <SlidersHorizontal size={16} />
             Filters
           </div>
-          <FilterPanel />
+          <FilterPanel {...filterProps} />
         </aside>
 
         {/* Main */}
         <main className="rp__main">
           {/* Mobile search */}
           <div className="rp__mobile-search">
-            <div style={{ position: "relative" }}>
-              <Search size={14} style={{ position: "absolute", left: "0.85rem", top: "50%", transform: "translateY(-50%)", color: "hsl(var(--muted-foreground))", pointerEvents: "none" }} />
-              <input
-                className="rp__filter-input"
-                style={{ paddingLeft: "2.3rem" }}
-                placeholder="Search restaurants…"
-                value={search}
-                onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-              />
-            </div>
+            <AISearchSuggestions
+              value={search}
+              onChange={(val) => { setSearch(val); setPage(1); }}
+              placeholder="Search restaurants…"
+            />
           </div>
 
           <div className="rp__toolbar">

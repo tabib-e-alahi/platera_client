@@ -22,6 +22,40 @@ import { loginUser } from "@/services/auth.service"
 import { toast } from "sonner"
 import SocialLogin from "./SocialLogin"
 
+/* ─── Demo credentials ──────────────────────────────────────────────────── */
+
+const DEMO_CREDENTIALS = [
+  {
+    role: "Customer",
+    email: "sarah.rahman@platera.demo",
+    password: "Demo@customer1",
+    emoji: "🛒",
+    color: "#3b82f6",
+    bg: "rgba(59,130,246,0.07)",
+    border: "rgba(59,130,246,0.2)",
+  },
+  {
+    role: "Provider",
+    email: "kitchen.spice@platera.demo",
+    password: "Demo@provider1",
+    emoji: "🍳",
+    color: "#e8a030",
+    bg: "rgba(232,160,48,0.07)",
+    border: "rgba(232,160,48,0.25)",
+  },
+  {
+    role: "Admin",
+    email: "admin@platera.demo",
+    password: "Demo@admin2024",
+    emoji: "🛡️",
+    color: "#7c3aed",
+    bg: "rgba(124,58,237,0.07)",
+    border: "rgba(124,58,237,0.2)",
+  },
+] as const
+
+/* ─── Schema ────────────────────────────────────────────────────────────── */
+
 const formSchema = z.object({
   email: z.email("Please enter a valid email address."),
   password: z.string().min(1, "Password is required."),
@@ -29,16 +63,16 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
+/* ─── Component ─────────────────────────────────────────────────────────── */
+
 export function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  // Show a toast if Google OAuth redirected back with an error
   useEffect(() => {
     const error = searchParams.get("error")
     if (error === "google_failed") {
       toast.error("Google sign-in failed. Please try again or use email/password.")
-      // Clean the URL so a refresh doesn't re-trigger the toast
       window.history.replaceState({}, "", "/login")
     }
   }, [searchParams])
@@ -47,6 +81,13 @@ export function LoginForm() {
     resolver: zodResolver(formSchema),
     defaultValues: { email: "", password: "" },
   })
+
+  /* fill form with one click */
+  const fillDemo = (cred: (typeof DEMO_CREDENTIALS)[number]) => {
+    form.setValue("email", cred.email, { shouldValidate: true })
+    form.setValue("password", cred.password, { shouldValidate: true })
+    toast.success(`${cred.emoji} ${cred.role} credentials filled — hit Sign In!`)
+  }
 
   async function onSubmit(data: FormValues) {
     try {
@@ -62,6 +103,7 @@ export function LoginForm() {
       const user = res.data.data.user
       const role = user?.role as string | undefined
       const hasProviderProfile = res?.data.hasProviderProfile
+
       if (role === "CUSTOMER") {
         router.push("/")
       } else if (role === "PROVIDER") {
@@ -72,33 +114,28 @@ export function LoginForm() {
         router.push("/")
       }
     } catch (err: any) {
-      // Axios puts the server response under err.response.data
       const serverData = err?.response?.data
-
-      // Try to surface the most specific message from the server
       const message =
         serverData?.message ||
         serverData?.error ||
         err?.message ||
         "Login failed. Please check your credentials and try again."
-
       toast.error(message)
     }
   }
 
   return (
     <Card className="login-card">
+
       {/* ── HEADER ── */}
       <CardHeader className="login-card-header">
         <div className="login-eyebrow">
           <span className="login-eyebrow-dot" />
           Welcome back
         </div>
-
         <h1 className="login-title">
           Sign in to <em>Platera</em>
         </h1>
-
         <p className="login-desc">
           New here?{" "}
           <Link href="/register-customer">Create a free account</Link>
@@ -108,6 +145,34 @@ export function LoginForm() {
 
       {/* ── FORM ── */}
       <CardContent className="login-card-content">
+
+        {/* ── Demo credentials ── */}
+        <div className="demo-creds">
+          <div className="demo-creds__header">
+            <span className="demo-creds__icon">✨</span>
+            <span className="demo-creds__prompt">
+              Want to try with demo credentials?
+            </span>
+          </div>
+          <div className="demo-creds__pills">
+            {DEMO_CREDENTIALS.map((cred) => (
+              <button
+                key={cred.role}
+                type="button"
+                className="demo-creds__pill"
+                onClick={() => fillDemo(cred)}
+                style={{
+                  "--pill-color": cred.color,
+                  "--pill-bg": cred.bg,
+                  "--pill-border": cred.border,
+                } as React.CSSProperties}
+              >
+                <span className="demo-creds__pill-emoji">{cred.emoji}</span>
+                <span className="demo-creds__pill-role">{cred.role}</span>
+              </button>
+            ))}
+          </div>
+        </div>
 
         <SocialLogin />
 
@@ -193,7 +258,6 @@ export function LoginForm() {
           >
             Reset
           </Button>
-
           <Button
             type="submit"
             form="login-form"
@@ -203,12 +267,12 @@ export function LoginForm() {
             {form.formState.isSubmitting ? "Authenticating…" : "Sign In"}
           </Button>
         </div>
-
         <p className="login-footer-link">
           Don't have an account?{" "}
           <Link href="/register-customer">Register</Link>
         </p>
       </CardFooter>
+
     </Card>
   )
 }

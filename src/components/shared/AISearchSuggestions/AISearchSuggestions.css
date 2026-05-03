@@ -1,0 +1,91 @@
+/* ── Platera AI Search Suggestions ───────────────────────────────────── */
+
+.aisearch {
+  position: relative;
+  width: 100%;
+}
+
+.aisearch__icon {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.aisearch__input {
+  padding-left: 2.2rem !important;
+  padding-right: 2rem !important;
+  width: 100%;
+}
+
+.aisearch__spinner {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #E8652A;
+  animation: aisearch-spin 0.7s linear infinite;
+  pointer-events: none;
+}
+@keyframes aisearch-spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+/* Dropdown */
+.aisearch__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--color-background-primary, #fff);
+  border: 0.5px solid var(--color-border-tertiary, #e5e5e5);
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+  z-index: 999;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  animation: aisearch-fade 0.14s ease;
+  overflow: hidden;
+}
+@keyframes aisearch-fade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.aisearch__dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px 5px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #E8652A;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 0.5px solid var(--color-border-tertiary, #f0f0f0);
+  margin-bottom: 2px;
+}
+
+.aisearch__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--color-text-primary, #111);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.aisearch__item:hover {
+  background: #FDF0EA;
+  color: #E8652A;
+}
+.aisearch__item-icon {
+  color: var(--color-text-secondary, #999);
+  flex-shrink: 0;
+}
+.aisearch__item:hover .aisearch__item-icon {
+  color: #E8652A;
+}

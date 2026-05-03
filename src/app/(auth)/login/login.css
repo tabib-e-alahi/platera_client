@@ -256,7 +256,6 @@
 .login-form__separator-line {
     flex: 1;
     height: 1px;
-
     background: hsl(var(--border));
 }
 
@@ -288,13 +287,13 @@
 }
 
 .login-field-label {
- display: block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: hsl(var(--wine-deep));
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.45rem;
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: hsl(var(--wine-deep));
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.45rem;
 }
 
 .login-input {
@@ -314,8 +313,8 @@
 }
 
 .login-input:focus {
-  border-color: hsl(var(--gold) / 0.6);
-  box-shadow: 0 0 0 3px hsl(var(--gold) / 0.1);
+    border-color: hsl(var(--gold) / 0.6);
+    box-shadow: 0 0 0 3px hsl(var(--gold) / 0.1);
 }
 
 .login-input::placeholder {
@@ -413,6 +412,82 @@
     text-decoration: underline;
 }
 
+/* ─── Demo credentials ───────────────────────────────────────── */
+
+.demo-creds {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    background: hsl(var(--muted) / 0.5);
+    border: 1.5px dashed hsl(var(--border));
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.demo-creds__header {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.demo-creds__icon {
+    font-size: 14px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.demo-creds__prompt {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.4;
+}
+
+.demo-creds__pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.demo-creds__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1.5px solid var(--pill-border);
+    background: var(--pill-bg);
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+
+.demo-creds__pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px var(--pill-border);
+    filter: brightness(1.05);
+}
+
+.demo-creds__pill:active {
+    transform: translateY(0px);
+}
+
+.demo-creds__pill-emoji {
+    font-size: 14px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.demo-creds__pill-role {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--pill-color);
+    letter-spacing: 0.01em;
+}
+
 /* ─── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
@@ -473,5 +548,13 @@
 
     .login-btn-submit {
         order: 2;
+    }
+
+    .demo-creds__pills {
+        gap: 6px;
+    }
+
+    .demo-creds__pill {
+        padding: 5px 11px;
     }
 }
