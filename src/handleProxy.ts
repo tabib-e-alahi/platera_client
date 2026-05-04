@@ -90,7 +90,6 @@ export async function handleProxy(request: NextRequest) {
     request.cookies.get("__Secure-session_token") ||
     request.cookies.get("session_token");
 
-  console.log("89",token);
 
   if (!token) {
     if (isProtectedPath(pathname)) {

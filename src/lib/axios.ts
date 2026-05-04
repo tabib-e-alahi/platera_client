@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 const api = axios.create({
@@ -5,9 +6,7 @@ const api = axios.create({
   withCredentials: true, // send session cookie
 });
 
-// Routes that should forcefully redirect to /login on a 401.
-// Public pages (/, /restaurants, etc.) must NOT be in this list —
-// an unauthenticated visitor on the homepage is perfectly normal.
+
 const PROTECTED_PREFIXES = [
   "/customer-dashboard",
   "/provider-dashboard",
